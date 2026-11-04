@@ -1,0 +1,295 @@
+{
+  "version": 1,
+  "updated": "",
+  "settings": {
+    "artistName": "Ângelo Salavessa",
+    "discipline": "Black & grey realism",
+    "instagramHandle": "angelosalavessa_tattoo",
+    "whatsappNumber": "31634444502",
+    "whatsappDisplay": "+31 6 3444 4502",
+    "whatsappGreeting": "Hi Ângelo, I'd like to book a tattoo.",
+    "bookingEmail": ""
+  },
+  "media": {
+    "heroPiece": 2,
+    "ringCount": 8,
+    "heroBackground": "images/07-statue.jpg",
+    "artistPortrait": "images/artist.jpg",
+    "artistPortraitPosition": "62% 30%",
+    "artistDetailImage": "images/artist-2.jpg"
+  },
+  "seo": {
+    "title": "Ângelo Salavessa — Black & Grey Realism Tattoo Artist",
+    "description": "Ângelo Salavessa is a black & grey realism tattoo artist tattooing worldwide — Amsterdam, Phuket and Portugal. Bookings open via WhatsApp."
+  },
+  "text": {
+    "hero.corner1": "Amsterdam — Phuket — Portugal",
+    "hero.corner2": "Tattooing worldwide",
+    "hero.kicker1": "Bookings open",
+    "hero.kicker2": "Black & grey realism",
+    "hero.kicker3": "Tattooing worldwide",
+    "hero.tagline": "Light, carved from shadow.",
+    "hero.lede": "Black & grey realism — portraits, wildlife, roses and symbols built for the body that wears them. Tattooing on the road between Amsterdam, Phuket and Portugal.",
+    "hero.cta1": "Start your piece",
+    "hero.cta2": "See the work",
+    "work.label": "Selected work",
+    "work.title": "The\nplates",
+    "work.introSerif": "Build the dark. Protect the light.",
+    "work.intro": "In black & grey, every highlight is skin left untouched — so the shadows have to do all the talking. A few pieces worth a closer look.",
+    "artist.label": "The artist",
+    "artist.statement": "Realism is a discipline of *restraint* — knowing where not to put ink.",
+    "artist.lead": "Ângelo Salavessa works in black & grey realism: faces, animals, roses, statues and symbols, rendered in soft gradients that sit naturally on the body.",
+    "artist.p2": "He works on the road. Amsterdam, Phuket and Portugal are among the regular stops, and the work goes wherever he lands next.",
+    "artist.p3": "Every piece starts with your idea and is composed for the part of you it will live on. Larger work is planned across sessions — to be continued, as he puts it on his feed.",
+    "index.label": "Archive",
+    "index.title": "Index",
+    "process.label": "Process",
+    "process.title": "From idea\nto skin",
+    "process.lede": "No templates, no surprises. Here is how a piece usually comes together — the details are always confirmed with you directly.",
+    "process.s1.title": "The message",
+    "process.s1.text": "Send the idea, the placement, a rough size and any references. Short is fine. The form below turns it into one clear WhatsApp message.",
+    "process.s1.tag": "WhatsApp",
+    "process.s2.title": "The conversation",
+    "process.s2.text": "What will actually work on your body: scale, flow, where the light falls on the muscle. Realism needs room — sometimes the honest answer is bigger, or simpler.",
+    "process.s2.tag": "Scale · Flow",
+    "process.s3.title": "The design",
+    "process.s3.text": "The composition is built for you and your placement. Dates, deposits and session length are agreed directly when you book.",
+    "process.s3.tag": "Composition",
+    "process.s4.title": "The session",
+    "process.s4.text": "Black & grey is built in layers — from the deepest shadow up to the highlights. Large pieces are split across sessions. To be continued.",
+    "process.s4.tag": "Layers",
+    "process.s5.title": "The healing",
+    "process.s5.text": "Follow the aftercare you're given. Healed realism softens and settles into the skin — that's the version you live with, and the one that counts.",
+    "process.s5.tag": "Healed",
+    "travel.label": "Where to find him",
+    "travel.title": "On the\nroad",
+    "travel.lede": "He tattoos where he travels. Guest-spot dates are announced on Instagram, so tell him in your enquiry where you'd like to be tattooed.",
+    "travel.foot": "Tattooing worldwide",
+    "booking.label": "Enquiry",
+    "booking.title": "Start\nyour *piece.*",
+    "booking.intro": "Bookings are open and handled personally on WhatsApp. Describe your idea here and the form turns it into one clear message — nothing gets lost in a long chat.",
+    "booking.next1": "Fill in what you know. Only a few fields are required.",
+    "booking.next2": "Review the message we put together for you.",
+    "booking.next3": "WhatsApp opens with it already written. Tap send — that's the moment it's actually sent.",
+    "booking.submitNote": "Nothing is sent from this page. You'll see the full message first, then send it yourself.",
+    "closing.kicker": "Questions, dates, an idea you can't shake",
+    "closing.line1": "Text to",
+    "closing.line2": "book",
+    "footer.tagline": "Black & grey realism · Tattooing worldwide"
+  },
+  "facts": [
+    {
+      "label": "Discipline",
+      "value": "Black & grey realism"
+    },
+    {
+      "label": "Based",
+      "value": "Tattooing worldwide"
+    },
+    {
+      "label": "On the road",
+      "value": "Amsterdam · Phuket · Portugal"
+    },
+    {
+      "label": "Bookings",
+      "value": "Open — via WhatsApp"
+    }
+  ],
+  "bandA": [
+    "Black & grey",
+    "Realism",
+    "Portraits",
+    "Wildlife",
+    "Roses",
+    "Statues"
+  ],
+  "bandB": [
+    "Worldwide",
+    "Amsterdam",
+    "Phuket",
+    "Portugal"
+  ],
+  "locations": [
+    {
+      "name": "Amsterdam",
+      "note": "Guest spots · Netherlands",
+      "dates": ""
+    },
+    {
+      "name": "Phuket",
+      "note": "Thailand",
+      "dates": ""
+    },
+    {
+      "name": "Portugal",
+      "note": "Guest spots",
+      "dates": ""
+    }
+  ],
+  "portfolio": [
+    {
+      "title": "Portrait sleeve",
+      "image": "images/01-portrait-sleeve.jpg",
+      "alt": "Black and grey realism sleeve: a woman's face with her hand raised to her lips",
+      "category": "Portraits",
+      "placement": "Arm",
+      "featured": true,
+      "ratio": "901/1600",
+      "position": "center 30%",
+      "description": "Done in Lisbon over three straight days."
+    },
+    {
+      "title": "The girl & the rose",
+      "image": "images/02-girl-rose.jpg",
+      "alt": "Black and grey realism forearm piece: a woman in a bandana above a rose",
+      "category": "Portraits",
+      "placement": "Forearm",
+      "featured": false,
+      "ratio": "720/1280",
+      "position": "center"
+    },
+    {
+      "title": "Tiger",
+      "image": "images/03-tiger.jpg",
+      "alt": "Black and grey realism tiger head on the upper arm",
+      "category": "Wildlife",
+      "placement": "Upper arm",
+      "featured": true,
+      "ratio": "1/1",
+      "position": "center 35%"
+    },
+    {
+      "title": "The clock eye",
+      "image": "images/04-clock-eye.jpg",
+      "alt": "Black and grey realism eye with a clock face in the iris, on the forearm",
+      "category": "Symbolic",
+      "placement": "Forearm",
+      "featured": true,
+      "ratio": "640/1136",
+      "position": "center"
+    },
+    {
+      "title": "Serpent & skull",
+      "image": "images/05-snake-skull.jpg",
+      "alt": "Black and grey realism snake coiled over a skull",
+      "category": "Symbolic",
+      "placement": "Forearm",
+      "featured": true,
+      "ratio": "3/4",
+      "position": "center",
+      "description": "Two sessions, Portugal."
+    },
+    {
+      "title": "Two roses",
+      "image": "images/06-roses.jpg",
+      "alt": "Black and grey realism roses on the forearm",
+      "category": "Botanical",
+      "placement": "Forearm",
+      "featured": false,
+      "ratio": "749/998",
+      "position": "center"
+    },
+    {
+      "title": "Classical statue",
+      "image": "images/07-statue.jpg",
+      "alt": "Black and grey realism classical statue faces with roses and architecture",
+      "category": "Classical",
+      "placement": "Arm",
+      "featured": true,
+      "ratio": "902/1600",
+      "position": "center"
+    },
+    {
+      "title": "Scorpion",
+      "image": "images/08-scorpion.jpg",
+      "alt": "Black and grey realism scorpion with a moon and desert scene",
+      "category": "Wildlife",
+      "placement": "Arm",
+      "featured": false,
+      "ratio": "901/1600",
+      "position": "center",
+      "description": "Done in Portugal."
+    },
+    {
+      "title": "Lion & child",
+      "image": "images/09-lion-child.jpg",
+      "alt": "Black and grey realism lion with a child's portrait",
+      "category": "Portraits",
+      "placement": "Arm",
+      "featured": true,
+      "ratio": "640/1136",
+      "position": "center"
+    },
+    {
+      "title": "Snake",
+      "image": "images/10-snake.jpg",
+      "alt": "Black and grey realism coiled snake, done in one session",
+      "category": "Wildlife",
+      "placement": "Torso",
+      "featured": false,
+      "ratio": "640/1136",
+      "position": "center"
+    },
+    {
+      "title": "Healed portrait",
+      "image": "images/11-healed-portrait.jpg",
+      "alt": "Healed black and grey realism portrait of a woman holding a rose",
+      "category": "Healed",
+      "placement": "Arm",
+      "featured": false,
+      "ratio": "4/5",
+      "position": "center",
+      "description": "Healed, around five years on."
+    },
+    {
+      "title": "Eagle",
+      "image": "images/12-eagle.jpg",
+      "alt": "Black and grey realism eagle head, work in progress",
+      "category": "Wildlife",
+      "placement": "Arm",
+      "featured": false,
+      "ratio": "640/1136",
+      "position": "center"
+    },
+    {
+      "title": "Micro shark",
+      "image": "images/13-shark.jpg",
+      "alt": "Micro realism shark on the forearm",
+      "category": "Small work",
+      "placement": "Forearm",
+      "featured": false,
+      "ratio": "4/5",
+      "position": "center"
+    },
+    {
+      "title": "Odin",
+      "image": "images/14-odin.jpg",
+      "alt": "Black and grey realism Odin portrait, worked over several sessions",
+      "category": "Classical",
+      "placement": "Arm",
+      "featured": false,
+      "ratio": "640/1136",
+      "position": "center"
+    },
+    {
+      "title": "Crown of thorns",
+      "image": "images/15-crown-of-thorns.jpg",
+      "alt": "Black and grey realism bearded face with a crown of thorns",
+      "category": "Classical",
+      "placement": "Arm",
+      "featured": false,
+      "ratio": "720/1280",
+      "position": "center"
+    },
+    {
+      "title": "Rhino",
+      "image": "images/16-rhino.jpg",
+      "alt": "Black and grey realism rhino, in progress",
+      "category": "Wildlife",
+      "placement": "Thigh",
+      "featured": false,
+      "ratio": "1440/1560",
+      "position": "center"
+    }
+  ]
+}

@@ -1,0 +1,1411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F6F2EC">
+<title>Website editor — Ângelo Salavessa</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232B241F'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='42' fill='%23F6F2EC'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* ==========================================================================
+   WEBSITE EDITOR — same light, nude, Apple-style language as the website.
+   ========================================================================== */
+:root {
+  --bg: #F6F2EC; --bg-2: #EFE8DF; --card: #FFFFFF;
+  --text: #2B241F; --text-2: #5B4F46; --muted: #8A7E74;
+  --line: rgba(43,36,31,.10); --line-2: rgba(43,36,31,.18);
+  --accent: #8E6B53; --accent-soft: rgba(142,107,83,.13); --nude: #E6D6C6;
+  --ok: #4E7A4A; --ok-soft: rgba(78,122,74,.12); --danger: #B4533F; --danger-soft: rgba(180,83,63,.10);
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --r: 14px; --r-lg: 22px;
+  --shadow: 0 1px 2px rgba(70,50,35,.06), 0 12px 32px -18px rgba(70,50,35,.28);
+  --ease: cubic-bezier(.16,1,.3,1);
+  --top-h: 64px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--text); font: 15px/1.5 var(--sans); -webkit-font-smoothing: antialiased; letter-spacing: -.006em; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+a { color: inherit; }
+h1, h2, h3, p { margin: 0; }
+[hidden] { display: none !important; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+::selection { background: var(--nude); }
+
+.mark { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; background: var(--text); color: var(--bg); font: italic 400 38px/1 var(--serif); padding-top: 4px; }
+.mark--sm { width: 36px; height: 36px; border-radius: 11px; font-size: 25px; padding-top: 3px; }
+
+/* ---------- Buttons ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--card); font-weight: 500; font-size: .92rem; white-space: nowrap; text-decoration: none; transition: background-color .2s, border-color .2s, color .2s, transform .15s, opacity .2s; }
+.btn:hover { border-color: var(--text-2); }
+.btn:active { transform: scale(.98); }
+.btn--primary { background: var(--text); border-color: var(--text); color: var(--bg); }
+.btn--primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn--ghost { background: transparent; }
+.btn--loud { background: #D2341C; border-color: #D2341C; color: #fff; }
+.btn--loud:hover { background: var(--text); border-color: var(--text); color: var(--bg); }
+.btn--danger { color: var(--danger); border-color: rgba(180,83,63,.35); background: var(--card); }
+.btn--danger.is-armed { background: var(--danger); color: #fff; border-color: var(--danger); }
+.btn--sm { min-height: 36px; padding: 0 14px; font-size: .85rem; }
+.btn--block { width: 100%; min-height: 50px; font-size: 1rem; }
+.btn[disabled] { opacity: .45; pointer-events: none; }
+.icon-btn { display: inline-grid; place-items: center; width: 38px; height: 38px; flex: none; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--text-2); transition: background-color .2s, color .2s; }
+.icon-btn:hover { background: var(--text); color: var(--bg); }
+.link { color: var(--accent); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Login ---------- */
+.login { min-height: 100dvh; display: grid; place-items: center; padding: 24px 16px; background:
+  radial-gradient(60% 50% at 70% 10%, rgba(230,214,198,.9), transparent 70%),
+  radial-gradient(50% 40% at 10% 90%, rgba(205,181,156,.35), transparent 70%), var(--bg); }
+.login__card { width: min(400px, 100%); background: rgba(255,255,255,.82); -webkit-backdrop-filter: blur(20px) saturate(160%); backdrop-filter: blur(20px) saturate(160%); border-radius: 28px; padding: 36px 28px 28px; box-shadow: 0 40px 90px -40px rgba(70,50,35,.45), 0 0 0 1px rgba(255,255,255,.7) inset; display: grid; gap: 16px; text-align: center; }
+.login__card .mark { margin: 0 auto 4px; }
+.login h1 { font: 400 2.2rem/1 var(--serif); letter-spacing: -.01em; }
+.login .sub { color: var(--muted); margin-top: -8px; font-size: .9rem; }
+.login .f { display: grid; gap: 6px; text-align: left; }
+.login .f__l { font-size: .8rem; font-weight: 500; color: var(--text-2); }
+.pw { display: block; }
+.pw { position: relative; }
+.pw .in { padding-right: 70px; }
+.pw__toggle { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); height: 34px; padding: 0 12px; border-radius: 999px; font-size: .8rem; color: var(--accent); font-weight: 500; }
+.check { display: flex; align-items: center; gap: 10px; font-size: .88rem; color: var(--text-2); text-align: left; cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--text); }
+.err { color: var(--danger); font-size: .88rem; min-height: 1.3em; }
+.back { color: var(--muted); font-size: .88rem; text-decoration: none; }
+.back:hover { color: var(--text); }
+.shake { animation: shake .4s; }
+@keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+
+/* ---------- Inputs ---------- */
+.in { width: 100%; min-height: 46px; padding: 11px 14px; background: var(--card); border: 1px solid var(--line-2); border-radius: 12px; font-size: 1rem; transition: border-color .15s, box-shadow .15s; resize: none; }
+.in:hover { border-color: rgba(43,36,31,.3); }
+.in:focus-visible { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+textarea.in { line-height: 1.5; min-height: 46px; overflow: hidden; }
+textarea.in--line { min-height: 46px; }
+select.in { appearance: none; -webkit-appearance: none; padding-right: 38px; background-image: linear-gradient(45deg, transparent 50%, var(--text-2) 50%), linear-gradient(135deg, var(--text-2) 50%, transparent 50%); background-position: calc(100% - 20px) 52%, calc(100% - 15px) 52%; background-size: 5px 5px; background-repeat: no-repeat; }
+.in--sm { min-height: 36px; padding: 6px 34px 6px 12px; font-size: .85rem; }
+.in--num { max-width: 120px; }
+
+/* ---------- App layout ---------- */
+.app { display: grid; height: 100dvh; grid-template-columns: 252px minmax(0, 1fr) minmax(380px, 36vw); grid-template-rows: var(--top-h) minmax(0, 1fr); }
+.top { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; padding: 0 18px; padding-top: env(safe-area-inset-top); border-bottom: 1px solid var(--line); background: rgba(246,242,236,.85); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%); position: relative; z-index: 20; }
+.top__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
+.top__brand strong { display: block; font-weight: 600; font-size: .95rem; line-height: 1.1; }
+.top__brand small { display: block; color: var(--muted); font-size: .78rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.status { display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-size: .8rem; font-weight: 500; color: var(--text-2); white-space: nowrap; }
+.status__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.status.is-live .status__dot { background: var(--ok); box-shadow: 0 0 0 4px var(--ok-soft); }
+.status.is-dirty .status__dot { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.top__actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+
+.side { overflow-y: auto; padding: 18px 12px 28px; border-right: 1px solid var(--line); }
+.side__item { display: flex; align-items: center; gap: 12px; width: 100%; padding: 10px 12px; border-radius: 12px; text-align: left; color: var(--text-2); transition: background-color .2s, color .2s; }
+.side__item:hover { background: rgba(255,255,255,.7); color: var(--text); }
+.side__item[aria-current="true"] { background: var(--card); color: var(--text); box-shadow: var(--shadow); }
+.side__no { width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; background: var(--bg-2); font-size: .72rem; font-weight: 600; color: var(--text-2); flex: none; }
+.side__item[aria-current="true"] .side__no { background: var(--text); color: var(--bg); }
+.side__txt strong { display: block; font-weight: 500; font-size: .92rem; line-height: 1.2; }
+.side__txt small { display: block; color: var(--muted); font-size: .76rem; }
+.side__sep { height: 1px; background: var(--line); margin: 12px 12px; }
+
+.panel { overflow-y: auto; padding: 32px clamp(16px, 4vw, 48px) 120px; scroll-behavior: smooth; }
+.panel__inner { max-width: 720px; margin: 0 auto; }
+.ph { margin-bottom: 26px; }
+.ph__eyebrow { font-size: .74rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.ph h2 { font: 400 clamp(2.2rem, 1.6rem + 2vw, 3rem)/1 var(--serif); letter-spacing: -.015em; margin: 6px 0 8px; }
+.ph p { color: var(--text-2); max-width: 56ch; }
+.ph__peek { margin-top: 12px; display: none; }
+
+.card { background: var(--card); border-radius: var(--r-lg); padding: clamp(18px, 3vw, 28px); box-shadow: var(--shadow); display: grid; gap: 18px; margin-bottom: 18px; }
+.grp { font: 400 1.5rem/1.1 var(--serif); margin-top: 6px; }
+.grp-note { color: var(--muted); font-size: .86rem; margin-top: -12px; }
+.fld { display: grid; gap: 7px; min-width: 0; }
+.fld > label, .lbl { font-size: .82rem; font-weight: 500; color: var(--text-2); }
+.hint { font-size: .8rem; color: var(--muted); line-height: 1.45; }
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* Image field */
+.imgf { display: flex; gap: 14px; align-items: center; }
+.imgf__thumb { width: 92px; height: 110px; flex: none; border-radius: 14px; overflow: hidden; background: var(--bg-2); display: grid; place-items: center; color: var(--muted); font-size: .75rem; }
+.imgf__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.imgf__ctl { display: grid; gap: 8px; justify-items: start; min-width: 0; flex: 1; }
+.imgf__ctl .in { max-width: 100%; }
+
+/* Colour field */
+.swatches { display: flex; flex-wrap: wrap; gap: 8px; }
+.swatch { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px 0 8px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--card); font-size: .88rem; font-weight: 500; }
+.swatch__c { width: 28px; height: 28px; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+.swatch[aria-checked="true"] { border-color: var(--text); box-shadow: 0 0 0 1px var(--text); }
+.colorpick { display: flex; align-items: center; gap: 12px; font-size: .85rem; color: var(--text-2); }
+.colorpick input[type=color] { width: 46px; height: 36px; padding: 2px; border: 1px solid var(--line-2); border-radius: 10px; background: var(--card); cursor: pointer; }
+.colorpick code { font-size: .82rem; color: var(--muted); }
+.loud-demo { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 18px; border-radius: 16px; background: var(--bg); }
+.loud-demo__btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: 999px; background: var(--c); color: var(--ci); font-weight: 500; }
+.loud-demo__quiet { color: var(--text-2); font-size: .88rem; }
+
+/* Theme picker */
+.themes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.theme { display: grid; gap: 10px; padding: 8px; border-radius: 18px; border: 1px solid var(--line-2); background: var(--card); text-align: left; transition: box-shadow .2s, border-color .2s; }
+.theme[aria-checked="true"] { border-color: var(--text); box-shadow: 0 0 0 1px var(--text); }
+.theme__art { position: relative; display: block; aspect-ratio: 16 / 10; border-radius: 12px; padding: 12px; overflow: hidden; }
+.theme__name { display: block; font-weight: 700; letter-spacing: -.04em; line-height: .95; font-size: clamp(1rem, .8rem + 1vw, 1.5rem); }
+.theme__btn { position: absolute; right: 10px; bottom: 10px; padding: 5px 10px; border-radius: 999px; font-size: .72rem; font-weight: 600; }
+.theme__txt { padding: 0 4px 4px; }
+.theme__txt strong { display: block; font-weight: 600; font-size: .9rem; }
+.theme__txt small { color: var(--muted); font-size: .78rem; }
+@media (max-width: 420px) { .themes { grid-template-columns: 1fr; } }
+
+/* Rows (facts, locations) */
+.rows { display: grid; gap: 10px; }
+.row { display: grid; gap: 8px; grid-template-columns: 1fr 1fr auto; align-items: center; }
+.row--loc { grid-template-columns: 1.1fr 1.2fr 1fr auto; }
+.row__tools { display: flex; gap: 6px; }
+
+/* ---------- Portfolio ---------- */
+.pf-top { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.pf-top label.btn { cursor: pointer; }
+.pf-stats { color: var(--text-2); font-size: .9rem; }
+.warn { color: var(--danger); }
+.pcs { display: grid; gap: 10px; }
+.pc { background: var(--card); border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; transition: box-shadow .25s; }
+.pc.is-open { box-shadow: 0 0 0 2px var(--accent-soft), var(--shadow); }
+.pc__head { display: flex; align-items: center; gap: 14px; width: 100%; padding: 10px 14px 10px 10px; text-align: left; }
+.pc__thumb { width: 56px; height: 68px; border-radius: 10px; object-fit: cover; background: var(--bg-2); flex: none; }
+.pc__sum { flex: 1; min-width: 0; }
+.pc__title { display: block; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc__meta { display: block; color: var(--muted); font-size: .8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc__no { color: var(--muted); font-size: .75rem; font-variant-numeric: tabular-nums; width: 22px; flex: none; text-align: right; }
+.pc__badges { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.badge { font-size: .68rem; font-weight: 600; letter-spacing: .03em; padding: 3px 8px; border-radius: 999px; background: var(--bg-2); color: var(--text-2); white-space: nowrap; }
+.badge--dark { background: var(--text); color: var(--bg); }
+.badge--new { background: var(--accent-soft); color: var(--accent); }
+.pc__chev { width: 10px; height: 10px; border-right: 1.6px solid var(--muted); border-bottom: 1.6px solid var(--muted); transform: rotate(45deg); margin: 0 6px 4px; transition: transform .3s var(--ease); flex: none; }
+.pc.is-open .pc__chev { transform: rotate(-135deg); margin-bottom: -4px; }
+.pc__body { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 20px; padding: 6px 18px 20px; border-top: 1px solid var(--line); padding-top: 18px; }
+.pc__media { display: grid; gap: 10px; align-content: start; justify-items: start; }
+.pc__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; background: var(--bg-2); }
+.pc__media label { cursor: pointer; }
+.pc__fields { display: grid; gap: 14px; min-width: 0; }
+.seg { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--bg-2); gap: 2px; }
+.seg button { min-height: 32px; padding: 0 14px; border-radius: 999px; font-size: .82rem; font-weight: 500; color: var(--text-2); }
+.seg button[aria-pressed="true"] { background: var(--card); color: var(--text); box-shadow: 0 1px 3px rgba(70,50,35,.18); }
+.sw { display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: .9rem; }
+.sw input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.sw__t { width: 44px; height: 26px; border-radius: 999px; background: var(--line-2); position: relative; transition: background-color .2s; flex: none; }
+.sw__t::after { content: ""; position: absolute; left: 3px; top: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .25s var(--ease); }
+.sw input:checked + .sw__t { background: var(--ok); }
+.sw input:checked + .sw__t::after { transform: translateX(18px); }
+.sw input:focus-visible + .sw__t { outline: 2px solid var(--accent); outline-offset: 3px; }
+.pc__actions { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px; }
+
+/* ---------- Connection ---------- */
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 12px; }
+.steps li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; color: var(--text-2); font-size: .92rem; }
+.steps li::before { counter-increment: s; content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--bg-2); display: grid; place-items: center; font-weight: 600; font-size: .8rem; color: var(--text); }
+.steps b { color: var(--text); font-weight: 600; }
+.conn-state { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; font-size: .9rem; }
+.conn-state.is-ok { background: var(--ok-soft); color: var(--ok); }
+.conn-state.is-bad { background: var(--danger-soft); color: var(--danger); }
+.conn-state.is-idle { background: var(--bg-2); color: var(--text-2); }
+.note { background: var(--bg-2); border-radius: 14px; padding: 14px 16px; color: var(--text-2); font-size: .86rem; }
+
+/* ---------- Preview ---------- */
+.pv { display: flex; flex-direction: column; border-left: 1px solid var(--line); background: var(--bg-2); min-width: 0; }
+.pv__bar { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); background: rgba(246,242,236,.8); }
+.pv__title { font-weight: 600; font-size: .88rem; margin-right: auto; display: flex; align-items: center; gap: 8px; }
+.pv__title::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px var(--ok-soft); }
+.pv__close { display: none; }
+.pv__stage { position: relative; flex: 1; overflow: hidden; }
+.pv__device { position: absolute; left: 0; top: 0; transform-origin: 0 0; background: var(--bg); border-radius: 26px; overflow: hidden; box-shadow: 0 30px 70px -30px rgba(70,50,35,.5), 0 0 0 8px #1f1a17, 0 0 0 9px rgba(0,0,0,.2); }
+.pv__device.is-desktop { border-radius: 12px; box-shadow: 0 30px 70px -30px rgba(70,50,35,.5), 0 0 0 1px var(--line-2); }
+.pv__device iframe { width: 100%; height: 100%; border: 0; display: block; background: var(--bg); }
+.pv__loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: .85rem; pointer-events: none; }
+
+.bar { display: none; }
+
+/* ---------- Sheet + toast ---------- */
+.sheet { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 16px; background: rgba(246,242,236,.7); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); animation: fade .25s; }
+.sheet__card { width: min(420px, 100%); background: var(--card); border-radius: 26px; padding: 30px 26px 24px; box-shadow: 0 40px 90px -30px rgba(70,50,35,.45); display: grid; gap: 12px; text-align: center; animation: rise .45s var(--ease); }
+.sheet__icon { width: 58px; height: 58px; border-radius: 50%; margin: 0 auto 6px; display: grid; place-items: center; background: var(--bg-2); font-size: 1.6rem; }
+.sheet__icon.is-spin::after { content: ""; width: 26px; height: 26px; border-radius: 50%; border: 2.5px solid var(--line-2); border-top-color: var(--text); animation: spin .8s linear infinite; }
+.sheet__icon.is-ok { background: var(--ok-soft); color: var(--ok); }
+.sheet__icon.is-bad { background: var(--danger-soft); color: var(--danger); }
+.sheet h2 { font: 400 1.9rem/1.05 var(--serif); }
+.sheet p { color: var(--text-2); font-size: .93rem; }
+.sheet__bar { height: 4px; border-radius: 4px; background: var(--bg-2); overflow: hidden; margin: 6px 0; }
+.sheet__bar span { display: block; height: 100%; width: 0; background: var(--text); border-radius: inherit; transition: width .4s var(--ease); }
+.sheet__actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 6px; }
+@keyframes fade { from { opacity: 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(16px) scale(.98); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); z-index: 90; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: var(--text); color: var(--bg); padding: 12px 18px; border-radius: 999px; font-size: .9rem; font-weight: 500; box-shadow: 0 20px 40px -14px rgba(43,36,31,.5); transition: opacity .3s, transform .4s var(--ease); max-width: calc(100vw - 32px); text-align: center; }
+.toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+.toast.is-bad { background: var(--danger); }
+
+.empty { text-align: center; padding: 60px 20px; color: var(--text-2); display: grid; gap: 12px; justify-items: center; }
+
+/* ---------- Responsive: tablet (preview becomes an overlay) ---------- */
+.show-md { display: none; }
+@media (max-width: 1180px) {
+  .app { grid-template-columns: 236px minmax(0, 1fr); }
+  .show-md { display: inline-flex; }
+  .pv { position: fixed; inset: 0; z-index: 60; border: 0; transform: translateY(102%); transition: transform .5s var(--ease); }
+  .pv.is-open { transform: none; }
+  .pv__close { display: inline-flex; }
+  .ph__peek { display: inline-flex; }
+}
+/* ---------- Responsive: phone ---------- */
+@media (max-width: 760px) {
+  :root { --top-h: 58px; }
+  .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: var(--top-h) auto minmax(0, 1fr); }
+  .top { padding: 0 12px; gap: 10px; }
+  .top__brand small { max-width: 34vw; }
+  .hide-sm { display: none !important; }
+  .side { display: flex; gap: 6px; overflow-x: auto; overflow-y: hidden; padding: 10px 12px; border-right: 0; border-bottom: 1px solid var(--line); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .side::-webkit-scrollbar { display: none; }
+  .side__item { width: auto; flex: none; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.6); }
+  .side__no, .side__txt small, .side__sep { display: none; }
+  .side__txt strong { font-size: .86rem; white-space: nowrap; }
+  .panel { padding: 22px 14px calc(110px + env(safe-area-inset-bottom)); }
+  .card { padding: 18px 16px; border-radius: 20px; }
+  .g2, .row, .row--loc { grid-template-columns: 1fr; }
+  .row, .row--loc { background: var(--bg); border-radius: 14px; padding: 10px; }
+  .row__tools { justify-content: flex-end; }
+  .pc__body { grid-template-columns: 1fr; padding: 16px 14px 18px; }
+  .pc__media { grid-template-columns: 110px 1fr; align-items: center; }
+  .pc__media img { width: 110px; }
+  .pc__badges .badge:not(.badge--new):not(.badge--dark) { display: none; }
+  .bar { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 12px 14px calc(12px + env(safe-area-inset-bottom)); background: rgba(246,242,236,.88); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%); border-top: 1px solid var(--line); }
+  .bar .btn { flex: 1; min-height: 50px; font-size: 1rem; }
+  .pv__bar .seg { display: none; }
+  .pv__device { border-radius: 0; box-shadow: none; }
+  .ph__peek { display: inline-flex; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+</style>
+</head>
+<body>
+
+<!-- ============================ LOGIN ============================ -->
+<main class="login" id="login" hidden>
+  <form class="login__card" id="login-form" novalidate>
+    <span class="mark" aria-hidden="true">S</span>
+    <h1>Website editor</h1>
+    <p class="sub">Ângelo Salavessa</p>
+    <label class="f"><span class="f__l">Email</span>
+      <input class="in" id="lg-email" type="email" autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false" required>
+    </label>
+    <label class="f"><span class="f__l">Password</span>
+      <span class="pw"><input class="in" id="lg-pass" type="password" autocomplete="current-password" required><button type="button" class="pw__toggle" id="lg-toggle" aria-label="Show password">Show</button></span>
+    </label>
+    <label class="check"><input type="checkbox" id="lg-keep"> Keep me signed in on this device</label>
+    <p class="err" id="lg-err" role="alert"></p>
+    <button class="btn btn--primary btn--block" type="submit" id="lg-submit">Sign in</button>
+    <a class="back" href="index.html">← Back to the website</a>
+  </form>
+</main>
+
+<!-- ============================ EDITOR ============================ -->
+<div class="app" id="app" hidden>
+  <header class="top">
+    <a class="top__brand" href="index.html" target="_blank" rel="noopener" title="Open the website">
+      <span class="mark mark--sm" aria-hidden="true">S</span>
+      <span><strong>Website editor</strong><small id="top-name">Ângelo Salavessa</small></span>
+    </a>
+    <span class="status" id="status" role="status"><span class="status__dot"></span><span id="status-text">Loading…</span></span>
+    <div class="top__actions">
+      <a class="btn btn--ghost btn--sm hide-sm" href="index.html" target="_blank" rel="noopener">View site ↗</a>
+      <button class="btn btn--ghost btn--sm show-md hide-sm" type="button" data-action="open-preview">Preview</button>
+      <button class="btn btn--danger btn--sm hide-sm" type="button" data-action="discard" id="btn-discard" hidden>Discard changes</button>
+      <button class="btn btn--loud btn--sm hide-sm" type="button" data-action="publish">Publish</button>
+      <button class="icon-btn" type="button" data-action="signout" aria-label="Sign out" title="Sign out">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <nav class="side" id="side" aria-label="Website sections"></nav>
+
+  <section class="panel" id="panel" aria-live="off"></section>
+
+  <aside class="pv" id="pv" aria-label="Live preview">
+    <div class="pv__bar">
+      <span class="pv__title">Live preview</span>
+      <div class="seg" role="group" aria-label="Preview size">
+        <button type="button" data-device="phone" aria-pressed="true">Phone</button>
+        <button type="button" data-device="desktop" aria-pressed="false">Computer</button>
+      </div>
+      <button class="btn btn--primary btn--sm pv__close" type="button" data-action="close-preview">Done</button>
+    </div>
+    <div class="pv__stage" id="pv-stage">
+      <p class="pv__loading" id="pv-loading">Loading preview…</p>
+      <div class="pv__device" id="pv-device"><iframe id="pv-frame" title="Website preview"></iframe></div>
+    </div>
+  </aside>
+
+  <div class="bar">
+    <button class="btn" type="button" data-action="open-preview">Preview</button>
+    <button class="btn btn--loud" type="button" data-action="publish">Publish</button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet__card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <div class="sheet__icon" id="sheet-icon"></div>
+    <h2 id="sheet-title"></h2>
+    <p id="sheet-text"></p>
+    <div class="sheet__bar" id="sheet-progress"><span id="sheet-bar"></span></div>
+    <div class="sheet__actions" id="sheet-actions"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+"use strict";
+
+/* ==========================================================================
+   1. SETTINGS
+   The sign-in check compares a one-way fingerprint (SHA-256) of the email and
+   password — the password itself is not written anywhere in this file.
+   Publishing uses a GitHub access key saved only in the editor's browser.
+   ========================================================================== */
+const AUTH = { salt: "salavessa-editor:v1:", hash: "987e84b2a88ae94938d391c5a15bc4258d31a5f4e1226d1f0c33b4c8ac6e81c9" };
+const KEYS = { session: "salavessa-editor:session", draft: "salavessa-editor:draft", gh: "salavessa-editor:github" };
+const MAX_FEATURED = 6;
+
+/* ==========================================================================
+   2. WHAT CAN BE EDITED — one entry per section of the website
+   ========================================================================== */
+const RICH = true;
+const SECTIONS = [
+  { id: "portfolio", title: "Portfolio", sub: "Your tattoo photos", anchor: "#work", custom: "portfolio",
+    intro: "Add, reorder, feature or remove pieces. The order here is the order on the website." },
+  { id: "home", title: "Home", sub: "Name & opening screen", anchor: "#top",
+    intro: "The first screen visitors see.",
+    fields: [
+      { h: "Your name" },
+      { k: "settings.artistName", label: "Name", hint: "The first word goes on line one, the rest on line two." },
+      { k: "settings.discipline", label: "Style", hint: "Shown under each piece in the photo viewer." },
+      { h: "Opening screen" },
+      { k: "text.hero.kicker1", label: "Status badge", hint: "For example “Bookings open” or “Fully booked until March”." },
+      { row: [{ k: "text.hero.kicker2", label: "Label 2" }, { k: "text.hero.kicker3", label: "Label 3" }] },
+      { k: "text.hero.tagline", label: "Tagline", rich: RICH },
+      { k: "text.hero.lede", label: "Introduction", type: "para" },
+      { row: [{ k: "text.hero.cta1", label: "Main button" }, { k: "text.hero.cta2", label: "Second button" }] },
+      { row: [{ k: "text.hero.corner1", label: "Corner line 1" }, { k: "text.hero.corner2", label: "Corner line 2" }], hint: "Top-left corner, on computers only." },
+      { h: "3D carousel" },
+      { k: "media.heroPiece", label: "Piece facing front", type: "piece" },
+      { k: "media.ringCount", label: "How many pieces spin", type: "number", min: 3, max: 16, hint: "Uses the first pieces in your portfolio order." },
+      { k: "media.heroBackground", label: "Soft background photo", type: "image", hint: "Shown very faintly behind the opening screen." }
+    ] },
+  { id: "work", title: "Selected work", sub: "Intro & moving bands", anchor: "#work",
+    intro: "The section that introduces your featured pieces, and the archive below it.",
+    fields: [
+      { k: "text.work.label", label: "Small label" },
+      { k: "text.work.title", label: "Title", rich: RICH },
+      { k: "text.work.introSerif", label: "Highlighted line" },
+      { k: "text.work.intro", label: "Text", type: "para" },
+      { h: "Moving text bands", note: "One word or short phrase per line." },
+      { row: [{ k: "bandA", label: "Band 1", type: "words" }, { k: "bandB", label: "Band 2", type: "words" }] },
+      { h: "Archive" },
+      { row: [{ k: "text.index.label", label: "Small label" }, { k: "text.index.title", label: "Title", rich: RICH }] }
+    ] },
+  { id: "artist", title: "About you", sub: "Photos, bio, facts", anchor: "#artist",
+    intro: "Your photos and the story behind the work.",
+    fields: [
+      { h: "Photos" },
+      { k: "media.artistPortrait", label: "Main photo", type: "image" },
+      { k: "media.artistDetailImage", label: "Second photo", type: "image", hint: "The smaller photo layered over the corner of the main one." },
+      { h: "Text" },
+      { k: "text.artist.label", label: "Small label" },
+      { k: "text.artist.statement", label: "Statement", rich: RICH },
+      { k: "text.artist.lead", label: "First paragraph", type: "para" },
+      { k: "text.artist.p2", label: "Second paragraph", type: "para" },
+      { k: "text.artist.p3", label: "Third paragraph", type: "para" },
+      { h: "Quick facts" },
+      { k: "facts", type: "pairs", labels: ["Label", "Text"] }
+    ] },
+  { id: "process", title: "Process", sub: "How a piece comes together", anchor: "#process",
+    intro: "The five steps from first message to healed tattoo.",
+    fields: [
+      { k: "text.process.label", label: "Small label" },
+      { k: "text.process.title", label: "Title", rich: RICH },
+      { k: "text.process.lede", label: "Introduction", type: "para" },
+      ...[1, 2, 3, 4, 5].flatMap(n => [
+        { h: "Step " + n },
+        { row: [{ k: `text.process.s${n}.title`, label: "Title" }, { k: `text.process.s${n}.tag`, label: "Small tag" }] },
+        { k: `text.process.s${n}.text`, label: "Text", type: "para" }
+      ])
+    ] },
+  { id: "travel", title: "Travel", sub: "Where you tattoo", anchor: "#travel",
+    intro: "Your stops. They also appear as choices in the booking form.",
+    fields: [
+      { k: "text.travel.label", label: "Small label" },
+      { k: "text.travel.title", label: "Title", rich: RICH },
+      { k: "text.travel.lede", label: "Introduction", type: "para" },
+      { h: "Places", note: "Add dates when a guest spot is announced, e.g. “12–20 Mar 2027”." },
+      { k: "locations", type: "locations" },
+      { k: "text.travel.foot", label: "Line under the list" }
+    ] },
+  { id: "booking", title: "Booking & contact", sub: "WhatsApp, Instagram", anchor: "#booking",
+    intro: "Where enquiries go, and the words around the booking form.",
+    fields: [
+      { h: "Where enquiries go" },
+      { k: "settings.whatsappNumber", label: "WhatsApp number", inputmode: "tel", placeholder: "31634444502", hint: "Country code + number, digits only — no +, spaces or leading 0. Example: 31634444502." },
+      { row: [{ k: "settings.whatsappDisplay", label: "Number as shown on the site" }, { k: "settings.instagramHandle", label: "Instagram username", placeholder: "angelosalavessa_tattoo" }] },
+      { k: "settings.whatsappGreeting", label: "WhatsApp greeting", hint: "Pre-filled when someone taps a WhatsApp button." },
+      { k: "settings.bookingEmail", label: "Booking email (optional)", input: "email", hint: "If filled in, visitors also get a “Send by email” option." },
+      { h: "Booking section" },
+      { k: "text.booking.label", label: "Small label" },
+      { k: "text.booking.title", label: "Title", rich: RICH },
+      { k: "text.booking.intro", label: "Introduction", type: "para" },
+      { k: "text.booking.next1", label: "Step 1" },
+      { k: "text.booking.next2", label: "Step 2" },
+      { k: "text.booking.next3", label: "Step 3" },
+      { k: "text.booking.submitNote", label: "Note under the button", type: "para" }
+    ] },
+  { id: "closing", title: "Closing & footer", sub: "Last words on the page", anchor: "#contact",
+    fields: [
+      { k: "text.closing.kicker", label: "Small line" },
+      { row: [{ k: "text.closing.line1", label: "Big text — line 1" }, { k: "text.closing.line2", label: "Big text — line 2" }] },
+      { k: "text.footer.tagline", label: "Footer line" }
+    ] },
+  { id: "seo", title: "Google & sharing", sub: "Search result text", anchor: "#top",
+    intro: "How the website appears on Google and when the link is shared.",
+    fields: [
+      { k: "seo.title", label: "Page title", hint: "Around 50–60 characters works best." },
+      { k: "seo.description", label: "Description", type: "para", hint: "Around 150 characters works best." }
+    ] },
+  { sep: true },
+  { id: "connection", title: "Publishing setup", sub: "Connect to GitHub", custom: "connection" }
+];
+
+/* ==========================================================================
+   3. HELPERS
+   ========================================================================== */
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const clone = o => JSON.parse(JSON.stringify(o));
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const store = s => ({
+  get(k, d) { try { const v = s().getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { s().setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } },
+  del(k) { try { s().removeItem(k); } catch (e) { /* ignore */ } }
+});
+const LS = store(() => localStorage), SS = store(() => sessionStorage);
+
+async function sha256(text) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+let toastTimer = 0;
+function toast(msg, bad) {
+  const t = $("#toast");
+  t.textContent = msg; t.classList.toggle("is-bad", !!bad); t.classList.add("is-on");
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("is-on"), bad ? 5200 : 3200);
+}
+function autosize(ta) { ta.style.height = "auto"; ta.style.height = (ta.scrollHeight + 2) + "px"; }
+function arm(btn, label, ms = 3000) { // two-tap confirmation, no browser pop-ups
+  if (btn.dataset.armed) return true;
+  btn.dataset.armed = "1"; btn.dataset.label = btn.textContent; btn.textContent = label; btn.classList.add("is-armed");
+  setTimeout(() => { if (btn.isConnected) { delete btn.dataset.armed; btn.textContent = btn.dataset.label; btn.classList.remove("is-armed"); } }, ms);
+  return false;
+}
+
+/* Small IndexedDB store so new photos survive a refresh before publishing */
+const idb = (() => {
+  let dbp = null;
+  const open = () => dbp || (dbp = new Promise((res, rej) => {
+    const r = indexedDB.open("salavessa-editor", 1);
+    r.onupgradeneeded = () => r.result.createObjectStore("pending");
+    r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+  }));
+  const run = (mode, fn) => open().then(db => new Promise((res, rej) => {
+    const t = db.transaction("pending", mode); const req = fn(t.objectStore("pending"));
+    t.oncomplete = () => res(req && req.result); t.onerror = () => rej(t.error);
+  }));
+  return {
+    put: (k, v) => run("readwrite", s => s.put(v, k)).catch(() => {}),
+    del: k => run("readwrite", s => s.delete(k)).catch(() => {}),
+    clear: () => run("readwrite", s => s.clear()).catch(() => {}),
+    all: () => open().then(db => new Promise(res => {
+      const out = [], c = db.transaction("pending").objectStore("pending").openCursor();
+      c.onsuccess = () => { const cur = c.result; if (cur) { out.push([cur.key, cur.value]); cur.continue(); } else res(out); };
+      c.onerror = () => res(out);
+    })).catch(() => [])
+  };
+})();
+
+/* ==========================================================================
+   4. STATE
+   ========================================================================== */
+let base = null;       // what is live (last loaded / published)
+let draft = null;      // what is being edited
+let current = "portfolio";
+const pending = new Map();    // image path → { blob, url } (new photos, not published yet)
+const uploaded = new Map();   // image path → object URL (published this session; GitHub Pages may still be deploying)
+const pieceIds = new WeakMap(); let pieceSeq = 0;
+const openPieces = new Set();
+const pid = p => { if (!pieceIds.has(p)) pieceIds.set(p, ++pieceSeq); return pieceIds.get(p); };
+
+function normalize(d) {
+  d = d && typeof d === "object" ? d : {};
+  d.version = d.version || 1;
+  ["settings", "media", "text", "seo"].forEach(k => { if (!d[k] || typeof d[k] !== "object" || Array.isArray(d[k])) d[k] = {}; });
+  ["facts", "bandA", "bandB", "locations", "portfolio"].forEach(k => { if (!Array.isArray(d[k])) d[k] = []; });
+  return d;
+}
+function getv(path) {
+  if (path.startsWith("text.")) return draft.text[path.slice(5)];
+  const i = path.indexOf(".");
+  return i < 0 ? draft[path] : (draft[path.slice(0, i)] || {})[path.slice(i + 1)];
+}
+function setv(path, v) {
+  if (path.startsWith("text.")) { draft.text[path.slice(5)] = v; return; }
+  const i = path.indexOf(".");
+  if (i < 0) { draft[path] = v; return; }
+  const a = path.slice(0, i); (draft[a] = draft[a] || {})[path.slice(i + 1)] = v;
+}
+function srcFor(path) {
+  if (!path) return "";
+  if (pending.has(path)) return pending.get(path).url;
+  if (uploaded.has(path)) return uploaded.get(path);
+  return path;
+}
+function imagePaths(d) {
+  const set = new Set();
+  (d.portfolio || []).forEach(p => p && p.image && set.add(p.image));
+  ["heroBackground", "artistPortrait", "artistDetailImage"].forEach(k => d.media && d.media[k] && set.add(d.media[k]));
+  return set;
+}
+function isDirty() { return pending.size > 0 || JSON.stringify(draft) !== JSON.stringify(base); }
+function saveDraft() {
+  if (isDirty()) LS.set(KEYS.draft, { draft, at: Date.now() });
+  else LS.del(KEYS.draft);
+}
+function changed() { saveDraft(); updateStatus(); schedulePreview(); }
+function updateStatus() {
+  const dirty = isDirty();
+  const st = $("#status");
+  st.classList.toggle("is-dirty", dirty); st.classList.toggle("is-live", !dirty);
+  $("#status-text").textContent = dirty ? "Unpublished changes" : "Everything is live";
+  $("#btn-discard").hidden = !dirty;
+  $("#top-name").textContent = (draft && draft.settings.artistName) || "Ângelo Salavessa";
+}
+function prunePending() {
+  const used = imagePaths(draft);
+  for (const [k, v] of pending) if (!used.has(k)) { URL.revokeObjectURL(v.url); pending.delete(k); idb.del(k); }
+}
+
+/* ==========================================================================
+   5. SIGN IN
+   ========================================================================== */
+function validSession() {
+  const s = SS.get(KEYS.session, null) || LS.get(KEYS.session, null);
+  return !!(s && s.h === AUTH.hash && s.exp > Date.now());
+}
+function showLogin() {
+  $("#app").hidden = true; $("#login").hidden = false;
+  setTimeout(() => $("#lg-email").focus(), 50);
+}
+let attempts = 0;
+function initLogin() {
+  $("#lg-toggle").addEventListener("click", () => {
+    const i = $("#lg-pass"), show = i.type === "password";
+    i.type = show ? "text" : "password";
+    $("#lg-toggle").textContent = show ? "Hide" : "Show";
+    $("#lg-toggle").setAttribute("aria-label", show ? "Hide password" : "Show password");
+  });
+  $("#login-form").addEventListener("submit", async e => {
+    e.preventDefault();
+    const err = $("#lg-err"), btn = $("#lg-submit"), card = $("#login-form");
+    const email = $("#lg-email").value.trim().toLowerCase(), pass = $("#lg-pass").value;
+    err.textContent = "";
+    if (!email || !pass) { err.textContent = "Enter your email and password."; return; }
+    if (!(window.crypto && crypto.subtle)) { err.textContent = "Open the editor from the website's https:// address to sign in."; return; }
+    btn.disabled = true; btn.textContent = "Signing in…";
+    const h = await sha256(AUTH.salt + email + ":" + pass);
+    if (h === AUTH.hash) {
+      const keep = $("#lg-keep").checked;
+      (keep ? LS : SS).set(KEYS.session, { h, exp: Date.now() + (keep ? 30 * 864e5 : 12 * 36e5) });
+      $("#lg-pass").value = ""; attempts = 0;
+      btn.disabled = false; btn.textContent = "Sign in";
+      enterApp();
+    } else {
+      attempts++;
+      await sleep(Math.min(5000, 500 * attempts));
+      btn.disabled = false; btn.textContent = "Sign in";
+      err.textContent = "That email and password don't match.";
+      card.classList.remove("shake"); void card.offsetWidth; card.classList.add("shake");
+      $("#lg-pass").select();
+    }
+  });
+}
+function signOut() {
+  SS.del(KEYS.session); LS.del(KEYS.session);
+  location.hash = "";
+  location.reload();
+}
+
+/* ==========================================================================
+   6. GITHUB — where the website lives. Publishing makes one commit with
+   content.json and any new photos; GitHub Pages then updates the site.
+   ========================================================================== */
+function conn() {
+  const c = LS.get(KEYS.gh, null) || {};
+  const g = guessRepo();
+  return { owner: c.owner || g.owner || "", repo: c.repo || g.repo || "", branch: c.branch || "", folder: c.folder || "", token: c.token || "" };
+}
+function connReady(c) { return !!(c.owner && c.repo && c.token); }
+function guessRepo() {
+  const m = location.hostname.match(/^([a-z0-9-]+)\.github\.io$/i);
+  if (!m) return {};
+  const seg = location.pathname.split("/").filter(Boolean)[0];
+  return { owner: m[1], repo: seg && !/\.html?$/i.test(seg) ? seg : location.hostname.toLowerCase() };
+}
+function repoPath(c) { return `/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repo)}`; }
+function filePath(c, p) { const f = (c.folder || "").replace(/^\/+|\/+$/g, ""); return f ? f + "/" + p : p; }
+async function gh(c, path, opts = {}) {
+  let r;
+  try {
+    r = await fetch("https://api.github.com" + path, {
+      method: opts.method || "GET",
+      headers: Object.assign({ "Accept": "application/vnd.github+json", "Authorization": "Bearer " + c.token, "X-GitHub-Api-Version": "2022-11-28" },
+        opts.body ? { "Content-Type": "application/json" } : {}),
+      body: opts.body ? JSON.stringify(opts.body) : undefined,
+      cache: "no-store"
+    });
+  } catch (e) { const err = new Error("network"); err.status = 0; throw err; }
+  if (!r.ok) { let m = ""; try { m = (await r.json()).message; } catch (e) { /* ignore */ } const err = new Error(m || r.statusText); err.status = r.status; throw err; }
+  return r.status === 204 ? null : r.json();
+}
+async function branchOf(c) {
+  if (c.branch) return c.branch;
+  const info = await gh(c, repoPath(c));
+  return info.default_branch || "main";
+}
+function fromB64Utf8(b64) {
+  const bin = atob(String(b64).replace(/\s/g, ""));
+  return new TextDecoder().decode(Uint8Array.from(bin, ch => ch.charCodeAt(0)));
+}
+function blobToB64(blob) {
+  return new Promise((res, rej) => { const fr = new FileReader(); fr.onload = () => res(String(fr.result).split(",")[1]); fr.onerror = () => rej(fr.error); fr.readAsDataURL(blob); });
+}
+function ghMessage(e) {
+  if (e.status === 0) return "No connection to GitHub. Check your internet and try again.";
+  if (e.status === 401) return "GitHub didn't accept the access key — it may have expired. Create a new one in Publishing setup.";
+  if (e.status === 403) return "The access key isn't allowed to change this repository. Check it has Contents: Read and write.";
+  if (e.status === 404) return "Repository, branch or folder not found. Check the names in Publishing setup.";
+  return "GitHub said: " + (e.message || "unknown error");
+}
+async function loadRemote(c) {
+  const br = await branchOf(c);
+  const f = await gh(c, `${repoPath(c)}/contents/${filePath(c, "content.json").split("/").map(encodeURIComponent).join("/")}?ref=${encodeURIComponent(br)}`);
+  return JSON.parse(fromB64Utf8(f.content));
+}
+async function loadBase() {
+  const c = conn();
+  if (connReady(c)) { try { return await loadRemote(c); } catch (e) { console.warn("[editor] GitHub load failed:", e); } }
+  try {
+    const r = await fetch("content.json?v=" + Date.now(), { cache: "no-store" });
+    if (r.ok) return await r.json();
+  } catch (e) { /* fall through */ }
+  return null;
+}
+
+/* ==========================================================================
+   7. PUBLISH
+   ========================================================================== */
+function validate() {
+  const errs = [];
+  const wa = String(draft.settings.whatsappNumber || "");
+  if (!/^\d{8,15}$/.test(wa)) errs.push(["booking", "The WhatsApp number must be digits only, with the country code (e.g. 31634444502)."]);
+  if (!String(draft.settings.artistName || "").trim()) errs.push(["home", "Your name can't be empty."]);
+  if (!draft.portfolio.length) errs.push(["portfolio", "Add at least one piece to the portfolio."]);
+  return errs;
+}
+function sheet(state, title, text, pct, actions) {
+  const s = $("#sheet"); s.hidden = false;
+  const icon = $("#sheet-icon");
+  icon.className = "sheet__icon" + (state === "busy" ? " is-spin" : state === "ok" ? " is-ok" : state === "bad" ? " is-bad" : "");
+  icon.textContent = state === "ok" ? "✓" : state === "bad" ? "!" : "";
+  $("#sheet-title").textContent = title; $("#sheet-text").textContent = text;
+  $("#sheet-progress").hidden = state !== "busy";
+  $("#sheet-bar").style.width = Math.round((pct || 0) * 100) + "%";
+  const a = $("#sheet-actions"); a.innerHTML = "";
+  (actions || []).forEach(([label, fn, primary, href]) => {
+    const b = document.createElement(href ? "a" : "button");
+    b.className = "btn" + (primary ? " btn--primary" : "");
+    b.textContent = label;
+    if (href) { b.href = href; b.target = "_blank"; b.rel = "noopener"; } else b.type = "button";
+    if (fn) b.addEventListener("click", fn);
+    a.appendChild(b);
+  });
+  const first = a.querySelector(".btn"); if (first) first.focus();
+}
+const closeSheet = () => { $("#sheet").hidden = true; };
+
+let publishing = false;
+async function publish() {
+  if (publishing) return;
+  const c = conn();
+  if (!connReady(c)) {
+    show("connection");
+    toast("Connect GitHub once to start publishing.");
+    return;
+  }
+  if (!isDirty()) { toast("Nothing new to publish — everything is already live."); return; }
+  const errs = validate();
+  if (errs.length) { show(errs[0][0]); toast(errs[0][1], true); return; }
+
+  publishing = true;
+  prunePending();
+  const images = Array.from(pending.entries());
+  const total = images.length + 4;
+  let done = 0;
+  const step = text => sheet("busy", "Publishing…", text, ++done / total);
+  sheet("busy", "Publishing…", "Connecting to GitHub", 0.04);
+
+  const attempt = async () => {
+    const br = await branchOf(c);
+    const rp = repoPath(c);
+    const ref = await gh(c, `${rp}/git/ref/heads/${encodeURIComponent(br)}`);
+    const head = ref.object.sha;
+    const commit = await gh(c, `${rp}/git/commits/${head}`);
+    step("Preparing");
+    const tree = [];
+    let n = 0;
+    for (const [path, item] of images) {
+      n++;
+      const content = await blobToB64(item.blob);
+      const b = await gh(c, `${rp}/git/blobs`, { method: "POST", body: { content, encoding: "base64" } });
+      tree.push({ path: filePath(c, path), mode: "100644", type: "blob", sha: b.sha });
+      step(`Uploading photo ${n} of ${images.length}`);
+    }
+    const out = clone(draft);
+    out.updated = new Date().toISOString();
+    const cj = await gh(c, `${rp}/git/blobs`, { method: "POST", body: { content: JSON.stringify(out, null, 2) + "\n", encoding: "utf-8" } });
+    tree.push({ path: filePath(c, "content.json"), mode: "100644", type: "blob", sha: cj.sha });
+    step("Saving your changes");
+    const t = await gh(c, `${rp}/git/trees`, { method: "POST", body: { base_tree: commit.tree.sha, tree } });
+    const nc = await gh(c, `${rp}/git/commits`, { method: "POST", body: { message: "Update website from the editor", tree: t.sha, parents: [head] } });
+    await gh(c, `${rp}/git/refs/heads/${encodeURIComponent(br)}`, { method: "PATCH", body: { sha: nc.sha } });
+    step("Done");
+    return out;
+  };
+
+  try {
+    let out;
+    try { out = await attempt(); }
+    catch (e) { if (e.status === 409 || e.status === 422) { done = 0; out = await attempt(); } else throw e; }
+    for (const [path, item] of images) uploaded.set(path, item.url);
+    pending.clear(); idb.clear();
+    base = normalize(out); draft = clone(base);
+    LS.del(KEYS.draft);
+    updateStatus(); renderPanel(); schedulePreview(true);
+    sheet("ok", "Published", "Your website updates in about a minute. Refresh it to see the changes.", 1,
+      [["View website ↗", null, false, "index.html"], ["Done", closeSheet, true]]);
+  } catch (e) {
+    console.warn("[editor] publish failed:", e);
+    sheet("bad", "Not published", ghMessage(e) + " Your changes are still saved here.", 0,
+      [["Publishing setup", () => { closeSheet(); show("connection"); }], ["Close", closeSheet, true]]);
+  } finally { publishing = false; }
+}
+
+function discard(btn) {
+  if (!arm(btn, "Tap again to discard")) return;
+  for (const v of pending.values()) URL.revokeObjectURL(v.url);
+  pending.clear(); idb.clear();
+  draft = clone(base); LS.del(KEYS.draft);
+  openPieces.clear();
+  updateStatus(); renderPanel(); schedulePreview(true);
+  toast("Changes discarded — back to the live version.");
+}
+
+/* ==========================================================================
+   8. PHOTOS — resized in the browser before upload (max 1800 px, JPEG)
+   ========================================================================== */
+async function processImage(file) {
+  let src;
+  try { src = await createImageBitmap(file, { imageOrientation: "from-image" }); }
+  catch (e) {
+    src = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error("This file couldn't be read as a photo.")); i.src = URL.createObjectURL(file); });
+  }
+  const w0 = src.width || src.naturalWidth, h0 = src.height || src.naturalHeight;
+  const sc = Math.min(1, 1800 / Math.max(w0, h0));
+  const w = Math.round(w0 * sc), h = Math.round(h0 * sc);
+  const cv = document.createElement("canvas"); cv.width = w; cv.height = h;
+  cv.getContext("2d").drawImage(src, 0, 0, w, h);
+  const blob = await new Promise(res => cv.toBlob(res, "image/jpeg", 0.86));
+  if (!blob) throw new Error("This photo couldn't be prepared.");
+  return { blob, w, h };
+}
+function slug(name) {
+  return String(name || "photo").replace(/\.[^.]+$/, "").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) || "photo";
+}
+function titleFromFile(name) {
+  const t = String(name || "").replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").trim();
+  if (!t || /^(img|dsc|pxl|photo|image|whatsapp image)\b/i.test(t) || /^\d/.test(t)) return "New piece";
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+async function addImage(file) {
+  const { blob, w, h } = await processImage(file);
+  const path = `images/uploads/${Date.now().toString(36)}${Math.random().toString(36).slice(2, 5)}-${slug(file.name)}.jpg`;
+  const item = { blob, url: URL.createObjectURL(blob) };
+  pending.set(path, item);
+  idb.put(path, { blob });
+  return { path, ratio: `${w}/${h}` };
+}
+async function restorePending() {
+  const rows = await idb.all();
+  const used = imagePaths(draft);
+  for (const [k, v] of rows) {
+    if (!used.has(k) || !v || !v.blob) { idb.del(k); continue; }
+    pending.set(k, { blob: v.blob, url: URL.createObjectURL(v.blob) });
+  }
+}
+
+/* ==========================================================================
+   9. RENDERING
+   ========================================================================== */
+function renderSide() {
+  let n = 0;
+  $("#side").innerHTML = SECTIONS.map(s => s.sep ? `<div class="side__sep" role="separator"></div>` :
+    `<button class="side__item" type="button" data-action="go" data-id="${s.id}" aria-current="${s.id === current}">
+      <span class="side__no" aria-hidden="true">${s.id === "connection" ? "⚙" : String(++n).padStart(2, "0")}</span>
+      <span class="side__txt"><strong>${esc(s.title)}</strong><small>${esc(s.sub)}</small></span>
+    </button>`).join("");
+}
+function show(id) {
+  const s = SECTIONS.find(x => x.id === id) || SECTIONS[0];
+  current = s.id;
+  $$("#side [data-id]").forEach(b => b.setAttribute("aria-current", String(b.dataset.id === current)));
+  const active = $(`#side [data-id="${current}"]`);
+  if (active && active.scrollIntoView && matchMedia("(max-width: 760px)").matches) active.scrollIntoView({ inline: "center", block: "nearest" });
+  try { history.replaceState(null, "", "#" + current); } catch (e) { /* ignore */ }
+  renderPanel();
+  $("#panel").scrollTop = 0;
+  if (s.anchor) previewTo(s.anchor);
+}
+function header(s, idx) {
+  return `<header class="ph">
+    <p class="ph__eyebrow">${s.id === "connection" ? "Settings" : "Section " + String(idx).padStart(2, "0")}</p>
+    <h2>${esc(s.title)}</h2>
+    ${s.intro ? `<p>${esc(s.intro)}</p>` : ""}
+    ${s.anchor ? `<button class="btn btn--sm ph__peek" type="button" data-action="open-preview">See it in the preview →</button>` : ""}
+  </header>`;
+}
+function renderPanel() {
+  const s = SECTIONS.find(x => x.id === current);
+  const idx = SECTIONS.filter(x => !x.sep).indexOf(s) + 1;
+  let body;
+  if (s.custom === "portfolio") body = portfolioHTML();
+  else if (s.custom === "connection") body = connectionHTML();
+  else body = `<div class="card">${s.fields.map(fieldHTML).join("")}</div>`;
+  $("#panel").innerHTML = `<div class="panel__inner">${header(s, idx)}${body}</div>`;
+  $$("#panel textarea").forEach(autosize);
+}
+
+function fieldHTML(f) {
+  if (f.h) return `<h3 class="grp">${esc(f.h)}</h3>${f.note ? `<p class="grp-note">${esc(f.note)}</p>` : ""}`;
+  if (f.row) return `<div class="fld"><div class="g2">${f.row.map(fieldHTML).join("")}</div>${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ""}</div>`;
+  const id = "f-" + f.k.replace(/[^a-z0-9]+/gi, "-");
+  const v = getv(f.k);
+  const hint = f.rich ? ((f.hint ? f.hint + " " : "") + "Tip: put *asterisks* around a word to make it italic. Press Enter for a new line.") : f.hint;
+  const hintHTML = hint ? `<p class="hint" id="${id}-h">${esc(hint)}</p>` : "";
+  const desc = hint ? ` aria-describedby="${id}-h"` : "";
+  let input;
+  switch (f.type) {
+    case "para":
+      input = `<textarea class="in" id="${id}" data-path="${f.k}" rows="3"${desc}>${esc(v)}</textarea>`; break;
+    case "number":
+      input = `<input class="in in--num" id="${id}" type="number" inputmode="numeric" min="${f.min}" max="${f.max}" data-path="${f.k}" data-type="number" value="${esc(v)}"${desc}>`; break;
+    case "words":
+      input = `<textarea class="in" id="${id}" data-path="${f.k}" data-type="words" rows="4"${desc}>${esc((v || []).join("\n"))}</textarea>`; break;
+    case "piece":
+      input = `<select class="in" id="${id}" data-path="${f.k}" data-type="number"${desc}>${draft.portfolio.map((p, i) =>
+        `<option value="${i}"${+v === i ? " selected" : ""}>${String(i + 1).padStart(2, "0")} · ${esc(p.title)}</option>`).join("")}</select>`; break;
+    case "image": return imageFieldHTML(f, v, hintHTML);
+    case "color": return colorFieldHTML(f, v, hintHTML);
+    case "theme": return themeFieldHTML(f, v);
+    case "pairs": return pairsHTML(f);
+    case "locations": return locationsHTML(f);
+    default:
+      input = f.rich
+        ? `<textarea class="in in--line" id="${id}" data-path="${f.k}" rows="1"${desc}>${esc(v)}</textarea>`
+        : `<input class="in" id="${id}" type="${f.input || "text"}" data-path="${f.k}" value="${esc(v)}"${f.placeholder ? ` placeholder="${esc(f.placeholder)}"` : ""}${f.inputmode ? ` inputmode="${f.inputmode}"` : ""}${desc}>`;
+  }
+  return `<div class="fld"><label for="${id}">${esc(f.label)}</label>${input}${hintHTML}</div>`;
+}
+function imageFieldHTML(f, v, hintHTML) {
+  return `<div class="fld"><span class="lbl">${esc(f.label)}</span>
+    <div class="imgf">
+      <div class="imgf__thumb">${v ? `<img src="${esc(srcFor(v))}" alt="">` : "No photo"}</div>
+      <div class="imgf__ctl">
+        <label class="btn btn--sm">Upload a photo<input type="file" accept="image/*" hidden data-upload="${f.k}"></label>
+        <select class="in in--sm" data-path="${f.k}" data-type="image" aria-label="${esc(f.label)}: choose one of your tattoo photos">
+          <option value="">Or use a portfolio photo…</option>
+          ${draft.portfolio.map(p => `<option value="${esc(p.image)}"${p.image === v ? " selected" : ""}>${esc(p.title)}</option>`).join("")}
+        </select>
+      </div>
+    </div>${hintHTML}</div>`;
+}
+const LOUD_PRESETS = [["Ink red", "#D2341C"], ["Yellow", "#FBE525"], ["Hot pink", "#D1157A"], ["Electric blue", "#2552E8"], ["Neon jade", "#7CF29A"], ["No loud colour", "#2B241F"]];
+const THEME_OPTIONS = [
+  { id: "light", name: "Ivory & espresso", note: "Light, nude, Apple-like", bg: "#F6F2EC", fg: "#2B241F", loud: "#D2341C", ink: "#FFFFFF" },
+  { id: "amber", name: "Black & amber red", note: "Dark, bold, editorial", bg: "radial-gradient(60% 70% at 78% 30%, #95191D, #0A0808 72%)", fg: "#F6F6EA", loud: "#FBE525", ink: "#2B241F" }
+];
+function themeFieldHTML(f, v) {
+  v = v || "light";
+  return `<div class="fld"><span class="lbl">${esc(f.label)}</span>
+    <div class="themes" role="radiogroup" aria-label="${esc(f.label)}">${THEME_OPTIONS.map(t => `
+      <button type="button" class="theme" role="radio" aria-checked="${v === t.id}" data-action="theme" data-v="${t.id}" data-loud="${t.loud}">
+        <span class="theme__art" style="background:${t.bg};color:${t.fg}">
+          <span class="theme__name">Ângelo<br>Salavessa</span>
+          <span class="theme__btn" style="background:${t.loud};color:${t.ink}">Book →</span>
+        </span>
+        <span class="theme__txt"><strong>${esc(t.name)}</strong><small>${esc(t.note)}</small></span>
+      </button>`).join("")}</div></div>`;
+}
+function inkFor(hex) {
+  const lum = h => { const c = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255).map(x => x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4)); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; };
+  if (!/^#[0-9a-f]{6}$/i.test(hex)) return "#FFFFFF";
+  const L = lum(hex); return 1.05 / (L + 0.05) >= (L + 0.05) / (lum("#2B241F") + 0.05) ? "#FFFFFF" : "#2B241F";
+}
+function colorFieldHTML(f, v, hintHTML) {
+  v = /^#[0-9a-f]{6}$/i.test(v || "") ? v : "#D2341C";
+  return `<div class="fld"><span class="lbl">${esc(f.label)}</span>
+    <div class="swatches" role="radiogroup" aria-label="${esc(f.label)}">${LOUD_PRESETS.map(([n, c]) =>
+      `<button type="button" class="swatch" role="radio" aria-checked="${v.toLowerCase() === c.toLowerCase()}" data-action="swatch" data-path="${f.k}" data-v="${c}" style="--c:${c}"><span class="swatch__c" aria-hidden="true"></span>${esc(n)}</button>`).join("")}</div>
+    <div class="colorpick"><label for="f-color">Or pick any colour</label><input type="color" id="f-color" data-path="${f.k}" data-type="color" value="${esc(v)}"><code id="f-color-code">${esc(v.toUpperCase())}</code></div>
+    ${hintHTML}
+    <div class="loud-demo" id="loud-demo" style="--c:${esc(v)};--ci:${inkFor(v)}"><span class="loud-demo__btn">Start your piece →</span><span class="loud-demo__quiet">Everything else stays quiet.</span></div>
+  </div>`;
+}
+function pairsHTML(f) {
+  const arr = getv(f.k) || [];
+  return `<div class="fld"><div class="rows">${arr.map((r, i) => `
+    <div class="row">
+      <input class="in" aria-label="${esc(f.labels[0])} ${i + 1}" placeholder="${esc(f.labels[0])}" data-list="${f.k}" data-i="${i}" data-prop="label" value="${esc(r.label)}">
+      <input class="in" aria-label="${esc(f.labels[1])} ${i + 1}" placeholder="${esc(f.labels[1])}" data-list="${f.k}" data-i="${i}" data-prop="value" value="${esc(r.value)}">
+      <div class="row__tools"><button class="icon-btn" type="button" data-action="row-del" data-list="${f.k}" data-i="${i}" aria-label="Remove line ${i + 1}">✕</button></div>
+    </div>`).join("")}</div>
+    <div><button class="btn btn--sm" type="button" data-action="row-add" data-list="${f.k}" data-shape="pair">+ Add a line</button></div></div>`;
+}
+function locationsHTML(f) {
+  const arr = getv(f.k) || [];
+  return `<div class="fld"><div class="rows">${arr.map((r, i) => `
+    <div class="row row--loc">
+      <input class="in" aria-label="Place ${i + 1}" placeholder="Place" data-list="${f.k}" data-i="${i}" data-prop="name" value="${esc(r.name)}">
+      <input class="in" aria-label="Note ${i + 1}" placeholder="Note (e.g. Guest spots · Netherlands)" data-list="${f.k}" data-i="${i}" data-prop="note" value="${esc(r.note)}">
+      <input class="in" aria-label="Dates ${i + 1}" placeholder="Dates (optional)" data-list="${f.k}" data-i="${i}" data-prop="dates" value="${esc(r.dates)}">
+      <div class="row__tools">
+        <button class="icon-btn" type="button" data-action="row-up" data-list="${f.k}" data-i="${i}" aria-label="Move ${esc(r.name || "place")} up"${i === 0 ? " disabled" : ""}>↑</button>
+        <button class="icon-btn" type="button" data-action="row-del" data-list="${f.k}" data-i="${i}" aria-label="Remove ${esc(r.name || "place")}">✕</button>
+      </div>
+    </div>`).join("")}</div>
+    <div><button class="btn btn--sm" type="button" data-action="row-add" data-list="${f.k}" data-shape="loc">+ Add a place</button></div></div>`;
+}
+
+/* ---------- Portfolio ---------- */
+const CROPS = [["Top", "center 20%"], ["Centre", "center"], ["Bottom", "center 80%"]];
+function cropOf(p) { const pos = String(p.position || "center"); return /\b(1\d|2\d|3\d)%/.test(pos) || /top/.test(pos) ? "center 20%" : /\b(7\d|8\d|9\d)%/.test(pos) || /bottom/.test(pos) ? "center 80%" : "center"; }
+function portfolioHTML() {
+  const P = draft.portfolio;
+  const feat = P.filter(p => p.featured).length;
+  const cats = Array.from(new Set(P.map(p => (p.category || "").trim()).filter(Boolean))).sort();
+  const ring = +draft.media.ringCount || 8;
+  return `
+    <div class="card">
+      <div class="pf-top">
+        <label class="btn btn--primary">+ Add photos<input type="file" accept="image/*" multiple hidden data-add-pieces></label>
+        <p class="pf-stats" id="pf-stats">${P.length} pieces · ${feat} in “The plates”${feat > MAX_FEATURED ? ` <span class="warn">— only the first ${MAX_FEATURED} are shown</span>` : ""}</p>
+      </div>
+      <p class="hint">New photos go to the top. The first ${ring} pieces spin in the 3D carousel; tap a piece to edit its details.</p>
+    </div>
+    <datalist id="cats">${cats.map(c => `<option value="${esc(c)}">`).join("")}</datalist>
+    <div class="pcs" id="pieces">${P.map(pieceHTML).join("")}</div>`;
+}
+function pieceHTML(p, i) {
+  const open = openPieces.has(pid(p));
+  const front = +draft.media.heroPiece === i;
+  const crop = cropOf(p);
+  const id = "pc" + pid(p);
+  const last = draft.portfolio.length - 1;
+  return `<article class="pc${open ? " is-open" : ""}" data-index="${i}">
+    <button class="pc__head" type="button" data-action="toggle-piece" data-i="${i}" aria-expanded="${open}" aria-controls="${id}">
+      <span class="pc__no">${i + 1}</span>
+      <img class="pc__thumb" src="${esc(srcFor(p.image))}" alt="" loading="lazy">
+      <span class="pc__sum"><strong class="pc__title">${esc(p.title || "Untitled")}</strong><small class="pc__meta">${esc([p.category, p.placement].filter(Boolean).join(" · ") || "Add a category")}</small></span>
+      <span class="pc__badges">${pending.has(p.image) ? '<span class="badge badge--new">New</span>' : ""}${front ? '<span class="badge badge--dark">Front</span>' : ""}${p.featured ? '<span class="badge">Featured</span>' : ""}</span>
+      <span class="pc__chev" aria-hidden="true"></span>
+    </button>
+    <div class="pc__body" id="${id}"${open ? "" : " hidden"}>
+      <div class="pc__media">
+        <img src="${esc(srcFor(p.image))}" alt="" style="object-position:${esc(p.position || "center")}">
+        <label class="btn btn--sm">Replace photo<input type="file" accept="image/*" hidden data-piece-upload="${i}"></label>
+      </div>
+      <div class="pc__fields">
+        <div class="fld"><label for="${id}-t">Title</label><input class="in" id="${id}-t" data-piece="${i}" data-prop="title" value="${esc(p.title)}"></div>
+        <div class="g2">
+          <div class="fld"><label for="${id}-c">Category</label><input class="in" id="${id}-c" list="cats" data-piece="${i}" data-prop="category" value="${esc(p.category)}" placeholder="e.g. Portraits"></div>
+          <div class="fld"><label for="${id}-p">Placement</label><input class="in" id="${id}-p" data-piece="${i}" data-prop="placement" value="${esc(p.placement)}" placeholder="e.g. Forearm"></div>
+        </div>
+        <div class="fld"><label for="${id}-d">Note <span class="hint">(optional)</span></label><textarea class="in" id="${id}-d" rows="2" data-piece="${i}" data-prop="description" placeholder="e.g. Two sessions, Portugal.">${esc(p.description)}</textarea></div>
+        <div class="fld"><label for="${id}-a">Photo description</label><textarea class="in" id="${id}-a" rows="2" data-piece="${i}" data-prop="alt" aria-describedby="${id}-ah">${esc(p.alt)}</textarea><p class="hint" id="${id}-ah">Describes the photo for blind visitors and Google.</p></div>
+        <div class="fld"><span class="lbl">Crop focus in the grid</span>
+          <div class="seg" role="group" aria-label="Crop focus">${CROPS.map(([l, v]) => `<button type="button" data-action="crop" data-i="${i}" data-v="${v}" aria-pressed="${crop === v}">${l}</button>`).join("")}</div>
+        </div>
+        <label class="sw"><input type="checkbox" data-piece="${i}" data-prop="featured"${p.featured ? " checked" : ""}><span class="sw__t" aria-hidden="true"></span>Show large in “The plates”</label>
+        <div class="pc__actions">
+          <button class="btn btn--sm" type="button" data-action="front" data-i="${i}"${front ? " disabled" : ""}>${front ? "Faces front in the carousel" : "Face front in the carousel"}</button>
+          <button class="btn btn--sm" type="button" data-action="move" data-i="${i}" data-d="-1"${i === 0 ? " disabled" : ""}>↑ Move up</button>
+          <button class="btn btn--sm" type="button" data-action="move" data-i="${i}" data-d="1"${i === last ? " disabled" : ""}>↓ Move down</button>
+          <button class="btn btn--sm btn--danger" type="button" data-action="delete-piece" data-i="${i}">Delete</button>
+        </div>
+      </div>
+    </div>
+  </article>`;
+}
+function rerenderPieces(focusIndex) {
+  const box = $("#pieces"); if (!box) return;
+  box.innerHTML = draft.portfolio.map(pieceHTML).join("");
+  $$("textarea", box).forEach(autosize);
+  const feat = draft.portfolio.filter(p => p.featured).length;
+  const st = $("#pf-stats");
+  if (st) st.innerHTML = `${draft.portfolio.length} pieces · ${feat} in “The plates”${feat > MAX_FEATURED ? ` <span class="warn">— only the first ${MAX_FEATURED} are shown</span>` : ""}`;
+  if (focusIndex != null) { const h = $(`.pc[data-index="${focusIndex}"] .pc__head`); if (h) { h.focus({ preventScroll: false }); h.scrollIntoView({ block: "nearest", behavior: "smooth" }); } }
+}
+function adjustFront(fn) { draft.media.heroPiece = fn(+draft.media.heroPiece || 0); }
+
+/* ---------- Connection ---------- */
+function connectionHTML() {
+  const c = conn();
+  const ready = connReady(c);
+  return `
+    <div class="card">
+      <p>Your website lives on GitHub. To let this editor publish changes, connect it <b>once on each device</b> you edit from, using a GitHub access key.</p>
+      <ol class="steps">
+        <li><span>Sign in to GitHub and open <a class="link" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">New fine-grained token</a>.</span></li>
+        <li><span>Name it <b>Website editor</b> and choose an expiration (up to a year).</span></li>
+        <li><span>Under <b>Repository access</b>, choose <b>Only select repositories</b> and pick your website's repository.</span></li>
+        <li><span>Under <b>Permissions → Repository permissions</b>, set <b>Contents</b> to <b>Read and write</b>.</span></li>
+        <li><span>Click <b>Generate token</b>, copy it, and paste it below.</span></li>
+      </ol>
+    </div>
+    <form class="card" id="conn-form" autocomplete="off">
+      <div class="g2">
+        <div class="fld"><label for="cn-owner">GitHub username</label><input class="in" id="cn-owner" name="owner" value="${esc(c.owner)}" autocapitalize="none" spellcheck="false" required></div>
+        <div class="fld"><label for="cn-repo">Repository name</label><input class="in" id="cn-repo" name="repo" value="${esc(c.repo)}" autocapitalize="none" spellcheck="false" required></div>
+      </div>
+      <div class="fld"><label for="cn-token">Access key (token)</label>
+        <span class="pw"><input class="in" id="cn-token" name="token" type="password" value="${esc(c.token)}" placeholder="github_pat_…" autocapitalize="none" spellcheck="false" required><button type="button" class="pw__toggle" data-action="toggle-token" aria-label="Show access key">Show</button></span>
+        <p class="hint">Saved only in this browser, never on the website.</p>
+      </div>
+      <div class="g2">
+        <div class="fld"><label for="cn-branch">Branch <span class="hint">(optional)</span></label><input class="in" id="cn-branch" name="branch" value="${esc(c.branch)}" placeholder="Default branch" autocapitalize="none" spellcheck="false"></div>
+        <div class="fld"><label for="cn-folder">Folder <span class="hint">(optional)</span></label><input class="in" id="cn-folder" name="folder" value="${esc(c.folder)}" placeholder="Leave empty" autocapitalize="none" spellcheck="false"></div>
+      </div>
+      <div class="conn-state ${ready ? "is-idle" : "is-idle"}" id="conn-state">${ready ? "Saved on this device. Use “Save & test” to check it still works." : "Not connected yet."}</div>
+      <div class="pc__actions">
+        <button class="btn btn--primary" type="submit">Save &amp; test</button>
+        ${ready ? `<button class="btn btn--danger" type="button" data-action="forget">Forget on this device</button>` : ""}
+      </div>
+    </form>
+    <p class="note">Privacy: the sign-in screen keeps visitors out of this editor, but the website itself can only be changed with the access key above. If a device is lost, delete the key on GitHub and nothing can be published from it.</p>`;
+}
+async function saveConnection(form) {
+  const f = new FormData(form);
+  const c = { owner: String(f.get("owner") || "").trim(), repo: String(f.get("repo") || "").trim(), token: String(f.get("token") || "").trim(), branch: String(f.get("branch") || "").trim(), folder: String(f.get("folder") || "").trim() };
+  const st = $("#conn-state");
+  if (!connReady(c)) { st.className = "conn-state is-bad"; st.textContent = "Fill in the username, repository and access key."; return; }
+  st.className = "conn-state is-idle"; st.textContent = "Testing the connection…";
+  try {
+    const info = await gh(c, repoPath(c));
+    const br = c.branch || info.default_branch || "main";
+    await gh(c, `${repoPath(c)}/branches/${encodeURIComponent(br)}`);
+    let hasContent = true;
+    try { await loadRemote(Object.assign({}, c, { branch: br })); } catch (e) { if (e.status === 404) hasContent = false; else throw e; }
+    LS.set(KEYS.gh, c);
+    st.className = "conn-state is-ok";
+    st.textContent = hasContent ? `Connected to ${info.full_name} (${br}). You can publish.` : `Connected to ${info.full_name}, but content.json wasn't found${c.folder ? " in “" + c.folder + "”" : ""}. Check the folder, or upload content.json to the repository.`;
+    toast("GitHub connected.");
+  } catch (e) {
+    st.className = "conn-state is-bad"; st.textContent = ghMessage(e);
+  }
+}
+
+/* ==========================================================================
+   10. EVENTS (one listener per type on the panel)
+   ========================================================================== */
+function initEvents() {
+  const panel = $("#panel");
+
+  panel.addEventListener("input", e => {
+    const el = e.target;
+    if (el.tagName === "TEXTAREA") autosize(el);
+    if (el.dataset.path && el.tagName !== "SELECT") {
+      let v = el.value;
+      if (el.dataset.type === "words") v = v.split("\n").map(s => s.trim()).filter(Boolean);
+      else if (el.dataset.type === "number") { if (v === "") return; v = Math.round(+v); }
+      setv(el.dataset.path, v);
+      if (el.dataset.type === "color") {
+        const demo = $("#loud-demo"); if (demo) { demo.style.setProperty("--c", v); demo.style.setProperty("--ci", inkFor(v)); }
+        const code = $("#f-color-code"); if (code) code.textContent = String(v).toUpperCase();
+        $$(".swatch").forEach(s => s.setAttribute("aria-checked", String(s.dataset.v.toLowerCase() === String(v).toLowerCase())));
+      }
+      changed(); return;
+    }
+    if (el.dataset.list) {
+      const arr = getv(el.dataset.list); const row = arr && arr[+el.dataset.i];
+      if (row) { row[el.dataset.prop] = el.value; changed(); }
+      return;
+    }
+    if (el.dataset.piece && el.type !== "checkbox") {
+      const p = draft.portfolio[+el.dataset.piece]; if (!p) return;
+      p[el.dataset.prop] = el.value;
+      const card = el.closest(".pc");
+      if (card) {
+        $(".pc__title", card).textContent = p.title || "Untitled";
+        $(".pc__meta", card).textContent = [p.category, p.placement].filter(Boolean).join(" · ") || "Add a category";
+      }
+      changed();
+    }
+  });
+
+  panel.addEventListener("change", async e => {
+    const el = e.target;
+    if (el.tagName === "SELECT" && el.dataset.path) {
+      if (el.dataset.type === "image") { if (!el.value) return; setv(el.dataset.path, el.value); prunePending(); changed(); renderPanel(); return; }
+      setv(el.dataset.path, el.dataset.type === "number" ? +el.value : el.value); changed(); return;
+    }
+    if (el.type === "number" && el.dataset.path) {
+      const f = +el.min || 0, t = +el.max || 99, v = Math.min(t, Math.max(f, Math.round(+el.value || f)));
+      el.value = v; setv(el.dataset.path, v); changed(); return;
+    }
+    if (el.type === "checkbox" && el.dataset.piece) {
+      const p = draft.portfolio[+el.dataset.piece]; if (!p) return;
+      p.featured = el.checked; changed(); rerenderPieces(); return;
+    }
+    if (el.type === "file") {
+      const files = Array.from(el.files || []); el.value = "";
+      if (!files.length) return;
+      try {
+        if (el.hasAttribute("data-add-pieces")) {
+          toast(files.length > 1 ? `Preparing ${files.length} photos…` : "Preparing photo…");
+          const added = [];
+          for (const file of files) {
+            const { path, ratio } = await addImage(file);
+            added.push({ title: titleFromFile(file.name), image: path, alt: "Black and grey realism tattoo", category: "", placement: "", featured: false, ratio, position: "center", description: "" });
+          }
+          draft.portfolio.unshift(...added);
+          adjustFront(h => h + added.length);
+          added.forEach(p => openPieces.add(pid(p)));
+          changed(); rerenderPieces(0);
+          toast(added.length > 1 ? `${added.length} photos added — give them a title.` : "Photo added — give it a title.");
+        } else if (el.dataset.pieceUpload != null) {
+          const p = draft.portfolio[+el.dataset.pieceUpload]; if (!p) return;
+          const { path, ratio } = await addImage(files[0]);
+          p.image = path; p.ratio = ratio;
+          prunePending(); changed(); rerenderPieces(+el.dataset.pieceUpload);
+          toast("Photo replaced.");
+        } else if (el.dataset.upload) {
+          const { path } = await addImage(files[0]);
+          setv(el.dataset.upload, path);
+          prunePending(); changed(); renderPanel();
+          toast("Photo updated.");
+        }
+      } catch (err) { toast(err.message || "That photo couldn't be added.", true); }
+    }
+  });
+
+  panel.addEventListener("submit", e => {
+    if (e.target.id === "conn-form") { e.preventDefault(); saveConnection(e.target); }
+  });
+
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-action]"); if (!b) return;
+    const a = b.dataset.action, i = +b.dataset.i;
+    const P = draft ? draft.portfolio : [];
+    switch (a) {
+      case "go": show(b.dataset.id); break;
+      case "publish": publish(); break;
+      case "discard": discard(b); break;
+      case "signout": signOut(); break;
+      case "open-preview": openPreview(); break;
+      case "close-preview": closePreview(); break;
+      case "toggle-piece": {
+        const p = P[i]; if (!p) break;
+        const id = pid(p), card = b.closest(".pc"), open = !openPieces.has(id);
+        open ? openPieces.add(id) : openPieces.delete(id);
+        card.classList.toggle("is-open", open); b.setAttribute("aria-expanded", String(open));
+        $(".pc__body", card).hidden = !open;
+        if (open) { $$("textarea", card).forEach(autosize); if (narrow.matches) setTimeout(() => card.scrollIntoView({ block: "start", behavior: "smooth" }), 50); }
+        break;
+      }
+      case "swatch": setv(b.dataset.path, b.dataset.v); changed(); renderPanel(); break;
+      case "theme": setv("settings.theme", b.dataset.v); setv("settings.accentColor", b.dataset.loud); changed(); renderPanel(); toast(b.dataset.v === "amber" ? "Black & amber look — yellow marks the booking buttons." : "Ivory look — ink red marks the booking buttons."); break;
+      case "crop": { const p = P[i]; if (!p) break; p.position = b.dataset.v; changed(); rerenderPieces(); break; }
+      case "front": draft.media.heroPiece = i; changed(); rerenderPieces(i); toast("This piece now faces front in the 3D carousel."); break;
+      case "move": {
+        const j = i + (+b.dataset.d); if (j < 0 || j >= P.length) break;
+        [P[i], P[j]] = [P[j], P[i]];
+        adjustFront(h => h === i ? j : h === j ? i : h);
+        changed(); rerenderPieces(j); break;
+      }
+      case "delete-piece": {
+        if (!arm(b, "Tap again to delete")) break;
+        const [gone] = P.splice(i, 1); openPieces.delete(pid(gone));
+        adjustFront(h => h > i ? h - 1 : h === i ? 0 : h);
+        prunePending(); changed(); rerenderPieces(); toast(`“${gone.title || "Piece"}” removed.`); break;
+      }
+      case "row-add": {
+        const arr = getv(b.dataset.list) || []; setv(b.dataset.list, arr);
+        arr.push(b.dataset.shape === "loc" ? { name: "", note: "", dates: "" } : { label: "", value: "" });
+        changed(); renderPanel();
+        const ins = $$(`[data-list="${b.dataset.list}"][data-i="${arr.length - 1}"]`); if (ins[0]) ins[0].focus();
+        break;
+      }
+      case "row-del": { const arr = getv(b.dataset.list) || []; arr.splice(i, 1); changed(); renderPanel(); break; }
+      case "row-up": { const arr = getv(b.dataset.list) || []; if (i > 0) { [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]; changed(); renderPanel(); } break; }
+      case "toggle-token": { const t = $("#cn-token"); const s = t.type === "password"; t.type = s ? "text" : "password"; b.textContent = s ? "Hide" : "Show"; break; }
+      case "forget": {
+        if (!arm(b, "Tap again to forget")) break;
+        LS.del(KEYS.gh); renderPanel(); toast("Access key removed from this device."); break;
+      }
+    }
+  });
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") { if (!$("#sheet").hidden && !publishing) closeSheet(); else if ($("#pv").classList.contains("is-open")) closePreview(); }
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s" && !$("#app").hidden) { e.preventDefault(); publish(); }
+  });
+  window.addEventListener("hashchange", () => { const id = location.hash.slice(1); if (id && id !== current && SECTIONS.some(s => s.id === id)) show(id); });
+}
+
+/* ==========================================================================
+   11. LIVE PREVIEW — the real website in a frame, fed the unpublished draft
+   ========================================================================== */
+const pv = { frame: null, loaded: false, started: false, device: "phone", timer: 0, keepY: null, anchor: "#work" };
+const wide = matchMedia("(min-width: 1181px)"), narrow = matchMedia("(max-width: 760px)");
+function previewContent() {
+  const d = clone(draft);
+  d.portfolio.forEach(p => { if (p && p.image) p.image = srcFor(p.image); });
+  ["heroBackground", "artistPortrait", "artistDetailImage"].forEach(k => { if (d.media[k]) d.media[k] = srcFor(d.media[k]); });
+  return d;
+}
+function startPreview() {
+  if (pv.started) return;
+  pv.started = true;
+  window.__salavessaDraft = previewContent();
+  pv.frame.src = "index.html?preview=1";
+}
+function schedulePreview(now) {
+  if (!pv.started) return;
+  clearTimeout(pv.timer);
+  pv.timer = setTimeout(() => {
+    window.__salavessaDraft = previewContent();
+    try { pv.keepY = pv.frame.contentWindow.scrollY; pv.frame.contentWindow.location.reload(); }
+    catch (e) { pv.frame.src = "index.html?preview=1"; }
+  }, now ? 0 : 750);
+}
+function previewTo(anchor) {
+  pv.anchor = anchor; pv.keepY = null;
+  if (!pv.loaded) return;
+  try {
+    const w = pv.frame.contentWindow, el = w.document.querySelector(anchor);
+    if (el) w.scrollTo({ top: anchor === "#top" ? 0 : el.getBoundingClientRect().top + w.scrollY, behavior: "smooth" });
+  } catch (e) { /* ignore */ }
+}
+function fitDevice() {
+  const st = $("#pv-stage"), dev = $("#pv-device");
+  const W = st.clientWidth, H = st.clientHeight;
+  if (!W || !H) return;
+  if (narrow.matches) { // phone: the overlay is the phone
+    Object.assign(dev.style, { width: W + "px", height: H + "px", transform: "none", left: "0px", top: "0px" });
+    dev.classList.remove("is-desktop"); return;
+  }
+  const pad = 28;
+  const desk = pv.device === "desktop";
+  const dw = desk ? 1280 : 390;
+  const dh = desk ? Math.round(1280 * (H - pad * 2) / Math.max(1, W - pad * 2)) : 844;
+  const sc = Math.min(1, (W - pad * 2) / dw, (H - pad * 2) / dh);
+  dev.classList.toggle("is-desktop", desk);
+  Object.assign(dev.style, { width: dw + "px", height: dh + "px", transform: `scale(${sc})`, left: Math.round((W - dw * sc) / 2) + "px", top: Math.round((H - dh * sc) / 2) + "px" });
+}
+function openPreview() {
+  startPreview();
+  $("#pv").classList.add("is-open");
+  requestAnimationFrame(fitDevice);
+  const s = SECTIONS.find(x => x.id === current);
+  if (s && s.anchor) previewTo(s.anchor);
+}
+function closePreview() { $("#pv").classList.remove("is-open"); }
+function initPreview() {
+  pv.frame = $("#pv-frame");
+  pv.frame.addEventListener("load", () => {
+    pv.loaded = true; $("#pv-loading").hidden = true;
+    try {
+      const w = pv.frame.contentWindow;
+      if (pv.keepY != null) w.scrollTo({ top: pv.keepY, behavior: "instant" });
+      else if (pv.anchor && pv.anchor !== "#top") { const el = w.document.querySelector(pv.anchor); if (el) w.scrollTo({ top: el.getBoundingClientRect().top + w.scrollY, behavior: "instant" }); }
+    } catch (e) { /* ignore */ }
+  });
+  $$("[data-device]").forEach(b => b.addEventListener("click", () => {
+    pv.device = b.dataset.device;
+    $$("[data-device]").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    fitDevice();
+  }));
+  if ("ResizeObserver" in window) new ResizeObserver(fitDevice).observe($("#pv-stage"));
+  window.addEventListener("resize", fitDevice);
+  if (wide.matches) startPreview();
+  wide.addEventListener && wide.addEventListener("change", () => { if (wide.matches) { startPreview(); closePreview(); } fitDevice(); });
+  fitDevice();
+}
+
+/* ==========================================================================
+   12. START
+   ========================================================================== */
+let appStarted = false;
+async function enterApp() {
+  $("#login").hidden = true; $("#app").hidden = false;
+  if (appStarted) return;
+  appStarted = true;
+  $("#status-text").textContent = "Loading…";
+  renderSide();
+  $("#panel").innerHTML = `<div class="empty"><p>Loading your website…</p></div>`;
+  const loaded = await loadBase();
+  if (!loaded) {
+    $("#panel").innerHTML = `<div class="empty"><span class="mark" aria-hidden="true">S</span><h2 class="grp">Couldn't load the website content</h2>
+      <p>Open the editor from your published website (the address ending in <b>/admin.html</b>), and make sure <b>content.json</b> was uploaded next to index.html.</p>
+      <button class="btn btn--primary" type="button" onclick="location.reload()">Try again</button></div>`;
+    $("#status-text").textContent = "Not loaded";
+    return;
+  }
+  base = normalize(loaded);
+  const saved = LS.get(KEYS.draft, null);
+  draft = saved && saved.draft ? normalize(saved.draft) : clone(base);
+  await restorePending();
+  initEvents();
+  initPreview();
+  const fromHash = location.hash.slice(1);
+  show(SECTIONS.some(s => s.id === fromHash) ? fromHash : "portfolio");
+  updateStatus();
+  if (saved && saved.draft && isDirty()) toast("Welcome back — your unpublished changes are still here.");
+}
+
+initLogin();
+if (validSession()) enterApp(); else showLogin();
+})();
+</script>
+</body>
+</html>

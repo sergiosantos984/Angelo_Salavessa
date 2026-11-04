@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-theme="amber">
 <head>
 <!-- ==========================================================================
      1. DOCUMENT METADATA
@@ -8,8 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ângelo Salavessa — Black &amp; Grey Realism Tattoo Artist</title>
 <meta name="description" content="Ângelo Salavessa is a black & grey realism tattoo artist tattooing worldwide — Amsterdam, Phuket and Portugal. Bookings open via WhatsApp.">
-<meta name="theme-color" content="#F6F2EC">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0A0808">
+<meta name="color-scheme" content="dark">
 <!-- ⚠ BEFORE LAUNCH: uncomment and set your real address (e.g. https://yourname.github.io/ or your custom domain) -->
 <!-- <link rel="canonical" href="https://REPLACE-ME.github.io/"> -->
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 <!-- <meta property="og:image" content="https://REPLACE-ME.github.io/images/og.jpg"> -->
 <!-- <meta property="og:url" content="https://REPLACE-ME.github.io/"> -->
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F6F2EC'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='42' fill='%232B241F'%3ES%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0808'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='42' fill='%23F6F6EA'%3ES%3C/text%3E%3C/svg%3E">
 
 <!-- Early boot: enables JS styling, reduced-motion check, and a failsafe so content
      is never hidden if the main script fails. -->
@@ -28,7 +28,9 @@
     var h = document.documentElement;
     h.classList.remove('no-js'); h.classList.add('js');
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduce) h.classList.add('is-loading');
+    var preview = /[?&]preview\b/.test(location.search);
+    if (preview) h.classList.add('is-preview');
+    if (!reduce && !preview) h.classList.add('is-loading');
     // Failsafe: whatever happens, reveal the page within 2.6s.
     window.__bootFailsafe = setTimeout(function () {
       h.classList.remove('is-loading'); h.classList.add('is-ready');
@@ -830,16 +832,155 @@ select.input option { background: #fff; color: var(--bone); }
 ::selection { background: var(--nude); color: var(--bone); }
 .hero__name { font-size: clamp(3.6rem, 1rem + 10vw, 12rem); }
 @media (min-width: 900px) { .ring { left: 77%; top: 33%; width: clamp(160px, 13vw, 240px); } }
+
+/* ---------- ONE LOUD COLOUR ----------
+   Two quiet colours (ivory + espresso) carry the design. One loud colour
+   marks only what visitors should tap: booking + WhatsApp. Editable in the editor. */
+:root { --loud: #D2341C; --loud-ink: #FFFFFF; }
+.btn--solid { background: var(--loud); border-color: var(--loud); color: var(--loud-ink); }
+.btn--solid::before { background: var(--bone); }
+.btn--solid:hover, .btn--solid:focus-visible { color: var(--ink); border-color: var(--bone); }
+.wa-float { background: var(--loud); color: var(--loud-ink); }
+.wa-float:hover { background: var(--bone); color: var(--ink); }
+.wa-float__dot { background: currentColor; opacity: .55; }
+.hero__kicker .dot { background: var(--loud); animation-name: pulseLoud; }
+@keyframes pulseLoud { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--loud) 55%, transparent); } 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+.closing__link .line:last-child { color: var(--loud); }
+.closing__link:hover .line:last-child { color: var(--bone); }
+
+/* ---------- Editor link + preview mode ---------- */
+.footer__edit { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--bone-dim); font-family: var(--font-body); font-size: .8rem; font-weight: 500; letter-spacing: .02em; text-transform: none; transition: background-color var(--t-fast), color var(--t-fast), border-color var(--t-fast); }
+.footer__edit:hover, .footer__edit:focus-visible { background: var(--bone); border-color: var(--bone); color: var(--ink); }
+.is-preview .footer__edit, .is-preview .cursor { display: none !important; }
+
+/* ==========================================================================
+   AMBER THEME — black leads; amber red #95191D is the second quiet colour
+   (glow, bands, the booking block); off-white #F6F6EA is the type;
+   yellow #FBE525 is the one loud colour (booking / WhatsApp only).
+   Choose it in the editor (Look & colour), or preview with ?theme=amber
+   ========================================================================== */
+html[data-theme="amber"] {
+  --ink: #0A0808; --ink-2: #120D0D; --graphite: #1A1112; --graphite-2: #241617;
+  --line: rgba(246,246,234,.14); --line-strong: rgba(246,246,234,.30);
+  --bone: #F6F6EA; --bone-dim: #DCD8CC; --muted: #A9A398;
+  --accent: #F6F6EA; --accent-soft: rgba(149,25,29,.35);
+  --amber: #95191D; --amber-deep: #7F1519;
+  --nude: #95191D; --champagne: #E5CEC5; --surface: #161011;
+  --danger: #FF9C8A; --ok: #F6F6EA;
+  color-scheme: dark;
+}
+[data-theme="amber"] .grain { opacity: .06; }
+[data-theme="amber"] .label::before { background: var(--amber); opacity: 1; height: 2px; }
+/* Hero: black stage, amber-red backlight (like a studio light behind the work) */
+[data-theme="amber"] .hero__smoke { background: radial-gradient(45% 45% at 70% 42%, rgba(149,25,29,.85), transparent 70%), #0A0808; }
+[data-theme="amber"] .hero__glyph { -webkit-text-stroke: 1px rgba(149,25,29,.45); }
+[data-theme="amber"] .hero::after { background:
+  linear-gradient(to top, var(--ink) 0%, rgba(10,8,8,.7) 22%, transparent 55%),
+  linear-gradient(to right, rgba(10,8,8,.6) 0%, transparent 55%); }
+@media (max-width: 899px) { [data-theme="amber"] .hero::after { background: linear-gradient(to top, var(--ink) 0%, rgba(10,8,8,.9) 38%, rgba(10,8,8,.2) 70%, transparent 100%); } }
+[data-theme="amber"] .hero__bgimg.is-loaded { opacity: .12; mix-blend-mode: luminosity; }
+[data-theme="amber"] .ring__floor { background: radial-gradient(50% 50% at 50% 50%, rgba(149,25,29,.55), transparent 70%); }
+[data-theme="amber"] .ring__card { outline: 1px solid rgba(246,246,234,.10); box-shadow: 0 30px 70px -20px rgba(149,25,29,.55); }
+[data-theme="amber"] .nav.is-solid { background: rgba(10,8,8,.78); }
+[data-theme="amber"] .menu { background: rgba(10,8,8,.97); }
+/* Plates, numerals, glyphs */
+[data-theme="amber"] .plate { background:
+  radial-gradient(55% 45% at var(--x1, 40%) var(--y1, 35%), rgba(149,25,29,.75), transparent 70%),
+  radial-gradient(40% 35% at var(--x2, 65%) var(--y2, 70%), rgba(149,25,29,.35), transparent 70%),
+  linear-gradient(var(--a, 160deg), #1A1112, #0A0808 75%); }
+[data-theme="amber"] .plate::after { border-color: rgba(246,246,234,.10); }
+[data-theme="amber"] .piece__big, [data-theme="amber"] .step__no { color: var(--amber); }
+[data-theme="amber"] .step__glyph { color: rgba(246,246,234,.14); }
+[data-theme="amber"] .closing__glyph { -webkit-text-stroke: 1px rgba(149,25,29,.6); }
+[data-theme="amber"] .piece__frame, [data-theme="amber"] .tile__frame, [data-theme="amber"] .artist__portrait { box-shadow: 0 40px 90px -40px rgba(149,25,29,.6); }
+[data-theme="amber"] .artist__studio { border-color: var(--ink); }
+/* Bands: amber-red strip + black outline strip */
+[data-theme="amber"] .band__track--a { background: var(--amber); box-shadow: 0 30px 70px -30px rgba(0,0,0,.8); }
+[data-theme="amber"] .band__track--a span, [data-theme="amber"] .band__track--a span.solid { color: var(--bone); }
+[data-theme="amber"] .band__track--a .sep { color: var(--bone); }
+[data-theme="amber"] .band__track--b { background: var(--ink-2); }
+[data-theme="amber"] .band__track--b span { -webkit-text-stroke: 1px rgba(246,246,234,.45); }
+[data-theme="amber"] .band__track--b span.solid { color: var(--bone); -webkit-text-stroke: 0; }
+[data-theme="amber"] .band__track--b .sep { color: var(--amber); -webkit-text-stroke: 0; }
+/* Archive + process */
+[data-theme="amber"] .index { background: linear-gradient(to bottom, var(--ink), var(--ink-2)); }
+[data-theme="amber"] .filter { background: var(--surface); }
+[data-theme="amber"] .tile__overlay { background: linear-gradient(to top, rgba(10,8,8,.88), transparent 50%); }
+[data-theme="amber"] .process__progress span { background: var(--amber); }
+@media (max-width: 899px) { [data-theme="amber"] .step { background: var(--surface); box-shadow: 0 24px 50px -30px rgba(149,25,29,.5); } }
+/* Travel: rows flood amber red on hover */
+[data-theme="amber"] .place:hover::before { background: var(--amber); }
+[data-theme="amber"] .place:hover, [data-theme="amber"] .place:hover .mono, [data-theme="amber"] .place:hover .place__note { color: var(--bone); }
+/* Booking: the one amber-red block on the page — the moment of decision */
+[data-theme="amber"] .booking { background: var(--amber); }
+[data-theme="amber"] .booking { --surface: #7F1519; --line: rgba(246,246,234,.20); --line-strong: rgba(246,246,234,.38); --muted: #E5CEC5; --bone-dim: #F0E4DC; --danger: #FFE1D6; }
+[data-theme="amber"] .booking .input::placeholder { color: rgba(246,246,234,.55); }
+[data-theme="amber"] .booking .label::before { background: var(--bone); }
+[data-theme="amber"] .review { background: #7F1519; box-shadow: 0 40px 90px -40px rgba(0,0,0,.6); }
+[data-theme="amber"] .review pre { background: #5E0F12; }
+[data-theme="amber"] select.input option { background: #1A1112; color: var(--bone); }
+[data-theme="amber"] .input::placeholder { color: rgba(246,246,234,.45); }
+/* Lightbox, buttons, cursor */
+[data-theme="amber"] .lightbox__backdrop { background: rgba(10,8,8,.95); }
+[data-theme="amber"] .lightbox__media .media img { background: #120D0D; }
+[data-theme="amber"] .lightbox__nav button, [data-theme="amber"] .lightbox__close { background: rgba(246,246,234,.08); }
+[data-theme="amber"] .btn:not(.btn--solid) { background: rgba(246,246,234,.06); }
+[data-theme="amber"] .cursor__ring { border-color: rgba(246,246,234,.5); }
+[data-theme="amber"] .cursor.is-view .cursor__ring { background: rgba(246,246,234,.92); }
+[data-theme="amber"] .cursor__label { color: var(--ink); }
+[data-theme="amber"] ::selection { background: var(--amber); color: var(--bone); }
+
+/* ==========================================================================
+   LIVING BACKGROUND — behind every section (the opening screen has its own).
+   Three depths move at different speeds as you scroll:
+   1. amber-red studio lights that sweep through the dark (+ drift on their own)
+   2. a fine editorial grid with + marks (half scroll speed)
+   3. giant outlined words that glide past sideways, slower than the page
+   plus ink particles that react to how fast you scroll.
+   ========================================================================== */
+.bgfx { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; contain: strict; }
+.bgfx__glow { position: absolute; left: 50%; top: 50%; width: 0; height: 0; will-change: transform; }
+.bgfx__glow i { position: absolute; border-radius: 50%; animation: glowDrift 19s ease-in-out infinite alternate; }
+.bgfx__glow--a i { width: 78vmax; height: 78vmax; left: -39vmax; top: -39vmax; background: radial-gradient(closest-side, rgba(149,25,29,.62), rgba(149,25,29,.2) 45%, transparent 72%); }
+.bgfx__glow--b i { width: 54vmax; height: 54vmax; left: -27vmax; top: -27vmax; background: radial-gradient(closest-side, rgba(190,40,40,.38), rgba(149,25,29,.12) 50%, transparent 72%); animation-duration: 23s; animation-delay: -8s; }
+.bgfx__glow--c i { width: 95vmax; height: 95vmax; left: -47.5vmax; top: -47.5vmax; background: radial-gradient(closest-side, rgba(94,15,18,.55), transparent 70%); animation-duration: 29s; animation-delay: -14s; }
+@keyframes glowDrift { 0% { transform: translate(-4vmax, -3vmax) scale(.92); } 50% { transform: translate(3vmax, 2vmax) scale(1.06); } 100% { transform: translate(5vmax, -4vmax) scale(.97); } }
+.bgfx__grid { position: absolute; left: 0; right: 0; top: -240px; height: calc(100% + 480px); opacity: .9; will-change: transform;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cpath d='M0 0v240' stroke='%23F6F6EA' stroke-opacity='.045'/%3E%3Cpath d='M120 113v14M113 120h14' stroke='%2395191D' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-size: 240px 240px; background-position: center top;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 80%); mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 80%); }
+.bgfx__words { position: absolute; inset: 0; }
+.bgfx__word { position: absolute; top: 50%; margin-top: -.5em; white-space: nowrap; line-height: 1; will-change: transform;
+  font-family: var(--font-display); font-weight: 700; letter-spacing: -.05em; font-size: clamp(6rem, 24vw, 24rem);
+  color: transparent; -webkit-text-stroke: 1px rgba(149,25,29,.38); }
+.bgfx__word[data-align="0"] { left: -6vw; }
+.bgfx__word[data-align="1"] { right: -8vw; }
+.bgfx__word[data-align="2"] { left: 18vw; }
+.bgfx__word.is-solid { color: rgba(149,25,29,.10); -webkit-text-stroke: 0; }
+@media (max-width: 899px) { .bgfx__word { -webkit-text-stroke-color: rgba(149,25,29,.26); } .bgfx__word.is-solid { color: rgba(149,25,29,.07); } }
+.bgfx__ink { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* Let the background show through the sections that sit on it */
+[data-theme="amber"] .index, [data-theme="amber"] .process, [data-theme="amber"] .artist, [data-theme="amber"] .sig, [data-theme="amber"] .studio, [data-theme="amber"] .closing { background: transparent; }
+@media (max-width: 899px) { .bgfx__word { font-size: clamp(5rem, 34vw, 12rem); } .bgfx__grid { background-size: 160px 160px; } }
+@media (prefers-reduced-motion: reduce) { .bgfx__glow i { animation: none; } }
 </style>
 </head>
 
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
+<div class="bgfx" id="bgfx" aria-hidden="true">
+  <div class="bgfx__glow bgfx__glow--c"><i></i></div>
+  <div class="bgfx__glow bgfx__glow--a"><i></i></div>
+  <div class="bgfx__glow bgfx__glow--b"><i></i></div>
+  <div class="bgfx__grid"></div>
+  <div class="bgfx__words"></div>
+  <canvas class="bgfx__ink" id="bg-ink"></canvas>
+</div>
 
 <div class="loader" aria-hidden="true">
   <span class="loader__mark">S</span>
-  <div class="loader__meta mono"><span>Ângelo Salavessa</span><span>Black &amp; grey realism</span></div>
+  <div class="loader__meta mono"><span data-cfg="artistName">Ângelo Salavessa</span><span data-cfg="discipline">Black &amp; grey realism</span></div>
 </div>
 
 <div class="cursor" aria-hidden="true"><span class="cursor__ring"></span><span class="cursor__label">View</span></div>
@@ -903,15 +1044,15 @@ select.input option { background: #fff; color: var(--bone); }
   </div>
 
   <div class="hero__corner mono" data-intro style="--d:.5">
-    <span>Amsterdam — Phuket — Portugal</span>
-    <span>Tattooing worldwide</span>
+    <span data-edit="hero.corner1">Amsterdam — Phuket — Portugal</span>
+    <span data-edit="hero.corner2">Tattooing worldwide</span>
   </div>
 
   <div class="wrap hero__content">
     <p class="hero__kicker mono" data-intro style="--d:0">
-      <span><span class="dot" aria-hidden="true"></span>Bookings open</span>
-      <span>Black &amp; grey realism</span>
-      <span>Tattooing worldwide</span>
+      <span><span class="dot" aria-hidden="true"></span><span data-edit="hero.kicker1">Bookings open</span></span>
+      <span data-edit="hero.kicker2">Black &amp; grey realism</span>
+      <span data-edit="hero.kicker3">Tattooing worldwide</span>
     </p>
     <h1 class="hero__name display" id="hero-title">
       <span class="line"><span>Ângelo</span></span>
@@ -919,12 +1060,12 @@ select.input option { background: #fff; color: var(--bone); }
     </h1>
     <div class="hero__row">
       <div data-intro style="--d:.25">
-        <p class="hero__tag serif">Light, carved from shadow.</p>
-        <p class="hero__lede">Black &amp; grey realism — portraits, wildlife, roses and symbols built for the body that wears them. Tattooing on the road between Amsterdam, Phuket and Portugal.</p>
+        <p class="hero__tag serif" data-edit="hero.tagline">Light, carved from shadow.</p>
+        <p class="hero__lede" data-edit="hero.lede">Black &amp; grey realism — portraits, wildlife, roses and symbols built for the body that wears them. Tattooing on the road between Amsterdam, Phuket and Portugal.</p>
       </div>
       <div class="hero__ctas" data-intro style="--d:.4">
-        <a class="btn btn--solid" href="#booking">Start your piece <span class="arrow" aria-hidden="true">→</span></a>
-        <a class="btn" href="#work">See the work</a>
+        <a class="btn btn--solid" href="#booking"><span data-edit="hero.cta1">Start your piece</span> <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn" href="#work"><span data-edit="hero.cta2">See the work</span></a>
       </div>
     </div>
   </div>
@@ -937,12 +1078,12 @@ select.input option { background: #fff; color: var(--bone); }
   <div class="wrap">
     <header class="sig__head">
       <div>
-        <p class="label mono" data-reveal="text">Selected work</p>
-        <h2 class="sig__title display" id="work-title" data-skew data-reveal="text" style="--d:.08">The<br>plates</h2>
+        <p class="label mono" data-reveal="text" data-edit="work.label">Selected work</p>
+        <h2 class="sig__title display" id="work-title" data-edit="work.title" data-skew data-reveal="text" style="--d:.08">The<br>plates</h2>
       </div>
       <p class="sig__intro" data-reveal="text" style="--d:.16">
-        <span class="serif">Build the dark. Protect the light.</span>
-        In black &amp; grey, every highlight is skin left untouched — so the shadows have to do all the talking. A few pieces worth a closer look.
+        <span class="serif" data-edit="work.introSerif">Build the dark. Protect the light.</span>
+        <span data-edit="work.intro">In black &amp; grey, every highlight is skin left untouched — so the shadows have to do all the talking. A few pieces worth a closer look.</span>
       </p>
     </header>
     <div class="sig__list" id="sig-list"></div>
@@ -964,18 +1105,17 @@ select.input option { background: #fff; color: var(--bone); }
 <section class="section artist" id="artist" aria-labelledby="artist-title">
   <div class="wrap artist__grid">
     <header class="artist__head">
-      <p class="label mono" data-reveal="text">The artist</p>
-      <h2 class="artist__statement serif" id="artist-title" data-reveal="text" style="--d:.1">Realism is a discipline of <em>restraint</em> — knowing where not to put ink.</h2>
+      <p class="label mono" data-reveal="text" data-edit="artist.label">The artist</p>
+      <h2 class="artist__statement serif" id="artist-title" data-edit="artist.statement" data-reveal="text" style="--d:.1">Realism is a discipline of <em>restraint</em> — knowing where not to put ink.</h2>
     </header>
     <div class="artist__media">
       <div class="artist__portrait reveal-media" data-reveal="up" data-speed="0.06"><div class="media" id="artist-portrait"></div></div>
       <div class="artist__studio reveal-media" data-reveal="left" data-speed="0.16" style="--d:.2"><div class="media" id="artist-detail"></div></div>
     </div>
     <div class="artist__text">
-      <!-- ✎ EDIT: these paragraphs only state what is publicly verifiable. Rewrite in Ângelo's own words. -->
-      <p class="lead" data-reveal="text">Ângelo Salavessa works in black &amp; grey realism: faces, animals, roses, statues and symbols, rendered in soft gradients that sit naturally on the body.</p>
-      <p data-reveal="text" style="--d:.08">He works on the road. Amsterdam, Phuket and Portugal are among the regular stops, and the work goes wherever he lands next.</p>
-      <p data-reveal="text" style="--d:.16">Every piece starts with your idea and is composed for the part of you it will live on. Larger work is planned across sessions — to be continued, as he puts it on his feed.</p>
+      <p class="lead" data-reveal="text" data-edit="artist.lead">Ângelo Salavessa works in black &amp; grey realism: faces, animals, roses, statues and symbols, rendered in soft gradients that sit naturally on the body.</p>
+      <p data-reveal="text" style="--d:.08" data-edit="artist.p2">He works on the road. Amsterdam, Phuket and Portugal are among the regular stops, and the work goes wherever he lands next.</p>
+      <p data-reveal="text" style="--d:.16" data-edit="artist.p3">Every piece starts with your idea and is composed for the part of you it will live on. Larger work is planned across sessions — to be continued, as he puts it on his feed.</p>
       <dl class="facts" data-reveal="text" style="--d:.24">
         <div><dt class="mono">Discipline</dt><dd>Black &amp; grey realism</dd></div>
         <div><dt class="mono">Based</dt><dd>Tattooing worldwide</dd></div>
@@ -991,8 +1131,8 @@ select.input option { background: #fff; color: var(--bone); }
   <div class="wrap">
     <header class="index__head">
       <div>
-        <p class="label mono" data-reveal="text">Archive</p>
-        <h2 class="index__title display" id="index-title" data-skew data-reveal="text" style="--d:.08">Index</h2>
+        <p class="label mono" data-reveal="text" data-edit="index.label">Archive</p>
+        <h2 class="index__title display" id="index-title" data-edit="index.title" data-skew data-reveal="text" style="--d:.08">Index</h2>
       </div>
       <div class="filters" role="group" aria-label="Filter work by subject" id="filters"></div>
     </header>
@@ -1007,42 +1147,42 @@ select.input option { background: #fff; color: var(--bone); }
     <div class="wrap">
       <header class="process__intro">
         <div>
-          <p class="label mono" data-reveal="text">Process</p>
-          <h2 class="process__title display" id="process-title" data-skew data-reveal="text" style="--d:.08">From idea<br>to skin</h2>
+          <p class="label mono" data-reveal="text" data-edit="process.label">Process</p>
+          <h2 class="process__title display" id="process-title" data-edit="process.title" data-skew data-reveal="text" style="--d:.08">From idea<br>to skin</h2>
         </div>
-        <p class="process__lede" data-reveal="text" style="--d:.16">No templates, no surprises. Here is how a piece usually comes together — the details are always confirmed with you directly.</p>
+        <p class="process__lede" data-edit="process.lede" data-reveal="text" style="--d:.16">No templates, no surprises. Here is how a piece usually comes together — the details are always confirmed with you directly.</p>
       </header>
     </div>
     <ol class="process__track" id="process-track">
       <li class="step">
         <span class="step__no" aria-hidden="true">01</span>
-        <h3 class="step__title">The message</h3>
-        <p>Send the idea, the placement, a rough size and any references. Short is fine. The form below turns it into one clear WhatsApp message.</p>
-        <div class="step__art"><div class="plate" style="--x1:30%;--y1:30%;--x2:70%;--y2:80%;--bp:10% 20%"></div><span class="step__tag mono">WhatsApp</span><span class="step__glyph" aria-hidden="true">i</span></div>
+        <h3 class="step__title" data-edit="process.s1.title">The message</h3>
+        <p data-edit="process.s1.text">Send the idea, the placement, a rough size and any references. Short is fine. The form below turns it into one clear WhatsApp message.</p>
+        <div class="step__art"><div class="plate" style="--x1:30%;--y1:30%;--x2:70%;--y2:80%;--bp:10% 20%"></div><span class="step__tag mono" data-edit="process.s1.tag">WhatsApp</span><span class="step__glyph" aria-hidden="true">i</span></div>
       </li>
       <li class="step">
         <span class="step__no" aria-hidden="true">02</span>
-        <h3 class="step__title">The conversation</h3>
-        <p>What will actually work on your body: scale, flow, where the light falls on the muscle. Realism needs room — sometimes the honest answer is bigger, or simpler.</p>
-        <div class="step__art"><div class="plate" style="--x1:62%;--y1:40%;--x2:20%;--y2:70%;--bp:60% 30%"></div><span class="step__tag mono">Scale · Flow</span><span class="step__glyph" aria-hidden="true">ii</span></div>
+        <h3 class="step__title" data-edit="process.s2.title">The conversation</h3>
+        <p data-edit="process.s2.text">What will actually work on your body: scale, flow, where the light falls on the muscle. Realism needs room — sometimes the honest answer is bigger, or simpler.</p>
+        <div class="step__art"><div class="plate" style="--x1:62%;--y1:40%;--x2:20%;--y2:70%;--bp:60% 30%"></div><span class="step__tag mono" data-edit="process.s2.tag">Scale · Flow</span><span class="step__glyph" aria-hidden="true">ii</span></div>
       </li>
       <li class="step">
         <span class="step__no" aria-hidden="true">03</span>
-        <h3 class="step__title">The design</h3>
-        <p>The composition is built for you and your placement. Dates, deposits and session length are agreed directly when you book.</p>
-        <div class="step__art"><div class="plate" style="--x1:45%;--y1:55%;--x2:80%;--y2:20%;--bp:30% 80%"></div><span class="step__tag mono">Composition</span><span class="step__glyph" aria-hidden="true">iii</span></div>
+        <h3 class="step__title" data-edit="process.s3.title">The design</h3>
+        <p data-edit="process.s3.text">The composition is built for you and your placement. Dates, deposits and session length are agreed directly when you book.</p>
+        <div class="step__art"><div class="plate" style="--x1:45%;--y1:55%;--x2:80%;--y2:20%;--bp:30% 80%"></div><span class="step__tag mono" data-edit="process.s3.tag">Composition</span><span class="step__glyph" aria-hidden="true">iii</span></div>
       </li>
       <li class="step">
         <span class="step__no" aria-hidden="true">04</span>
-        <h3 class="step__title">The session</h3>
-        <p>Black &amp; grey is built in layers — from the deepest shadow up to the highlights. Large pieces are split across sessions. To be continued.</p>
-        <div class="step__art"><div class="plate" style="--x1:25%;--y1:65%;--x2:70%;--y2:35%;--bp:80% 60%"></div><span class="step__tag mono">Layers</span><span class="step__glyph" aria-hidden="true">iv</span></div>
+        <h3 class="step__title" data-edit="process.s4.title">The session</h3>
+        <p data-edit="process.s4.text">Black &amp; grey is built in layers — from the deepest shadow up to the highlights. Large pieces are split across sessions. To be continued.</p>
+        <div class="step__art"><div class="plate" style="--x1:25%;--y1:65%;--x2:70%;--y2:35%;--bp:80% 60%"></div><span class="step__tag mono" data-edit="process.s4.tag">Layers</span><span class="step__glyph" aria-hidden="true">iv</span></div>
       </li>
       <li class="step">
         <span class="step__no" aria-hidden="true">05</span>
-        <h3 class="step__title">The healing</h3>
-        <p>Follow the aftercare you're given. Healed realism softens and settles into the skin — that's the version you live with, and the one that counts.</p>
-        <div class="step__art"><div class="plate" style="--x1:55%;--y1:25%;--x2:35%;--y2:75%;--bp:50% 10%"></div><span class="step__tag mono">Healed</span><span class="step__glyph" aria-hidden="true">v</span></div>
+        <h3 class="step__title" data-edit="process.s5.title">The healing</h3>
+        <p data-edit="process.s5.text">Follow the aftercare you're given. Healed realism softens and settles into the skin — that's the version you live with, and the one that counts.</p>
+        <div class="step__art"><div class="plate" style="--x1:55%;--y1:25%;--x2:35%;--y2:75%;--bp:50% 10%"></div><span class="step__tag mono" data-edit="process.s5.tag">Healed</span><span class="step__glyph" aria-hidden="true">v</span></div>
       </li>
     </ol>
     <p class="process__swipe mono" aria-hidden="true"><span>Swipe the steps</span><span>→</span></p>
@@ -1055,14 +1195,14 @@ select.input option { background: #fff; color: var(--bone); }
   <div class="wrap">
     <header class="studio__head">
       <div>
-        <p class="label mono" data-reveal="text">Where to find him</p>
-        <h2 class="studio__title display" id="studio-title" data-skew data-reveal="text" style="--d:.08">On the<br>road</h2>
+        <p class="label mono" data-reveal="text" data-edit="travel.label">Where to find him</p>
+        <h2 class="studio__title display" id="studio-title" data-edit="travel.title" data-skew data-reveal="text" style="--d:.08">On the<br>road</h2>
       </div>
-      <p class="studio__lede" data-reveal="text" style="--d:.16">He tattoos where he travels. Guest-spot dates are announced on Instagram, so tell him in your enquiry where you'd like to be tattooed.</p>
+      <p class="studio__lede" data-edit="travel.lede" data-reveal="text" style="--d:.16">He tattoos where he travels. Guest-spot dates are announced on Instagram, so tell him in your enquiry where you'd like to be tattooed.</p>
     </header>
     <ul class="places" id="places"></ul>
     <div class="studio__foot mono">
-      <span>Tattooing worldwide</span>
+      <span data-edit="travel.foot">Tattooing worldwide</span>
       <a class="link-line" data-href="instagramUrl" href="https://www.instagram.com/angelosalavessa_tattoo/" target="_blank" rel="noopener">Latest dates on Instagram ↗</a>
     </div>
   </div>
@@ -1072,13 +1212,13 @@ select.input option { background: #fff; color: var(--bone); }
 <section class="section booking" id="booking" aria-labelledby="booking-title">
   <div class="wrap booking__grid">
     <aside class="booking__aside">
-      <p class="label mono" data-reveal="text">Enquiry</p>
-      <h2 class="booking__title display" id="booking-title" data-skew data-reveal="text" style="--d:.08">Start<br>your <em>piece.</em></h2>
-      <p data-reveal="text" style="--d:.16">Bookings are open and handled personally on WhatsApp. Describe your idea here and the form turns it into one clear message — nothing gets lost in a long chat.</p>
+      <p class="label mono" data-reveal="text" data-edit="booking.label">Enquiry</p>
+      <h2 class="booking__title display" id="booking-title" data-edit="booking.title" data-skew data-reveal="text" style="--d:.08">Start<br>your <em>piece.</em></h2>
+      <p data-reveal="text" style="--d:.16" data-edit="booking.intro">Bookings are open and handled personally on WhatsApp. Describe your idea here and the form turns it into one clear message — nothing gets lost in a long chat.</p>
       <ol class="next" data-reveal="text" style="--d:.24">
-        <li>Fill in what you know. Only a few fields are required.</li>
-        <li>Review the message we put together for you.</li>
-        <li>WhatsApp opens with it already written. Tap send — that's the moment it's actually sent.</li>
+        <li data-edit="booking.next1">Fill in what you know. Only a few fields are required.</li>
+        <li data-edit="booking.next2">Review the message we put together for you.</li>
+        <li data-edit="booking.next3">WhatsApp opens with it already written. Tap send — that's the moment it's actually sent.</li>
       </ol>
       <p class="notice" id="config-notice" hidden></p>
     </aside>
@@ -1205,7 +1345,7 @@ select.input option { background: #fff; color: var(--bone); }
 
         <div class="form__submit">
           <button class="btn btn--solid" type="submit">Review my enquiry <span class="arrow" aria-hidden="true">→</span></button>
-          <p>Nothing is sent from this page. You'll see the full message first, then send it yourself.</p>
+          <p data-edit="booking.submitNote">Nothing is sent from this page. You'll see the full message first, then send it yourself.</p>
         </div>
       </form>
 
@@ -1231,10 +1371,10 @@ select.input option { background: #fff; color: var(--bone); }
 <section class="closing" id="contact" aria-labelledby="contact-title">
   <span class="closing__glyph" aria-hidden="true">S</span>
   <div class="wrap">
-    <p class="closing__kicker mono" data-reveal="text">Questions, dates, an idea you can't shake</p>
+    <p class="closing__kicker mono" data-reveal="text" data-edit="closing.kicker">Questions, dates, an idea you can't shake</p>
     <h2 id="contact-title" class="sr-only">Contact</h2>
     <a class="closing__link display" data-href="whatsappUrl" href="https://wa.me/31634444502" target="_blank" rel="noopener" data-reveal="text" style="--d:.1">
-      <span class="line">Text to</span><span class="line">book</span>
+      <span class="line" data-edit="closing.line1">Text to</span><span class="line" data-edit="closing.line2">book</span>
     </a>
     <p class="closing__handle mono" data-reveal="text" style="--d:.2">
       <a class="link-line" data-href="whatsappUrl" href="https://wa.me/31634444502" target="_blank" rel="noopener">WhatsApp <span data-cfg="whatsappDisplay">+31 6 3444 4502</span> ↗</a>
@@ -1249,12 +1389,13 @@ select.input option { background: #fff; color: var(--bone); }
 <footer class="footer">
   <div class="wrap footer__inner mono">
     <span>© <span id="year">2026</span> <span data-cfg="artistName">Ângelo Salavessa</span></span>
-    <span>Black &amp; grey realism · Tattooing worldwide</span>
+    <span data-edit="footer.tagline">Black &amp; grey realism · Tattooing worldwide</span>
     <nav class="footer__links" aria-label="Footer">
       <a class="link-line" data-href="whatsappUrl" href="https://wa.me/31634444502" target="_blank" rel="noopener">WhatsApp ↗</a>
       <a class="link-line" data-href="instagramUrl" href="https://www.instagram.com/angelosalavessa_tattoo/" target="_blank" rel="noopener">Instagram ↗</a>
       <a class="link-line" href="#booking">Book</a>
       <a class="link-line" href="#top">Top ↑</a>
+      <a class="footer__edit" href="admin.html" rel="nofollow"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Edit site</a>
     </nav>
   </div>
 </footer>
@@ -1310,6 +1451,7 @@ const SITE_CONFIG = {
   whatsappNumber: "31634444502",
   whatsappDisplay: "+31 6 3444 4502",
   whatsappGreeting: "Hi Ângelo, I'd like to book a tattoo.",
+  // Look: black + amber red #95191D + off-white #F6F6EA. Yellow #FBE525 marks booking only.
 
   bookingEmail: "",      // optional extra: e.g. "bookings@example.com"
   bookingUrl: "",        // optional external booking service URL
@@ -1385,7 +1527,7 @@ const SITE_CONFIG = {
     return () => { s = Math.imul(s ^ (s >>> 15), 2246822507) ^ Math.imul(s ^ (s >>> 13), 3266489909); s ^= s >>> 16; return (s >>> 0) / 4294967296; };
   }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
-  const portfolio = Array.isArray(C.portfolio) ? C.portfolio.filter(p => p && p.title) : [];
+  let portfolio = [];
 
   function waLink(text) {
     const n = String(C.whatsappNumber || "").replace(/\D/g, "");
@@ -1395,6 +1537,100 @@ const SITE_CONFIG = {
     const a = document.createElement("a");
     a.href = url; a.target = "_blank"; a.rel = "noopener";
     document.body.appendChild(a); a.click(); a.remove();
+  }
+
+
+  /* ==========================================================================
+     CONTENT — the editor (admin.html) saves everything to content.json.
+     The site reads it on load; the text written in the HTML is the fallback.
+     ========================================================================== */
+  let CONTENT = null;
+  function rich(str) { // tiny, safe markup: *word* → italic, new line → line break
+    return esc(str).replace(/\*([^*\n]+)\*/g, "<em>$1</em>").replace(/\n/g, "<br>");
+  }
+  function loadContent() {
+    if (/[?&]preview\b/.test(location.search)) {
+      try {
+        const d = window.parent && window.parent !== window && window.parent.__salavessaDraft;
+        if (d) return Promise.resolve(JSON.parse(JSON.stringify(d)));
+      } catch (e) { /* not same-origin — fall through */ }
+    }
+    if (location.protocol === "file:" || !window.fetch) return Promise.resolve(null);
+    const ctrl = "AbortController" in window ? new AbortController() : null;
+    const timer = setTimeout(() => ctrl && ctrl.abort(), 2500);
+    return fetch("content.json?v=" + Date.now(), { cache: "no-store", signal: ctrl ? ctrl.signal : undefined })
+      .then(r => (r.ok ? r.json() : null))
+      .catch(() => null)
+      .then(d => { clearTimeout(timer); return d; });
+  }
+  function mergeContent(d) {
+    if (!d || typeof d !== "object") return;
+    Object.assign(C, d.settings || {}, d.media || {});
+    if (Array.isArray(d.locations)) C.locations = d.locations;
+    if (Array.isArray(d.portfolio)) C.portfolio = d.portfolio;
+    const h = String(C.instagramHandle || "").replace(/^@/, "").trim();
+    if (d.settings && "instagramHandle" in d.settings) {
+      C.instagramHandle = h;
+      C.instagramUrl = h ? "https://www.instagram.com/" + h + "/" : "";
+      C.instagramDmUrl = h ? "https://ig.me/m/" + h : "";
+    }
+    CONTENT = d;
+  }
+  function setLoud(hex) {
+    if (!/^#[0-9a-f]{6}$/i.test(String(hex || ""))) return;
+    const lum = h => { const c = [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16) / 255).map(x => x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4)); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; };
+    const L = lum(hex), onWhite = 1.05 / (L + 0.05), onDark = (L + 0.05) / (lum("#2B241F") + 0.05);
+    root.style.setProperty("--loud", hex);
+    root.style.setProperty("--loud-ink", onWhite >= onDark ? "#FFFFFF" : "#2B241F");
+  }
+  // The one look: black, amber red #95191D, off-white #F6F6EA — yellow #FBE525 for booking only.
+  const THEMES = {
+    amber: { loud: "#FBE525", meta: "#0A0808",
+      smoke: [[.039, .031, .031], [.584, .098, .114], [.30, .04, .05], [.85, .22, .20], [.984, .898, .145]],
+      dust: ["149,25,29", 3.2, "246,246,234", .6] }
+  };
+  const THEME = THEMES.amber;
+  function applyTheme() {
+    root.setAttribute("data-theme", "amber");
+    setLoud(THEME.loud);
+  }
+  function applyContent() {
+    const d = CONTENT;
+    applyTheme();
+    // Hero name: first word on line one, the rest on line two.
+    const parts = String(C.artistName || "").trim().split(/\s+/).filter(Boolean);
+    const lines = $$(".hero__name .line > span");
+    if (parts.length && lines.length === 2) {
+      lines[0].textContent = parts[0];
+      lines[1].textContent = parts.slice(1).join(" ");
+      lines[1].parentElement.hidden = parts.length < 2;
+    }
+    $(".nav__brand") && $(".nav__brand").setAttribute("aria-label", (C.artistName || "") + " — back to top");
+    if (!d) return;
+    const t = d.text || {};
+    $$("[data-edit]").forEach(el => {
+      const v = t[el.dataset.edit];
+      if (typeof v === "string") el.innerHTML = rich(v);
+    });
+    if (Array.isArray(d.facts)) {
+      const dl = $(".facts");
+      if (dl) dl.innerHTML = d.facts.filter(f => f && (f.label || f.value))
+        .map(f => `<div><dt class="mono">${esc(f.label)}</dt><dd>${esc(f.value)}</dd></div>`).join("");
+    }
+    const band = (el, words, alt) => {
+      words = Array.isArray(words) ? words.map(w => String(w).trim()).filter(Boolean) : [];
+      if (!el || !words.length) return;
+      let seq = [];
+      while (seq.length < 12) seq = seq.concat(words);
+      el.innerHTML = seq.map((w, i) => `<span${alt && i % 2 === 0 ? ' class="solid"' : ""}>${esc(w)}</span><span class="sep">S</span>`).join("");
+    };
+    band($(".band__track--a"), d.bandA, false);
+    band($(".band__track--b"), d.bandB, true);
+    if (d.seo) {
+      if (d.seo.title) document.title = d.seo.title;
+      const m = $('meta[name="description"]');
+      if (m && d.seo.description) m.setAttribute("content", d.seo.description);
+    }
   }
 
   /* ---------- Shared input: mouse on desktop, phone tilt (gyroscope) on mobile ---------- */
@@ -1631,6 +1867,69 @@ const SITE_CONFIG = {
     tick();
   }
 
+  /* ---------- Living background (layers are driven by the motion loop) ---------- */
+  const bgfx = { el: null, glows: [], grid: null, words: [], cell: 240 };
+  function initBgfx() {
+    const el = $("#bgfx"); if (!el) return;
+    bgfx.el = el;
+    bgfx.glows = $$(".bgfx__glow", el);
+    bgfx.grid = $(".bgfx__grid", el);
+    const band = (CONTENT && Array.isArray(CONTENT.bandA) && CONTENT.bandA.length) ? CONTENT.bandA : ["Black & grey", "Realism", "Portraits", "Wildlife", "Roses", "Statues"];
+    const last = String(C.artistName || "Salavessa").trim().split(/\s+/).pop();
+    const words = [last].concat(band).slice(0, 7);
+    const speeds = [0.42, 0.28, 0.55, 0.34, 0.48, 0.3, 0.5];
+    $(".bgfx__words", el).innerHTML = words.map((w, i) => `<span class="bgfx__word${i % 3 === 1 ? " is-solid" : ""}" data-align="${i % 3}">${esc(w)}</span>`).join("");
+    bgfx.words = $$(".bgfx__word", el).map((node, i) => ({ node, speed: speeds[i % speeds.length], dir: i % 2 ? 1 : -1, P: 0, off: null }));
+    if (window.innerWidth < 900) bgfx.cell = 160;
+    measureBgfx();
+    if (reduced) bgfx.words.forEach((w, i) => { w.node.style.transform = `translate3d(0, ${(i - 1) * 30}vh, 0)`; });
+  }
+  function measureBgfx() {
+    const docH = document.documentElement.scrollHeight, vh = window.innerHeight;
+    bgfx.cell = window.innerWidth < 900 ? 160 : 240;
+    const start = vh * 1.2, span = Math.max(vh, docH - vh * 1.8);
+    bgfx.words.forEach((w, k) => { w.P = start + (k + 0.5) * span / bgfx.words.length; });
+  }
+
+  /* Ink particles: drift upward and get pushed by how fast you scroll */
+  const bgInk = { wake: null };
+  function initBgInk() {
+    if (reduced) return;
+    const cv = $("#bg-ink"); const ctx = cv && cv.getContext("2d"); if (!ctx) return;
+    const N = mqDesktop.matches ? 90 : 46, dpr = Math.min(window.devicePixelRatio || 1, 2), r = rand(11);
+    let w = 0, h = 0, raf = 0, last = 0;
+    const parts = [];
+    const size = () => { w = cv.clientWidth; h = cv.clientHeight; cv.width = w * dpr; cv.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+    size(); window.addEventListener("resize", size);
+    for (let i = 0; i < N; i++) {
+      const z = 0.15 + r() * 0.85, amber = r() < 0.32;
+      parts.push({ x: r() * w, y: r() * h, z, rad: amber ? 1.4 + z * 3.2 : 0.5 + z * 1.3, a: amber ? 0.25 + z * 0.35 : 0.12 + z * 0.4, amber, ph: r() * 6.28, vy: 0.08 + r() * 0.22 });
+    }
+    const active = () => !document.hidden && window.scrollY > window.innerHeight * 0.35;
+    function loop(now) {
+      raf = 0;
+      if (!active()) { ctx.clearRect(0, 0, w, h); return; }
+      const dt = Math.min(48, now - (last || now)) / 16.67; last = now;
+      const vel = motion.vel || 0;
+      ctx.clearRect(0, 0, w, h);
+      for (const p of parts) {
+        p.y -= (p.vy * (0.6 + p.z) + vel * p.z * 0.85) * dt;
+        p.x += (Math.sin(now / 2600 + p.ph) * 0.18 + INPUT.x * p.z * 0.25) * dt;
+        if (p.y < -20) { p.y = h + 20; p.x = Math.random() * w; } else if (p.y > h + 20) { p.y = -20; p.x = Math.random() * w; }
+        if (p.x < -20) p.x = w + 20; else if (p.x > w + 20) p.x = -20;
+        const stretch = Math.min(18, Math.abs(vel) * p.z * 0.9);
+        ctx.fillStyle = p.amber ? `rgba(149,25,29,${p.a})` : `rgba(246,246,234,${p.a * (0.65 + 0.35 * Math.sin(now / 900 + p.ph))})`;
+        if (stretch > 1.5) { ctx.fillRect(p.x - p.rad * 0.5, p.y - stretch * 0.5, p.rad, stretch); }
+        else { ctx.beginPath(); ctx.arc(p.x, p.y, p.rad, 0, 6.283); ctx.fill(); }
+      }
+      raf = requestAnimationFrame(loop);
+    }
+    bgInk.wake = () => { if (!raf && active()) { last = 0; raf = requestAnimationFrame(loop); } };
+    window.addEventListener("scroll", bgInk.wake, { passive: true });
+    document.addEventListener("visibilitychange", bgInk.wake);
+    bgInk.wake();
+  }
+
   /* ---------- Signature work ---------- */
   function renderSignature() {
     const list = $("#sig-list");
@@ -1661,7 +1960,7 @@ const SITE_CONFIG = {
 
   /* ---------- Index + filters ---------- */
   let activeFilter = "All";
-  let visibleIdx = portfolio.map((_, i) => i);
+  let visibleIdx = [];
 
   function renderIndex() {
     const grid = $("#grid"), filters = $("#filters");
@@ -1937,6 +2236,7 @@ const SITE_CONFIG = {
       this.kick();
     },
     measure() {
+      if (bgfx.el) measureBgfx();
       this.vh = window.innerHeight; this.vw = window.innerWidth;
       const parallaxOn = !reduced && mqDesktop.matches;
       // Parallax items: measure without transforms
@@ -2007,6 +2307,25 @@ const SITE_CONFIG = {
       // Scroll speed → kinetic skew on headlines and bands
       const v = sy - this.lastSy; this.lastSy = sy;
       this.vel = lerp(this.vel, reduced ? 0 : v, 0.18);
+      // Living background: lights sweep, grid + words parallax
+      if (bgfx.el && !reduced && sy > vh * 0.35) {
+        const vw = this.vw, ts = sy * 0.00055, fine = (mqFine.matches || INPUT.gyro) ? 1 : 0;
+        bgfx.glows.forEach((g, i) => {
+          const ph = i * 2.1;
+          const x = Math.sin(ts + ph) * 0.34 * vw + this.cmx * 50 * (i + 1) * fine;
+          const y = Math.cos(ts * 1.3 + ph) * 0.3 * vh + this.cmy * 36 * (i + 1) * fine;
+          g.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+        });
+        if (bgfx.grid) bgfx.grid.style.transform = `translate3d(0, ${(-((sy * 0.35) % bgfx.cell)).toFixed(1)}px, 0)`;
+        for (const w of bgfx.words) {
+          const d = w.P - sy, y = d * w.speed;
+          const off = Math.abs(y) > vh * 1.3;
+          if (off !== w.off) { w.node.style.visibility = off ? "hidden" : ""; w.off = off; }
+          if (off) continue;
+          w.node.style.transform = `translate3d(${(w.dir * d * 0.14 + this.cmx * 30 * fine).toFixed(1)}px, ${y.toFixed(1)}px, 0) skewX(${(-this.vel * 0.06).toFixed(2)}deg)`;
+        }
+        if (bgInk.wake) bgInk.wake();
+      }
       if (Math.abs(this.vel) > 0.05) busy = true;
       const sk = clamp(this.vel * 0.09, -7, 7);
       for (const el of this.skews) el.style.transform = Math.abs(sk) < 0.02 ? "" : `skewY(${sk.toFixed(2)}deg)`;
@@ -2095,7 +2414,7 @@ const SITE_CONFIG = {
     if (!gl) return; // CSS gradient fallback stays visible
     const vs = "attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}";
     const fs = `precision mediump float;
-      uniform vec2 u_res; uniform float u_time; uniform vec2 u_mouse; uniform vec3 u_burst;
+      uniform vec2 u_res; uniform float u_time; uniform vec2 u_mouse; uniform vec3 u_burst; uniform vec3 u_c0; uniform vec3 u_c1; uniform vec3 u_c2; uniform vec3 u_c3; uniform vec3 u_c4;
       float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
       float noise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);
         return mix(mix(hash(i),hash(i+vec2(1.,0.)),u.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),u.x),u.y);}
@@ -2111,12 +2430,11 @@ const SITE_CONFIG = {
         float f=fbm(p*1.5+2.6*r+(m-p)*.25*exp(-md*2.5)+(p-bp)*wave*1.8);
         float smoke=smoothstep(.42,.98,f)+wave*.5;
         float light=exp(-md*2.2);
-        vec3 ivory=vec3(.965,.949,.925); vec3 nude=vec3(.88,.81,.74); vec3 taupe=vec3(.66,.57,.49); vec3 cham=vec3(.80,.66,.52);
-        vec3 col=mix(ivory,nude,smoke*.9);
-        col=mix(col,taupe,smoke*smoke*.35);
-        col=mix(col,vec3(1.),light*.35*(1.-smoke*.5));
-        col=mix(col,cham,wave*.55);
-        col=mix(col,ivory,smoothstep(.25,0.,uv.y)*.6);
+        vec3 col=mix(u_c0,u_c1,smoke*.9);
+        col=mix(col,u_c2,smoke*smoke*.35);
+        col=mix(col,u_c3,light*.35*(1.-smoke*.5));
+        col=mix(col,u_c4,wave*.55);
+        col=mix(col,u_c0,smoothstep(.25,0.,uv.y)*.6);
         gl_FragColor=vec4(col,1.);
       }`;
     function sh(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; }
@@ -2130,7 +2448,7 @@ const SITE_CONFIG = {
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
     const loc = gl.getAttribLocation(prog, "p");
     gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-    const uRes = gl.getUniformLocation(prog, "u_res"), uTime = gl.getUniformLocation(prog, "u_time"), uMouse = gl.getUniformLocation(prog, "u_mouse"), uBurst = gl.getUniformLocation(prog, "u_burst");
+    const uRes = gl.getUniformLocation(prog, "u_res"), uTime = gl.getUniformLocation(prog, "u_time"), uMouse = gl.getUniformLocation(prog, "u_mouse"), uPal = [0, 1, 2, 3, 4].map(i => gl.getUniformLocation(prog, "u_c" + i)), uBurst = gl.getUniformLocation(prog, "u_burst");
     const scale = mqDesktop.matches ? 0.5 : 0.35; // render low-res; smoke is soft anyway
     function resize() {
       const w = Math.max(1, Math.floor(canvas.clientWidth * scale)), h = Math.max(1, Math.floor(canvas.clientHeight * scale));
@@ -2150,6 +2468,7 @@ const SITE_CONFIG = {
       gl.uniform1f(uTime, reduced ? 12 : (now - t0) / 1000 + 12);
       gl.uniform2f(uMouse, mx, my);
       gl.uniform3f(uBurst, burst[0], burst[1], burst[2]);
+      THEME.smoke.forEach((c, i) => gl.uniform3f(uPal[i], c[0], c[1], c[2]));
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     }
     function loop(now) { draw(now); raf = (visible && !document.hidden && !reduced) ? requestAnimationFrame(loop) : 0; }
@@ -2191,10 +2510,10 @@ const SITE_CONFIG = {
         const ox = p.x - cmx * 60 * p.z, oy = p.y - cmy * 40 * p.z;
         if (p.rad > 10) {
           const g = ctx.createRadialGradient(ox, oy, 0, ox, oy, p.rad);
-          g.addColorStop(0, `rgba(205,181,156,${p.a * 2.2})`); g.addColorStop(1, "rgba(205,181,156,0)");
+          g.addColorStop(0, `rgba(${THEME.dust[0]},${p.a * THEME.dust[1]})`); g.addColorStop(1, `rgba(${THEME.dust[0]},0)`);
           ctx.fillStyle = g; ctx.beginPath(); ctx.arc(ox, oy, p.rad, 0, 6.283); ctx.fill();
         } else {
-          ctx.fillStyle = `rgba(120,95,78,${p.a * 0.55 * (0.6 + 0.4 * Math.sin(now / 900 + p.ph))})`;
+          ctx.fillStyle = `rgba(${THEME.dust[2]},${p.a * THEME.dust[3] * (0.6 + 0.4 * Math.sin(now / 900 + p.ph))})`;
           ctx.beginPath(); ctx.arc(ox, oy, p.rad, 0, 6.283); ctx.fill();
         }
       }
@@ -2395,6 +2714,10 @@ const SITE_CONFIG = {
      16. BOOT + ERROR HANDLING — each module isolated so one failure
      never takes down navigation, content or booking.
      ========================================================================== */
+  function boot() {
+  portfolio = Array.isArray(C.portfolio) ? C.portfolio.filter(p => p && p.title && p.image) : [];
+  visibleIdx = portfolio.map((_, i) => i);
+  safe("content", applyContent);
   safe("config", applyConfig);
   safe("locations", renderLocations);
   safe("hero", renderHero);
@@ -2412,11 +2735,16 @@ const SITE_CONFIG = {
   safe("motion", () => motion.init());
   safe("smoke", initSmoke);
   safe("dust", initDust);
+  safe("bgfx", initBgfx);
+  safe("bg-ink", initBgInk);
   safe("gyro", initGyro);
   safe("magnetic", initMagnetic);
   safe("wa-float", initWaFloat);
   safe("motion-pref", watchMotionPref);
   safe("intro", finishIntro);
+  }
+
+  loadContent().then(d => { if (d) safe("merge", () => mergeContent(d)); boot(); }, () => boot());
 })();
 </script>
 </body>
