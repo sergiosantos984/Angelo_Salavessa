@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "updated": "",
   "settings": {
     "artistName": "Ângelo Salavessa",
@@ -8,124 +8,209 @@
     "whatsappNumber": "31634444502",
     "whatsappDisplay": "+31 6 3444 4502",
     "whatsappGreeting": "Hi Ângelo, I'd like to book a tattoo.",
-    "bookingEmail": ""
-  },
-  "media": {
-    "heroPiece": 2,
-    "ringCount": 8,
-    "heroBackground": "images/07-statue.jpg",
-    "artistPortrait": "images/artist.jpg",
-    "artistPortraitPosition": "62% 30%",
-    "artistDetailImage": "images/artist-2.jpg"
+    "bookingEmail": "",
+    "contactEmail": "",
+    "youtubeUrl": "",
+    "tiktokUrl": ""
   },
   "seo": {
-    "title": "Ângelo Salavessa — Black & Grey Realism Tattoo Artist",
-    "description": "Ângelo Salavessa is a black & grey realism tattoo artist tattooing worldwide — Amsterdam, Phuket and Portugal. Bookings open via WhatsApp."
+    "home": {
+      "title": "Ângelo Salavessa — Tattoo artist, traveller, founder of The Last Soul",
+      "description": "Ângelo Salavessa: black & grey realism tattoo artist and traveller — Amsterdam, Phuket, Portugal — and founder of The Last Soul. Bookings via WhatsApp."
+    },
+    "about": {
+      "title": "About — Ângelo Salavessa",
+      "description": "Who Ângelo Salavessa is: tattoo artist, traveller and free soul. His story, his values and the words he lives by."
+    },
+    "lifestyle": {
+      "title": "Lifestyle — Ângelo Salavessa",
+      "description": "Training, the ocean, good food and the people who leave a mark — life between the tattoos."
+    },
+    "travel": {
+      "title": "Travel — Ângelo Salavessa",
+      "description": "Bali, Thailand, Amsterdam, Portugal: the places that left a mark, travelling with the tattoo machine."
+    },
+    "tattoos": {
+      "title": "Tattoos — Black & grey realism by Ângelo Salavessa",
+      "description": "Black & grey realism tattoos by Ângelo Salavessa — portraits, wildlife, symbols, classical. Amsterdam, Phuket, Portugal. Book on WhatsApp."
+    },
+    "soul": {
+      "title": "The Last Soul — Be kind, it's gangster",
+      "description": "The Last Soul is Ângelo Salavessa's long-term project to help children in need, vulnerable people, families and communities. It started with one man in Thailand."
+    },
+    "journal": {
+      "title": "Journal — Ângelo Salavessa",
+      "description": "Stories, thoughts and experiences from Ângelo Salavessa — travel, life, tattooing and The Last Soul."
+    },
+    "article": {
+      "title": "Journal — Ângelo Salavessa",
+      "description": "A story from Ângelo Salavessa's journal."
+    },
+    "contact": {
+      "title": "Contact — Ângelo Salavessa",
+      "description": "Contact Ângelo Salavessa on WhatsApp or Instagram — tattoo bookings, collaborations and The Last Soul."
+    },
+    "notfound": {
+      "title": "Page not found — Ângelo Salavessa",
+      "description": "This page doesn't exist."
+    }
+  },
+  "media": {
+    "hero": "images/travel-bali-uluwatu.jpg",
+    "heroPosition": "center 40%",
+    "pillarPerson": "images/person-beach.jpg",
+    "pillarPersonPosition": "center 35%",
+    "pillarCraft": "images/07-statue.jpg",
+    "pillarSoul": "images/lastsoul-papa.jpg",
+    "portrait": "images/artist.jpg",
+    "portraitPosition": "62% 30%",
+    "portrait2": "images/artist-2.jpg",
+    "portrait2Position": "center 35%",
+    "soulImage": "images/lastsoul-papa.jpg",
+    "soulImagePosition": "center 40%",
+    "lifeHero": "images/person-beach.jpg",
+    "lifeHeroPosition": "center 35%",
+    "travelHero": "images/travel-bali-uluwatu.jpg",
+    "travelHeroPosition": "center 40%",
+    "travelStory": "images/travel-signpost.jpg"
   },
   "text": {
-    "hero.corner1": "Amsterdam — Phuket — Portugal",
-    "hero.corner2": "Tattooing worldwide",
-    "hero.kicker1": "Bookings open",
-    "hero.kicker2": "Black & grey realism",
-    "hero.kicker3": "Tattooing worldwide",
-    "hero.tagline": "Light, carved from shadow.",
-    "hero.lede": "Black & grey realism — portraits, wildlife, roses and symbols built for the body that wears them. Tattooing on the road between Amsterdam, Phuket and Portugal.",
-    "hero.cta1": "Start your piece",
-    "hero.cta2": "See the work",
-    "work.label": "Selected work",
-    "work.title": "The\nplates",
-    "work.introSerif": "Build the dark. Protect the light.",
-    "work.intro": "In black & grey, every highlight is skin left untouched — so the shadows have to do all the talking. A few pieces worth a closer look.",
-    "artist.label": "The artist",
-    "artist.statement": "Realism is a discipline of *restraint* — knowing where not to put ink.",
-    "artist.lead": "Ângelo Salavessa works in black & grey realism: faces, animals, roses, statues and symbols, rendered in soft gradients that sit naturally on the body.",
-    "artist.p2": "He works on the road. Amsterdam, Phuket and Portugal are among the regular stops, and the work goes wherever he lands next.",
-    "artist.p3": "Every piece starts with your idea and is composed for the part of you it will live on. Larger work is planned across sessions — to be continued, as he puts it on his feed.",
-    "index.label": "Archive",
-    "index.title": "Index",
-    "process.label": "Process",
-    "process.title": "From idea\nto skin",
-    "process.lede": "No templates, no surprises. Here is how a piece usually comes together — the details are always confirmed with you directly.",
-    "process.s1.title": "The message",
-    "process.s1.text": "Send the idea, the placement, a rough size and any references. Short is fine. The form below turns it into one clear WhatsApp message.",
-    "process.s1.tag": "WhatsApp",
-    "process.s2.title": "The conversation",
-    "process.s2.text": "What will actually work on your body: scale, flow, where the light falls on the muscle. Realism needs room — sometimes the honest answer is bigger, or simpler.",
-    "process.s2.tag": "Scale · Flow",
-    "process.s3.title": "The design",
-    "process.s3.text": "The composition is built for you and your placement. Dates, deposits and session length are agreed directly when you book.",
-    "process.s3.tag": "Composition",
-    "process.s4.title": "The session",
-    "process.s4.text": "Black & grey is built in layers — from the deepest shadow up to the highlights. Large pieces are split across sessions. To be continued.",
-    "process.s4.tag": "Layers",
-    "process.s5.title": "The healing",
-    "process.s5.text": "Follow the aftercare you're given. Healed realism softens and settles into the skin — that's the version you live with, and the one that counts.",
-    "process.s5.tag": "Healed",
-    "travel.label": "Where to find him",
-    "travel.title": "On the\nroad",
-    "travel.lede": "He tattoos where he travels. Guest-spot dates are announced on Instagram, so tell him in your enquiry where you'd like to be tattooed.",
-    "travel.foot": "Tattooing worldwide",
-    "booking.label": "Enquiry",
-    "booking.title": "Start\nyour *piece.*",
-    "booking.intro": "Bookings are open and handled personally on WhatsApp. Describe your idea here and the form turns it into one clear message — nothing gets lost in a long chat.",
-    "booking.next1": "Fill in what you know. Only a few fields are required.",
-    "booking.next2": "Review the message we put together for you.",
-    "booking.next3": "WhatsApp opens with it already written. Tap send — that's the moment it's actually sent.",
-    "booking.submitNote": "Nothing is sent from this page. You'll see the full message first, then send it yourself.",
-    "closing.kicker": "Questions, dates, an idea you can't shake",
-    "closing.line1": "Text to",
-    "closing.line2": "book",
-    "footer.tagline": "Black & grey realism · Tattooing worldwide"
+    "home.kicker": "Create. Explore. Give.",
+    "home.title": "Never let\nthe world make\nyou *ordinary.*",
+    "home.lede": "Tattoo artist, traveller, dreamer and founder of *The Last Soul.*",
+    "home.scroll": "Scroll to explore",
+    "home.cardTitle": "The Last Soul",
+    "home.cardText": "Be kind, it's gangster. Together we can make a difference.",
+    "home.p1.title": "The Person",
+    "home.p1.text": "My story, my journey, my perspective.",
+    "home.p1.link": "Discover more",
+    "home.p2.title": "The Craft",
+    "home.p2.text": "Black & grey realism. Tattoo art, expression, no limits.",
+    "home.p2.link": "Explore portfolio",
+    "home.p3.title": "The Last Soul",
+    "home.p3.text": "Because together we can do more.",
+    "home.p3.link": "Get involved",
+    "home.introLabel": "Who I am",
+    "home.introTitle": "Tattoo artist by trade.\n*Free soul* by nature.",
+    "home.introText": "I tattoo black & grey realism and travel with the machine — Amsterdam, Phuket, Portugal and wherever the road goes next. Life is meant to be lived, so I live it my way: making work that lasts, meeting people who leave a mark, and giving something back.",
+    "home.introCta": "My story",
+    "home.travelLabel": "Travel",
+    "home.travelTitle": "Explore\nthe world",
+    "home.travelText": "New places. New stories.",
+    "home.travelCta": "Discover more",
+    "home.journalLabel": "Journal",
+    "home.journalTitle": "Stories,\nthoughts &\nexperiences.",
+    "home.journalText": "Words from the road — the people, the places and the lessons in between.",
+    "home.journalCta": "Read the journal",
+    "home.craftLabel": "The Craft",
+    "home.craftTitle": "Build the dark.\nProtect the *light.*",
+    "home.craftText": "In black & grey, every highlight is skin left untouched — so the shadows have to do all the talking.",
+    "home.craftCta": "Explore the portfolio",
+    "home.craftBook": "Book on WhatsApp",
+    "home.soulLabel": "The Last Soul",
+    "home.soulTitle": "Small actions.\nBig *impact.*",
+    "home.soulText": "It don't cost a thing to care. The Last Soul is my long-term project to help children in need, vulnerable people, families and communities — and it started with one man in Thailand.",
+    "home.soulCta": "Support The Last Soul",
+    "home.soulCta2": "Read the story",
+    "footer.big": "A better tomorrow.\n*Together.*",
+    "footer.soul": "Be kind, it's gangster.",
+    "footer.motto": "Create. Explore. Give.",
+    "about.kicker": "About",
+    "about.title": "Ângelo\nSalavessa",
+    "about.lead": "Tattoo artist. Traveller. *Free soul.*",
+    "about.statement": "Realism is a discipline of *restraint* — knowing where not to put ink.",
+    "about.p1": "I work in black & grey realism — faces, animals, roses, statues and symbols, rendered in soft gradients that sit naturally on the body.",
+    "about.p2": "I work on the road. Amsterdam, Phuket and Portugal are regular stops, and the work goes wherever I land next.",
+    "about.p3": "Nothing was ever handed to me, and I'm grateful for that. I had to find positivity while facing a lot of negativity — it's part of my process. It's not easy to be an artist, but it's the most beautiful path I have, and the one I enjoy the most.",
+    "about.quoteLabel": "In my own words",
+    "about.quote": "I've always realised that life is meant to be lived — so let it be my way.",
+    "about.quotePt": "“Sempre percebi que a vida é para ser vivida, então que seja à minha maneira.”",
+    "about.valuesLabel": "What I believe",
+    "about.valuesTitle": "Three things\nI live by.",
+    "about.wordsLabel": "Words I live by",
+    "about.words": "The greatness of a man is not in how much wealth he acquires, but in his integrity and his ability to affect those around him positively.",
+    "life.kicker": "Lifestyle",
+    "life.title": "Life,\n*lived.*",
+    "life.lead": "Training, the ocean, good food and the people who leave a mark. The moments between the tattoos.",
+    "life.bleedTag": "Ocean",
+    "life.bleedTitle": "One golden afternoon",
+    "life.bleedText": "Some kinds of love are borrowed. We don't own them — we just get to experience them.",
+    "life.momentsLabel": "Moments",
+    "life.momentsTitle": "Between\nthe sessions.",
+    "life.quote": "In love with life and everything I can experience in it. Live it up.",
+    "travel.kicker": "Travel",
+    "travel.title": "Explore\nthe *world.*",
+    "travel.lead": "New places. New people. New stories. I travel with the machine and come back with more than tattoos.",
+    "travel.bleedTag": "Bali · Uluwatu",
+    "travel.bleedTitle": "Live it up.",
+    "travel.bleedText": "In love with life and everything I can experience in it.",
+    "travel.placesLabel": "Destinations",
+    "travel.placesTitle": "Places that\nleft a mark.",
+    "travel.storyLabel": "On the road",
+    "travel.storyQuote": "We travel, initially, to lose ourselves; and we travel, next, to find ourselves.",
+    "travel.storyCite": "— Pico Iyer",
+    "travel.storyText": "Just an island boy trying to make it.",
+    "travel.filmsLabel": "Films",
+    "travel.filmsTitle": "Moving\npictures.",
+    "travel.filmsText": "Short films from the road. More coming soon.",
+    "tattoos.kicker": "The Craft",
+    "tattoos.title": "Black & grey\n*realism.*",
+    "tattoos.status": "Bookings open",
+    "tattoos.lead": "Portraits, wildlife, roses and symbols built for the body that wears them. Tattooing on the road between Amsterdam, Phuket and Portugal.",
+    "tattoos.cta1": "Book on WhatsApp",
+    "tattoos.cta2": "Start an enquiry",
+    "tattoos.galleryLabel": "Portfolio",
+    "tattoos.galleryTitle": "The work.",
+    "tattoos.processLabel": "Process",
+    "tattoos.processTitle": "From idea\nto skin.",
+    "tattoos.processLede": "No templates, no surprises. Here is how a piece usually comes together — the details are always confirmed with you directly.",
+    "tattoos.whereLabel": "Where I tattoo",
+    "tattoos.whereTitle": "On the road.",
+    "tattoos.whereLede": "I tattoo where I travel. Guest-spot dates are announced on Instagram, so tell me in your enquiry where you'd like to be tattooed.",
+    "tattoos.bookLabel": "Enquiry",
+    "tattoos.bookTitle": "Start\nyour *piece.*",
+    "tattoos.bookIntro": "Bookings are handled personally on WhatsApp. Describe your idea here and the form turns it into one clear message — nothing gets lost in a long chat.",
+    "tattoos.bookStep1": "Fill in what you know. Only a few fields are required.",
+    "tattoos.bookStep2": "Review the message we put together for you.",
+    "tattoos.bookStep3": "WhatsApp opens with it already written. Tap send — that's the moment it's actually sent.",
+    "tattoos.submitNote": "Nothing is sent from this page. You'll see the full message first, then send it yourself.",
+    "soul.kicker": "The Last Soul",
+    "soul.title": "Be kind.\nIt's *gangster.*",
+    "soul.lead": "The Last Soul is my long-term project to help people — children in need, vulnerable people, families and communities. I want to use my work, my brand, my business relationships and my network to create opportunities to help as many people as possible.",
+    "soul.cta1": "Get involved",
+    "soul.cta2": "Read the story",
+    "soul.missionTitle": "It don't cost a thing\nto *care.*",
+    "soul.missionText": "A word, a smile, a little love. That's how we evolve. We learn. We teach.",
+    "soul.missionText2": "Sometimes people don't need much. A little attention, a helping hand, some food or medicine — or simply someone who cares. The Last Soul exists to make sure more of them get it.",
+    "soul.storyTitle": "It started with *one man.*",
+    "soul.storyText": "I met Papa four years ago in Thailand. He's one of those people who leave a mark on you without even realising it. When I heard he'd crashed his bike, I went to see him, spend some time together and make sure he was okay.",
+    "soul.storyQuote": "Let's remind someone that they're not alone.",
+    "soul.storyLink": "Read Papa's story",
+    "soul.initTitle": "Projects &\ncauses.",
+    "soul.initText": "Every initiative is real, specific and personal. They'll be listed here as they happen.",
+    "soul.impactTitle": "Real stories.\nNo inflated *numbers.*",
+    "soul.involvedTitle": "Be part\nof the *plan.*",
+    "soul.involvedText": "No pressure, no expectations. Every little bit of kindness counts.",
+    "soul.way1Title": "Give",
+    "soul.way1Text": "Even €2 or €5 can help — food, medicine, or whatever someone needs most. Text me and you're part of the plan.",
+    "soul.way1Cta": "Text me",
+    "soul.way2Title": "Partner",
+    "soul.way2Text": "Brands, studios and companies who want to help: let's talk about what we can build together.",
+    "soul.way2Cta": "Let's talk",
+    "soul.way3Title": "Share",
+    "soul.way3Text": "Tell someone's story. Share the project. Remind someone they're not alone.",
+    "soul.way3Cta": "Follow & share",
+    "soul.futureTitle": "Bigger than\n*one person.*",
+    "soul.futureText": "The Last Soul is built to grow — from one act of kindness into a platform for initiatives, partners and stories from around the world. This page will grow with it.",
+    "journal.kicker": "Journal",
+    "journal.title": "Stories,\nthoughts &\n*experiences.*",
+    "journal.lead": "Words from the road — the people, the places and the lessons in between.",
+    "contact.kicker": "Contact",
+    "contact.title": "Let's\n*talk.*",
+    "contact.lead": "Tattoo bookings, collaborations, The Last Soul — or just to say hi. WhatsApp is the fastest way to reach me.",
+    "contact.collabTitle": "Collaborations",
+    "contact.collabText": "Brands, studios, photographers and anyone who wants to help The Last Soul — send a message with a few lines about the idea."
   },
-  "facts": [
-    {
-      "label": "Discipline",
-      "value": "Black & grey realism"
-    },
-    {
-      "label": "Based",
-      "value": "Tattooing worldwide"
-    },
-    {
-      "label": "On the road",
-      "value": "Amsterdam · Phuket · Portugal"
-    },
-    {
-      "label": "Bookings",
-      "value": "Open — via WhatsApp"
-    }
-  ],
-  "bandA": [
-    "Black & grey",
-    "Realism",
-    "Portraits",
-    "Wildlife",
-    "Roses",
-    "Statues"
-  ],
-  "bandB": [
-    "Worldwide",
-    "Amsterdam",
-    "Phuket",
-    "Portugal"
-  ],
-  "locations": [
-    {
-      "name": "Amsterdam",
-      "note": "Guest spots · Netherlands",
-      "dates": ""
-    },
-    {
-      "name": "Phuket",
-      "note": "Thailand",
-      "dates": ""
-    },
-    {
-      "name": "Portugal",
-      "note": "Guest spots",
-      "dates": ""
-    }
-  ],
   "portfolio": [
     {
       "title": "Portrait sleeve",
@@ -146,7 +231,8 @@
       "placement": "Forearm",
       "featured": false,
       "ratio": "720/1280",
-      "position": "center"
+      "position": "center",
+      "description": ""
     },
     {
       "title": "Tiger",
@@ -156,7 +242,8 @@
       "placement": "Upper arm",
       "featured": true,
       "ratio": "1/1",
-      "position": "center 35%"
+      "position": "center 35%",
+      "description": ""
     },
     {
       "title": "The clock eye",
@@ -166,7 +253,8 @@
       "placement": "Forearm",
       "featured": true,
       "ratio": "640/1136",
-      "position": "center"
+      "position": "center",
+      "description": ""
     },
     {
       "title": "Serpent & skull",
@@ -187,7 +275,8 @@
       "placement": "Forearm",
       "featured": false,
       "ratio": "749/998",
-      "position": "center"
+      "position": "center",
+      "description": ""
     },
     {
       "title": "Classical statue",
@@ -197,7 +286,8 @@
       "placement": "Arm",
       "featured": true,
       "ratio": "902/1600",
-      "position": "center"
+      "position": "center",
+      "description": ""
     },
     {
       "title": "Scorpion",
@@ -218,7 +308,8 @@
       "placement": "Arm",
       "featured": true,
       "ratio": "640/1136",
-      "position": "center"
+      "position": "center",
+      "description": ""
     },
     {
       "title": "Snake",
@@ -228,7 +319,8 @@
       "placement": "Torso",
       "featured": false,
       "ratio": "640/1136",
-      "position": "center"
+      "position": "center",
+      "description": ""
     },
     {
       "title": "Healed portrait",
@@ -249,7 +341,8 @@
       "placement": "Arm",
       "featured": false,
       "ratio": "640/1136",
-      "position": "center"
+      "position": "center",
+      "description": ""
     },
     {
       "title": "Micro shark",
@@ -259,7 +352,8 @@
       "placement": "Forearm",
       "featured": false,
       "ratio": "4/5",
-      "position": "center"
+      "position": "center",
+      "description": ""
     },
     {
       "title": "Odin",
@@ -269,7 +363,8 @@
       "placement": "Arm",
       "featured": false,
       "ratio": "640/1136",
-      "position": "center"
+      "position": "center",
+      "description": ""
     },
     {
       "title": "Crown of thorns",
@@ -279,7 +374,8 @@
       "placement": "Arm",
       "featured": false,
       "ratio": "720/1280",
-      "position": "center"
+      "position": "center",
+      "description": ""
     },
     {
       "title": "Rhino",
@@ -289,7 +385,250 @@
       "placement": "Thigh",
       "featured": false,
       "ratio": "1440/1560",
-      "position": "center"
+      "position": "center",
+      "description": ""
+    },
+    {
+      "title": "Lion sleeve",
+      "image": "images/17-lion-sleeve.jpg",
+      "alt": "Black and grey realism sleeve with a lion and wildlife",
+      "category": "Wildlife",
+      "placement": "Full sleeve",
+      "featured": true,
+      "ratio": "1127/2000",
+      "position": "center",
+      "description": ""
+    },
+    {
+      "title": "Skull & hands",
+      "image": "images/18-chest-skull.jpg",
+      "alt": "Black and grey realism chest piece: a skull held between two hands",
+      "category": "Symbolic",
+      "placement": "Chest",
+      "featured": false,
+      "ratio": "1108/1968",
+      "position": "center",
+      "description": ""
+    },
+    {
+      "title": "Buckwheat",
+      "image": "images/19-rottweiler.jpg",
+      "alt": "Black and grey realism portrait of a Rottweiler on the forearm",
+      "category": "Wildlife",
+      "placement": "Forearm",
+      "featured": false,
+      "ratio": "640/1136",
+      "position": "center",
+      "description": "A portrait of Buckwheat the Rottweiler."
     }
-  ]
+  ],
+  "process": [
+    {
+      "title": "The message",
+      "text": "Send the idea, the placement, a rough size and any references. Short is fine. The form below turns it into one clear WhatsApp message.",
+      "tag": "WhatsApp"
+    },
+    {
+      "title": "The conversation",
+      "text": "What will actually work on your body: scale, flow, where the light falls on the muscle. Realism needs room — sometimes the honest answer is bigger, or simpler.",
+      "tag": "Scale · Flow"
+    },
+    {
+      "title": "The design",
+      "text": "The composition is built for you and your placement. Dates, deposits and session length are agreed directly when you book.",
+      "tag": "Composition"
+    },
+    {
+      "title": "The session",
+      "text": "Black & grey is built in layers — from the deepest shadow up to the highlights. Large pieces are split across sessions. To be continued.",
+      "tag": "Layers"
+    },
+    {
+      "title": "The healing",
+      "text": "Follow the aftercare you're given. Healed realism softens and settles into the skin — that's the version you live with, and the one that counts.",
+      "tag": "Healed"
+    }
+  ],
+  "locations": [
+    {
+      "name": "Amsterdam",
+      "note": "Guest spots · Netherlands",
+      "dates": ""
+    },
+    {
+      "name": "Phuket",
+      "note": "Thailand",
+      "dates": ""
+    },
+    {
+      "name": "Portugal",
+      "note": "Guest spots",
+      "dates": ""
+    }
+  ],
+  "facts": [
+    {
+      "label": "Discipline",
+      "value": "Black & grey realism"
+    },
+    {
+      "label": "Based",
+      "value": "Tattooing worldwide"
+    },
+    {
+      "label": "On the road",
+      "value": "Amsterdam · Phuket · Portugal"
+    },
+    {
+      "label": "Bookings",
+      "value": "Open — via WhatsApp"
+    }
+  ],
+  "values": [
+    {
+      "title": "Freedom",
+      "text": "I am a free soul. Every achievement so far has been personal — and in favour of that."
+    },
+    {
+      "title": "Kindness",
+      "text": "Be kind, it's gangster. A word, a smile, a little love — that's how we evolve."
+    },
+    {
+      "title": "Craft",
+      "text": "Every piece starts with your idea and is composed for the part of you it will live on."
+    }
+  ],
+  "interests": [
+    "Muay Thai",
+    "Training",
+    "Ocean",
+    "Islands",
+    "Animals",
+    "Friends",
+    "Tattoo life",
+    "Travel"
+  ],
+  "moments": [
+    {
+      "title": "30 days",
+      "tag": "Muay Thai",
+      "text": "We are on a mission. My humblest brother — we push each other.",
+      "image": "images/life-muay-thai.jpg",
+      "position": "center 30%"
+    },
+    {
+      "title": "One golden afternoon",
+      "tag": "Ocean",
+      "text": "What truly remains is not the love we keep, but the love we learn.",
+      "image": "images/person-beach.jpg",
+      "position": "center 35%"
+    },
+    {
+      "title": "Thailand",
+      "tag": "Street food",
+      "text": "",
+      "image": "images/travel-thai-street-food.jpg",
+      "position": "center"
+    },
+    {
+      "title": "Tattoo life",
+      "tag": "Work",
+      "text": "Doing what I love, with people I love.",
+      "image": "images/artist.jpg",
+      "position": "62% 30%"
+    }
+  ],
+  "destinations": [
+    {
+      "name": "Bali",
+      "region": "Uluwatu, Indonesia",
+      "text": "In love with life and everything I can experience in it. Live it up.",
+      "image": "images/travel-bali-uluwatu.jpg",
+      "position": "center 40%"
+    },
+    {
+      "name": "Thailand",
+      "region": "Phuket",
+      "text": "Friendships that last forever. A lot of memories to keep, a few more to share.",
+      "image": "images/travel-thai-street-food.jpg",
+      "position": "center"
+    },
+    {
+      "name": "Amsterdam",
+      "region": "Netherlands",
+      "text": "The cold is getting me, but I'm on fire. Guest spots and good people.",
+      "image": "",
+      "position": ""
+    },
+    {
+      "name": "Portugal",
+      "region": "Lisbon & beyond",
+      "text": "Long sessions and three straight days on one piece.",
+      "image": "",
+      "position": ""
+    }
+  ],
+  "films": [],
+  "journal": [
+    {
+      "slug": "papa",
+      "title": "Papa",
+      "category": "The Last Soul",
+      "place": "Thailand",
+      "date": "",
+      "cover": "images/lastsoul-papa.jpg",
+      "coverPosition": "center 40%",
+      "excerpt": "Sometimes people don't need much. A little attention, a helping hand, some food or medicine — or simply someone who cares.",
+      "source": "Originally shared on Instagram.",
+      "body": "Yesterday, I found out that Papa had crashed his bike. I met him four years ago here in Thailand, and he's one of those people who leave a mark on you without even realising it.\n\nWhen I heard what had happened, I decided to visit him, spend some time together and make sure he was doing okay.\n\nIt reminded me of something important: sometimes, people don't need much. A little attention, a helping hand, some food or medicine, or simply someone who cares.\n\nI want to share more of Papa's story and how our paths crossed years ago. And I'd love to do something more for him. If you'd like to be part of this little initiative, even €2 or €5 could help us get him some food, medicine or anything else he might need. No pressure, no expectations. Every little bit of kindness counts.\n\nLet's remind someone that they're not alone. If you want to be part of the plan, just text me.\n\n> Be kind. It's gangster."
+    },
+    {
+      "slug": "borrowed-love",
+      "title": "Borrowed love",
+      "category": "Life",
+      "place": "Thailand",
+      "date": "",
+      "cover": "images/person-beach.jpg",
+      "coverPosition": "center 35%",
+      "excerpt": "Some kinds of love are borrowed. We don't own them — we just get to experience them.",
+      "source": "Originally shared on Instagram.",
+      "body": "Sometimes love arrives in the smallest, sweetest ways, like a sandy little heartbeat you meet by the ocean. For a moment, the world slows down. You hold this tiny life in your hands and it feels like love has chosen you. Not forever, just for now. And that “now” is enough.\n\nSome kinds of love are borrowed like that. We don't own them. We just get to experience them — the warmth, the trust, the softness resting against our chest. One day it changes, like the tide. But its purpose was never to stay. Its purpose was to remind us what tenderness feels like.\n\nSo we honour the love we cross paths with, even if it's just for one golden afternoon on the beach with a little dog who made the world feel gentle again.\n\n> What truly remains is not the love we keep, but the love we learn."
+    },
+    {
+      "slug": "lose-ourselves-find-ourselves",
+      "title": "To lose ourselves, to find ourselves",
+      "category": "Travel",
+      "place": "On the road",
+      "date": "",
+      "cover": "images/travel-signpost.jpg",
+      "coverPosition": "center",
+      "excerpt": "Just an island boy trying to make it.",
+      "source": "Originally shared on Instagram. Quote by Pico Iyer.",
+      "body": "Just an island boy trying to make it.\n\n> We travel, initially, to lose ourselves; and we travel, next, to find ourselves. We travel to open our hearts and eyes and learn more about the world than our newspapers will accommodate.\n\n— Pico Iyer\n\nLet's get it."
+    },
+    {
+      "slug": "a-free-soul",
+      "title": "A free soul",
+      "category": "Reflections",
+      "place": "",
+      "date": "New Year 2024",
+      "cover": "images/artist-2.jpg",
+      "coverPosition": "center 35%",
+      "excerpt": "It wasn't the easiest year — but perhaps the one with the most learning.",
+      "source": "Originally shared on Instagram, in Portuguese and English.",
+      "body": "I want to thank everyone for their support this year. It wasn't the easiest, but perhaps the one with the most learning, the most baggage, and some notion of what I want — and even more of what I don't want.\n\nI've never been one to have anything easy, and thank goodness. I wasn't born into a rich family, and thank goodness. I had to find some positivity while facing a lot of negativity, but it's part of my process, and thank goodness.\n\nIt's not easy to be an artist, but it's the most beautiful path I have and the one I enjoy the most. I am a free soul, and these achievements were all personal, in favour of that.\n\n> I've always realised that life is meant to be lived, so let it be my way.\n\nI wish everyone twice as much as they wish me. To my people: the top feels better when we all get there together. Let's get it.\n\n*“Sempre percebi que a vida é para ser vivida, então que seja à minha maneira.”*"
+    }
+  ],
+  "initiatives": [
+    {
+      "title": "Papa",
+      "place": "Thailand",
+      "status": "First initiative",
+      "text": "Helping a friend with food, medicine and company after a bike accident. Even €2 or €5 can help.",
+      "image": "images/lastsoul-papa.jpg",
+      "position": "center 40%",
+      "link": "article.html?a=papa"
+    }
+  ],
+  "impact": []
 }

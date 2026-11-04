@@ -15,10 +15,10 @@
    WEBSITE EDITOR — same light, nude, Apple-style language as the website.
    ========================================================================== */
 :root {
-  --bg: #F6F2EC; --bg-2: #EFE8DF; --card: #FFFFFF;
-  --text: #2B241F; --text-2: #5B4F46; --muted: #8A7E74;
-  --line: rgba(43,36,31,.10); --line-2: rgba(43,36,31,.18);
-  --accent: #8E6B53; --accent-soft: rgba(142,107,83,.13); --nude: #E6D6C6;
+  --bg: #EAE7E0; --bg-2: #E1DDD4; --card: #F7F6F2;
+  --text: #292B29; --text-2: #4A4C48; --muted: #6E706A;
+  --line: rgba(41,43,41,.10); --line-2: rgba(41,43,41,.18);
+  --accent: #9E4E30; --accent-soft: rgba(198,107,69,.16); --nude: #E6D5C8;
   --ok: #4E7A4A; --ok-soft: rgba(78,122,74,.12); --danger: #B4533F; --danger-soft: rgba(180,83,63,.10);
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Arial, sans-serif;
   --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
@@ -49,7 +49,7 @@ h1, h2, h3, p { margin: 0; }
 .btn--primary { background: var(--text); border-color: var(--text); color: var(--bg); }
 .btn--primary:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 .btn--ghost { background: transparent; }
-.btn--loud { background: #D2341C; border-color: #D2341C; color: #fff; }
+.btn--loud { background: #B35B37; border-color: #B35B37; color: #fff; }
 .btn--loud:hover { background: var(--text); border-color: var(--text); color: var(--bg); }
 .btn--danger { color: var(--danger); border-color: rgba(180,83,63,.35); background: var(--card); }
 .btn--danger.is-armed { background: var(--danger); color: #fff; border-color: var(--danger); }
@@ -94,7 +94,7 @@ select.in { appearance: none; -webkit-appearance: none; padding-right: 38px; bac
 
 /* ---------- App layout ---------- */
 .app { display: grid; height: 100dvh; grid-template-columns: 252px minmax(0, 1fr) minmax(380px, 36vw); grid-template-rows: var(--top-h) minmax(0, 1fr); }
-.top { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; padding: 0 18px; padding-top: env(safe-area-inset-top); border-bottom: 1px solid var(--line); background: rgba(246,242,236,.85); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%); position: relative; z-index: 20; }
+.top { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; padding: 0 18px; padding-top: env(safe-area-inset-top); border-bottom: 1px solid var(--line); background: rgba(234,231,224,.85); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%); position: relative; z-index: 20; }
 .top__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
 .top__brand strong { display: block; font-weight: 600; font-size: .95rem; line-height: 1.1; }
 .top__brand small { display: block; color: var(--muted); font-size: .78rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -132,7 +132,7 @@ select.in { appearance: none; -webkit-appearance: none; padding-right: 38px; bac
 
 /* Image field */
 .imgf { display: flex; gap: 14px; align-items: center; }
-.imgf__thumb { width: 92px; height: 110px; flex: none; border-radius: 14px; overflow: hidden; background: var(--bg-2); display: grid; place-items: center; color: var(--muted); font-size: .75rem; }
+.imgf__thumb { width: 92px; height: 110px; flex: none; border-radius: 14px; overflow: hidden; background: var(--bg-2); display: grid; place-items: center; color: var(--muted); font-size: .72rem; text-align: center; padding: 6px; line-height: 1.3; }
 .imgf__thumb img { width: 100%; height: 100%; object-fit: cover; }
 .imgf__ctl { display: grid; gap: 8px; justify-items: start; min-width: 0; flex: 1; }
 .imgf__ctl .in { max-width: 100%; }
@@ -187,6 +187,8 @@ select.in { appearance: none; -webkit-appearance: none; padding-right: 38px; bac
 .badge--new { background: var(--accent-soft); color: var(--accent); }
 .pc__chev { width: 10px; height: 10px; border-right: 1.6px solid var(--muted); border-bottom: 1.6px solid var(--muted); transform: rotate(45deg); margin: 0 6px 4px; transition: transform .3s var(--ease); flex: none; }
 .pc.is-open .pc__chev { transform: rotate(-135deg); margin-bottom: -4px; }
+.pc__body--single { grid-template-columns: minmax(0, 1fr) !important; }
+.pc__thumb--empty { display: block; background: linear-gradient(160deg, #E4DFD6, #D2CBBF); }
 .pc__body { display: grid; grid-template-columns: 200px minmax(0,1fr); gap: 20px; padding: 6px 18px 20px; border-top: 1px solid var(--line); padding-top: 18px; }
 .pc__media { display: grid; gap: 10px; align-content: start; justify-items: start; }
 .pc__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; background: var(--bg-2); }
@@ -217,7 +219,7 @@ select.in { appearance: none; -webkit-appearance: none; padding-right: 38px; bac
 
 /* ---------- Preview ---------- */
 .pv { display: flex; flex-direction: column; border-left: 1px solid var(--line); background: var(--bg-2); min-width: 0; }
-.pv__bar { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); background: rgba(246,242,236,.8); }
+.pv__bar { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-bottom: 1px solid var(--line); background: rgba(234,231,224,.8); }
 .pv__title { font-weight: 600; font-size: .88rem; margin-right: auto; display: flex; align-items: center; gap: 8px; }
 .pv__title::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px var(--ok-soft); }
 .pv__close { display: none; }
@@ -230,7 +232,7 @@ select.in { appearance: none; -webkit-appearance: none; padding-right: 38px; bac
 .bar { display: none; }
 
 /* ---------- Sheet + toast ---------- */
-.sheet { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 16px; background: rgba(246,242,236,.7); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); animation: fade .25s; }
+.sheet { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 16px; background: rgba(234,231,224,.7); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); animation: fade .25s; }
 .sheet__card { width: min(420px, 100%); background: var(--card); border-radius: 26px; padding: 30px 26px 24px; box-shadow: 0 40px 90px -30px rgba(70,50,35,.45); display: grid; gap: 12px; text-align: center; animation: rise .45s var(--ease); }
 .sheet__icon { width: 58px; height: 58px; border-radius: 50%; margin: 0 auto 6px; display: grid; place-items: center; background: var(--bg-2); font-size: 1.6rem; }
 .sheet__icon.is-spin::after { content: ""; width: 26px; height: 26px; border-radius: 50%; border: 2.5px solid var(--line-2); border-top-color: var(--text); animation: spin .8s linear infinite; }
@@ -281,7 +283,7 @@ select.in { appearance: none; -webkit-appearance: none; padding-right: 38px; bac
   .pc__media { grid-template-columns: 110px 1fr; align-items: center; }
   .pc__media img { width: 110px; }
   .pc__badges .badge:not(.badge--new):not(.badge--dark) { display: none; }
-  .bar { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 12px 14px calc(12px + env(safe-area-inset-bottom)); background: rgba(246,242,236,.88); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%); border-top: 1px solid var(--line); }
+  .bar { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 12px 14px calc(12px + env(safe-area-inset-bottom)); background: rgba(234,231,224,.88); -webkit-backdrop-filter: blur(18px) saturate(170%); backdrop-filter: blur(18px) saturate(170%); border-top: 1px solid var(--line); }
   .bar .btn { flex: 1; min-height: 50px; font-size: 1rem; }
   .pv__bar .seg { display: none; }
   .pv__device { border-radius: 0; box-shadow: none; }
@@ -383,106 +385,148 @@ const MAX_FEATURED = 6;
 /* ==========================================================================
    2. WHAT CAN BE EDITED — one entry per section of the website
    ========================================================================== */
-const RICH = true;
+const t = (k, label, o = {}) => Object.assign({ k: "text." + k, label }, o);
+const R = (k, label, o = {}) => t(k, label, Object.assign({ rich: true }, o));
+const P = (k, label, o = {}) => t(k, label, Object.assign({ type: "para" }, o));
+const IMG = (k, label, o = {}) => Object.assign({ k: "media." + k, label, type: "image" }, o);
+const H = (h, note) => ({ h, note });
 const SECTIONS = [
-  { id: "portfolio", title: "Portfolio", sub: "Your tattoo photos", anchor: "#work", custom: "portfolio",
+  { id: "portfolio", title: "Portfolio", sub: "Your tattoo photos", page: "tattoos.html", anchor: "#gallery", custom: "portfolio",
     intro: "Add, reorder, feature or remove pieces. The order here is the order on the website." },
-  { id: "home", title: "Home", sub: "Name & opening screen", anchor: "#top",
-    intro: "The first screen visitors see.",
+  { id: "home", title: "Home", sub: "The first page", page: "index.html", anchor: "#top",
+    intro: "Everything on the home page, from top to bottom.",
     fields: [
-      { h: "Your name" },
-      { k: "settings.artistName", label: "Name", hint: "The first word goes on line one, the rest on line two." },
-      { k: "settings.discipline", label: "Style", hint: "Shown under each piece in the photo viewer." },
-      { h: "Opening screen" },
-      { k: "text.hero.kicker1", label: "Status badge", hint: "For example “Bookings open” or “Fully booked until March”." },
-      { row: [{ k: "text.hero.kicker2", label: "Label 2" }, { k: "text.hero.kicker3", label: "Label 3" }] },
-      { k: "text.hero.tagline", label: "Tagline", rich: RICH },
-      { k: "text.hero.lede", label: "Introduction", type: "para" },
-      { row: [{ k: "text.hero.cta1", label: "Main button" }, { k: "text.hero.cta2", label: "Second button" }] },
-      { row: [{ k: "text.hero.corner1", label: "Corner line 1" }, { k: "text.hero.corner2", label: "Corner line 2" }], hint: "Top-left corner, on computers only." },
-      { h: "3D carousel" },
-      { k: "media.heroPiece", label: "Piece facing front", type: "piece" },
-      { k: "media.ringCount", label: "How many pieces spin", type: "number", min: 3, max: 16, hint: "Uses the first pieces in your portfolio order." },
-      { k: "media.heroBackground", label: "Soft background photo", type: "image", hint: "Shown very faintly behind the opening screen." }
+      H("Opening screen"),
+      t("home.kicker", "Small line above the headline"),
+      R("home.title", "Headline", { hint: "Words between *asterisks* turn terracotta." }),
+      R("home.lede", "Introduction", { hint: "Words between *asterisks* are shown in bold." }),
+      IMG("hero", "Opening photo", { hint: "Large photo on the right on computers, at the top on phones." }),
+      { row: [t("home.cardTitle", "Glass card — title"), t("home.cardText", "Glass card — text")] },
+      H("Three pillars"),
+      { row: [t("home.p1.title", "01 — Title"), t("home.p1.text", "01 — Text")] }, IMG("pillarPerson", "01 — Photo"),
+      { row: [t("home.p2.title", "02 — Title"), t("home.p2.text", "02 — Text")] }, IMG("pillarCraft", "02 — Photo"),
+      { row: [t("home.p3.title", "03 — Title"), t("home.p3.text", "03 — Text")] }, IMG("pillarSoul", "03 — Photo"),
+      H("Who I am"),
+      t("home.introLabel", "Small label"), R("home.introTitle", "Title"), P("home.introText", "Text"), t("home.introCta", "Button"),
+      IMG("portrait", "Photo", { hint: "Also used at the top of the About page." }),
+      H("Travel", "The slides come from Travel → Destinations."),
+      t("home.travelLabel", "Small label"), R("home.travelTitle", "Title"), t("home.travelText", "Text"), t("home.travelCta", "Link"),
+      H("Journal", "Shows the two newest stories from the Journal."),
+      t("home.journalLabel", "Small label"), R("home.journalTitle", "Title"), P("home.journalText", "Text"), t("home.journalCta", "Link"),
+      H("The Craft", "Shows four featured pieces from the Portfolio."),
+      t("home.craftLabel", "Small label"), R("home.craftTitle", "Title"), P("home.craftText", "Text"),
+      { row: [t("home.craftCta", "Portfolio button"), t("home.craftBook", "WhatsApp button")] },
+      H("The Last Soul"),
+      t("home.soulLabel", "Small label"), R("home.soulTitle", "Title"), P("home.soulText", "Text"),
+      { row: [t("home.soulCta", "Main button"), t("home.soulCta2", "Second button")] },
+      IMG("soulImage", "Photo", { hint: "Also used on The Last Soul page." })
     ] },
-  { id: "work", title: "Selected work", sub: "Intro & moving bands", anchor: "#work",
-    intro: "The section that introduces your featured pieces, and the archive below it.",
+  { id: "about", title: "About", sub: "Your story", page: "about.html", anchor: "#top",
     fields: [
-      { k: "text.work.label", label: "Small label" },
-      { k: "text.work.title", label: "Title", rich: RICH },
-      { k: "text.work.introSerif", label: "Highlighted line" },
-      { k: "text.work.intro", label: "Text", type: "para" },
-      { h: "Moving text bands", note: "One word or short phrase per line." },
-      { row: [{ k: "bandA", label: "Band 1", type: "words" }, { k: "bandB", label: "Band 2", type: "words" }] },
-      { h: "Archive" },
-      { row: [{ k: "text.index.label", label: "Small label" }, { k: "text.index.title", label: "Title", rich: RICH }] }
+      t("about.kicker", "Small label"), R("about.title", "Name as headline"), R("about.lead", "Line under the name"),
+      IMG("portrait", "Main photo"), IMG("portrait2", "Second photo", { hint: "The smaller photo over the corner of the main one." }),
+      H("Your story"),
+      R("about.statement", "Statement"), P("about.p1", "Paragraph 1"), P("about.p2", "Paragraph 2"), P("about.p3", "Paragraph 3"),
+      H("In your own words"),
+      t("about.quoteLabel", "Small label"), P("about.quote", "Quote"), P("about.quotePt", "Original (Portuguese)"),
+      H("What you believe"),
+      t("about.valuesLabel", "Small label"), R("about.valuesTitle", "Title"),
+      { k: "values", type: "list", add: "+ Add a value", fields: [{ p: "title", label: "Title", head: true }, { p: "text", label: "Text", type: "para" }] },
+      H("Quick facts"), { k: "facts", type: "pairs", labels: ["Label", "Text"] },
+      H("Words you live by"), t("about.wordsLabel", "Small label"), P("about.words", "Quote")
     ] },
-  { id: "artist", title: "About you", sub: "Photos, bio, facts", anchor: "#artist",
-    intro: "Your photos and the story behind the work.",
+  { id: "lifestyle", title: "Lifestyle", sub: "Life between tattoos", page: "lifestyle.html", anchor: "#top",
     fields: [
-      { h: "Photos" },
-      { k: "media.artistPortrait", label: "Main photo", type: "image" },
-      { k: "media.artistDetailImage", label: "Second photo", type: "image", hint: "The smaller photo layered over the corner of the main one." },
-      { h: "Text" },
-      { k: "text.artist.label", label: "Small label" },
-      { k: "text.artist.statement", label: "Statement", rich: RICH },
-      { k: "text.artist.lead", label: "First paragraph", type: "para" },
-      { k: "text.artist.p2", label: "Second paragraph", type: "para" },
-      { k: "text.artist.p3", label: "Third paragraph", type: "para" },
-      { h: "Quick facts" },
-      { k: "facts", type: "pairs", labels: ["Label", "Text"] }
+      t("life.kicker", "Small label"), R("life.title", "Headline"), P("life.lead", "Introduction"),
+      { k: "interests", label: "Interests", type: "words", hint: "One per line — shown as small tags." },
+      H("Big photo"), IMG("lifeHero", "Photo"),
+      t("life.bleedTag", "Glass panel — small label"), t("life.bleedTitle", "Glass panel — title"), P("life.bleedText", "Glass panel — text"),
+      H("Moments"), t("life.momentsLabel", "Small label"), R("life.momentsTitle", "Title"),
+      { k: "moments", type: "list", add: "+ Add a moment", meta: x => x.tag || "",
+        fields: [{ p: "title", label: "Title", head: true }, { p: "tag", label: "Small label (e.g. Ocean)" }, { p: "text", label: "Text", type: "para" }, { p: "image", label: "Photo", type: "image" }] },
+      H("Closing quote"), P("life.quote", "Quote")
     ] },
-  { id: "process", title: "Process", sub: "How a piece comes together", anchor: "#process",
-    intro: "The five steps from first message to healed tattoo.",
+  { id: "travel", title: "Travel", sub: "Destinations & films", page: "travel.html", anchor: "#top",
     fields: [
-      { k: "text.process.label", label: "Small label" },
-      { k: "text.process.title", label: "Title", rich: RICH },
-      { k: "text.process.lede", label: "Introduction", type: "para" },
-      ...[1, 2, 3, 4, 5].flatMap(n => [
-        { h: "Step " + n },
-        { row: [{ k: `text.process.s${n}.title`, label: "Title" }, { k: `text.process.s${n}.tag`, label: "Small tag" }] },
-        { k: `text.process.s${n}.text`, label: "Text", type: "para" }
-      ])
+      t("travel.kicker", "Small label"), R("travel.title", "Headline"), P("travel.lead", "Introduction"),
+      H("Big photo"), IMG("travelHero", "Photo"),
+      t("travel.bleedTag", "Glass panel — small label"), t("travel.bleedTitle", "Glass panel — title"), P("travel.bleedText", "Glass panel — text"),
+      H("Destinations", "Also shown as slides on the home page."), t("travel.placesLabel", "Small label"), R("travel.placesTitle", "Title"),
+      { k: "destinations", type: "list", titleProp: "name", add: "+ Add a destination", meta: x => x.region || "",
+        fields: [{ p: "name", label: "Place", head: true }, { p: "region", label: "Region / country" }, { p: "text", label: "Text", type: "para" }, { p: "image", label: "Photo", type: "image" }] },
+      H("On the road"), IMG("travelStory", "Photo"), t("travel.storyLabel", "Small label"), P("travel.storyQuote", "Quote"), t("travel.storyCite", "Quote author"), t("travel.storyText", "Line under the quote"),
+      H("Films"), t("travel.filmsLabel", "Small label"), R("travel.filmsTitle", "Title"), P("travel.filmsText", "Text"),
+      { k: "films", type: "list", add: "+ Add a film", meta: x => x.place || "",
+        fields: [{ p: "title", label: "Title", head: true }, { p: "place", label: "Place" }, { p: "url", label: "Video link", hint: "A YouTube link, or a link to an .mp4 file." }, { p: "poster", label: "Cover photo", type: "image" }] }
     ] },
-  { id: "travel", title: "Travel", sub: "Where you tattoo", anchor: "#travel",
-    intro: "Your stops. They also appear as choices in the booking form.",
+  { id: "tattoos", title: "Tattoos page", sub: "Process, places, booking", page: "tattoos.html", anchor: "#top",
+    intro: "The words around your portfolio. The pieces themselves are in Portfolio.",
     fields: [
-      { k: "text.travel.label", label: "Small label" },
-      { k: "text.travel.title", label: "Title", rich: RICH },
-      { k: "text.travel.lede", label: "Introduction", type: "para" },
-      { h: "Places", note: "Add dates when a guest spot is announced, e.g. “12–20 Mar 2027”." },
+      t("tattoos.kicker", "Small label"), R("tattoos.title", "Headline"),
+      t("tattoos.status", "Status badge", { hint: "For example “Bookings open” or “Fully booked until March”." }),
+      P("tattoos.lead", "Introduction"), { row: [t("tattoos.cta1", "WhatsApp button"), t("tattoos.cta2", "Form button")] },
+      H("Portfolio heading"), { row: [t("tattoos.galleryLabel", "Small label"), R("tattoos.galleryTitle", "Title")] },
+      H("Process"), t("tattoos.processLabel", "Small label"), R("tattoos.processTitle", "Title"), P("tattoos.processLede", "Introduction"),
+      { k: "process", type: "list", add: "+ Add a step", meta: x => x.tag || "",
+        fields: [{ p: "title", label: "Title", head: true }, { p: "tag", label: "Small tag" }, { p: "text", label: "Text", type: "para" }] },
+      H("Where you tattoo", "Add dates when a guest spot is announced, e.g. “12–20 Mar 2027”. Places also appear as choices in the booking form."),
+      t("tattoos.whereLabel", "Small label"), R("tattoos.whereTitle", "Title"), P("tattoos.whereLede", "Introduction"),
       { k: "locations", type: "locations" },
-      { k: "text.travel.foot", label: "Line under the list" }
+      H("Booking form"), t("tattoos.bookLabel", "Small label"), R("tattoos.bookTitle", "Title"), P("tattoos.bookIntro", "Introduction"),
+      t("tattoos.bookStep1", "Step 1"), t("tattoos.bookStep2", "Step 2"), t("tattoos.bookStep3", "Step 3"), P("tattoos.submitNote", "Note under the button")
     ] },
-  { id: "booking", title: "Booking & contact", sub: "WhatsApp, Instagram", anchor: "#booking",
-    intro: "Where enquiries go, and the words around the booking form.",
+  { id: "soul", title: "The Last Soul", sub: "Mission & initiatives", page: "the-last-soul.html", anchor: "#top",
     fields: [
-      { h: "Where enquiries go" },
+      t("soul.kicker", "Small label"), R("soul.title", "Headline"), P("soul.lead", "Introduction"),
+      { row: [t("soul.cta1", "Main button"), t("soul.cta2", "Second button")] },
+      H("01 — The mission"), R("soul.missionTitle", "Title"), P("soul.missionText", "Text"), P("soul.missionText2", "Second paragraph"),
+      H("02 — The story"), IMG("soulImage", "Photo"), R("soul.storyTitle", "Title"), P("soul.storyText", "Text"), P("soul.storyQuote", "Quote"), t("soul.storyLink", "Link text"),
+      H("03 — Initiatives", "Only real initiatives. An empty “Next initiative” card is always shown at the end."),
+      R("soul.initTitle", "Title"), P("soul.initText", "Text"),
+      { k: "initiatives", type: "list", add: "+ Add an initiative", meta: x => [x.status, x.place].filter(Boolean).join(" · "),
+        fields: [{ p: "title", label: "Name", head: true }, { p: "place", label: "Place" }, { p: "status", label: "Status (e.g. Ongoing, Completed)" }, { p: "text", label: "Text", type: "para" }, { p: "image", label: "Photo", type: "image" }, { p: "link", label: "Link (optional)", hint: "e.g. article.html?a=papa for a Journal story." }] },
+      H("04 — Impact", "Leave empty until there is real, verified impact to share — the page then shows an honest note instead."),
+      R("soul.impactTitle", "Title"),
+      { k: "impact", type: "list", add: "+ Add an impact story", meta: x => x.figure || "",
+        fields: [{ p: "title", label: "Title", head: true }, { p: "figure", label: "Real number (optional)", hint: "Only verified figures, e.g. “42 meals”." }, { p: "text", label: "Text", type: "para" }, { p: "image", label: "Photo", type: "image" }] },
+      H("05 — Get involved"), R("soul.involvedTitle", "Title"), P("soul.involvedText", "Text"),
+      { row: [t("soul.way1Title", "Card 1 — title"), t("soul.way1Cta", "Card 1 — button")] }, P("soul.way1Text", "Card 1 — text"),
+      { row: [t("soul.way2Title", "Card 2 — title"), t("soul.way2Cta", "Card 2 — button")] }, P("soul.way2Text", "Card 2 — text"),
+      { row: [t("soul.way3Title", "Card 3 — title"), t("soul.way3Cta", "Card 3 — button")] }, P("soul.way3Text", "Card 3 — text"),
+      H("06 — The future"), R("soul.futureTitle", "Title"), P("soul.futureText", "Text")
+    ] },
+  { id: "journal", title: "Journal", sub: "Stories & articles", page: "journal.html", anchor: "#top",
+    intro: "Write and publish stories. The newest story goes first.",
+    fields: [
+      t("journal.kicker", "Small label"), R("journal.title", "Headline"), P("journal.lead", "Introduction"),
+      H("Stories"),
+      { k: "journal", type: "list", add: "+ Write a new story", top: true, meta: x => [x.category, x.place].filter(Boolean).join(" · "),
+        fields: [{ p: "title", label: "Title", head: true }, { p: "category", label: "Category (e.g. Travel, Life, The Last Soul)" }, { p: "place", label: "Place" }, { p: "date", label: "Date (optional)" },
+          { p: "excerpt", label: "Short summary", type: "para" }, { p: "cover", label: "Cover photo", type: "image" },
+          { p: "body", label: "The story", type: "para", rows: 10, hint: "Leave a blank line between paragraphs. Start a line with > for a quote. *Asterisks* make a word italic." },
+          { p: "source", label: "Note at the end (optional)", hint: "e.g. Originally shared on Instagram." },
+          { p: "slug", label: "Web address", hint: "Used in the link (article.html?a=…). Filled in automatically from the title." }] }
+    ] },
+  { id: "contact", title: "Contact & links", sub: "WhatsApp, Instagram, email", page: "contact.html", anchor: "#top",
+    fields: [
+      H("Where enquiries go"),
       { k: "settings.whatsappNumber", label: "WhatsApp number", inputmode: "tel", placeholder: "31634444502", hint: "Country code + number, digits only — no +, spaces or leading 0. Example: 31634444502." },
-      { row: [{ k: "settings.whatsappDisplay", label: "Number as shown on the site" }, { k: "settings.instagramHandle", label: "Instagram username", placeholder: "angelosalavessa_tattoo" }] },
+      { row: [{ k: "settings.whatsappDisplay", label: "Number as shown on the site" }, { k: "settings.instagramHandle", label: "Instagram username" }] },
       { k: "settings.whatsappGreeting", label: "WhatsApp greeting", hint: "Pre-filled when someone taps a WhatsApp button." },
-      { k: "settings.bookingEmail", label: "Booking email (optional)", input: "email", hint: "If filled in, visitors also get a “Send by email” option." },
-      { h: "Booking section" },
-      { k: "text.booking.label", label: "Small label" },
-      { k: "text.booking.title", label: "Title", rich: RICH },
-      { k: "text.booking.intro", label: "Introduction", type: "para" },
-      { k: "text.booking.next1", label: "Step 1" },
-      { k: "text.booking.next2", label: "Step 2" },
-      { k: "text.booking.next3", label: "Step 3" },
-      { k: "text.booking.submitNote", label: "Note under the button", type: "para" }
+      { k: "settings.contactEmail", label: "Email (optional)", input: "email", hint: "Shown on the Contact page and in the footer when filled in." },
+      { row: [{ k: "settings.youtubeUrl", label: "YouTube link (optional)" }, { k: "settings.tiktokUrl", label: "TikTok link (optional)" }] },
+      H("Contact page"), t("contact.kicker", "Small label"), R("contact.title", "Headline"), P("contact.lead", "Introduction"),
+      t("contact.collabTitle", "Collaborations — title"), P("contact.collabText", "Collaborations — text")
     ] },
-  { id: "closing", title: "Closing & footer", sub: "Last words on the page", anchor: "#contact",
+  { id: "footer", title: "Name & footer", sub: "Signature on every page", page: "index.html", anchor: ".footer",
     fields: [
-      { k: "text.closing.kicker", label: "Small line" },
-      { row: [{ k: "text.closing.line1", label: "Big text — line 1" }, { k: "text.closing.line2", label: "Big text — line 2" }] },
-      { k: "text.footer.tagline", label: "Footer line" }
+      { row: [{ k: "settings.artistName", label: "Your name" }, { k: "settings.discipline", label: "Style", hint: "Shown in the tattoo photo viewer." }] },
+      R("footer.big", "Big closing line"), t("footer.soul", "The Last Soul line"), t("footer.motto", "Small motto")
     ] },
-  { id: "seo", title: "Google & sharing", sub: "Search result text", anchor: "#top",
-    intro: "How the website appears on Google and when the link is shared.",
-    fields: [
-      { k: "seo.title", label: "Page title", hint: "Around 50–60 characters works best." },
-      { k: "seo.description", label: "Description", type: "para", hint: "Around 150 characters works best." }
-    ] },
+  { id: "seo", title: "Google & sharing", sub: "Search result text", page: "index.html", anchor: "#top",
+    intro: "How each page appears on Google and when its link is shared. Titles work best around 50–60 characters, descriptions around 150.",
+    fields: [["home", "Home"], ["about", "About"], ["lifestyle", "Lifestyle"], ["travel", "Travel"], ["tattoos", "Tattoos"], ["soul", "The Last Soul"], ["journal", "Journal"], ["contact", "Contact"]]
+      .flatMap(([k, n]) => [H(n), { k: `seo.${k}.title`, label: "Title" }, { k: `seo.${k}.description`, label: "Description", type: "para" }]) },
   { sep: true },
   { id: "connection", title: "Publishing setup", sub: "Connect to GitHub", custom: "connection" }
 ];
@@ -557,23 +601,29 @@ const pieceIds = new WeakMap(); let pieceSeq = 0;
 const openPieces = new Set();
 const pid = p => { if (!pieceIds.has(p)) pieceIds.set(p, ++pieceSeq); return pieceIds.get(p); };
 
+const LISTS = ["facts", "locations", "portfolio", "process", "values", "interests", "moments", "destinations", "films", "journal", "initiatives", "impact"];
 function normalize(d) {
   d = d && typeof d === "object" ? d : {};
-  d.version = d.version || 1;
+  d.version = d.version || 2;
   ["settings", "media", "text", "seo"].forEach(k => { if (!d[k] || typeof d[k] !== "object" || Array.isArray(d[k])) d[k] = {}; });
-  ["facts", "bandA", "bandB", "locations", "portfolio"].forEach(k => { if (!Array.isArray(d[k])) d[k] = []; });
+  LISTS.forEach(k => { if (!Array.isArray(d[k])) d[k] = []; });
   return d;
 }
+/* Paths: "text.home.title" (text keys contain dots), or "journal.2.title", "seo.home.title", "media.hero" */
 function getv(path) {
   if (path.startsWith("text.")) return draft.text[path.slice(5)];
-  const i = path.indexOf(".");
-  return i < 0 ? draft[path] : (draft[path.slice(0, i)] || {})[path.slice(i + 1)];
+  return path.split(".").reduce((o, k) => (o == null ? undefined : o[k]), draft);
 }
 function setv(path, v) {
   if (path.startsWith("text.")) { draft.text[path.slice(5)] = v; return; }
-  const i = path.indexOf(".");
-  if (i < 0) { draft[path] = v; return; }
-  const a = path.slice(0, i); (draft[a] = draft[a] || {})[path.slice(i + 1)] = v;
+  const parts = path.split("."), last = parts.pop();
+  let o = draft;
+  parts.forEach((k, i) => { if (o[k] == null || typeof o[k] !== "object") o[k] = /^\d+$/.test(parts[i + 1] || last) ? [] : {}; o = o[k]; });
+  o[last] = v;
+}
+function walkStrings(obj, fn) { // calls fn(value, setter) for every string in obj
+  if (Array.isArray(obj)) obj.forEach((v, i) => typeof v === "string" ? fn(v, nv => { obj[i] = nv; }) : walkStrings(v, fn));
+  else if (obj && typeof obj === "object") Object.keys(obj).forEach(k => typeof obj[k] === "string" ? fn(obj[k], nv => { obj[k] = nv; }) : walkStrings(obj[k], fn));
 }
 function srcFor(path) {
   if (!path) return "";
@@ -583,9 +633,14 @@ function srcFor(path) {
 }
 function imagePaths(d) {
   const set = new Set();
-  (d.portfolio || []).forEach(p => p && p.image && set.add(p.image));
-  ["heroBackground", "artistPortrait", "artistDetailImage"].forEach(k => d.media && d.media[k] && set.add(d.media[k]));
+  walkStrings(d, v => { if (/^images\//.test(v)) set.add(v); });
   return set;
+}
+function allImages() { // every photo the site already uses, for the "use an existing photo" menus
+  const seen = new Map();
+  (draft.portfolio || []).forEach(p => p && p.image && !seen.has(p.image) && seen.set(p.image, "Tattoo · " + (p.title || "")));
+  walkStrings(draft, v => { if (/^images\//.test(v) && !seen.has(v)) seen.set(v, v.replace(/^images\/(uploads\/)?/, "").replace(/\.[a-z]+$/i, "").replace(/[-_]+/g, " ")); });
+  return Array.from(seen, ([path, label]) => ({ path, label }));
 }
 function isDirty() { return pending.size > 0 || JSON.stringify(draft) !== JSON.stringify(base); }
 function saveDraft() {
@@ -731,6 +786,14 @@ function validate() {
   if (!/^\d{8,15}$/.test(wa)) errs.push(["booking", "The WhatsApp number must be digits only, with the country code (e.g. 31634444502)."]);
   if (!String(draft.settings.artistName || "").trim()) errs.push(["home", "Your name can't be empty."]);
   if (!draft.portfolio.length) errs.push(["portfolio", "Add at least one piece to the portfolio."]);
+  const used = new Set();
+  draft.journal.forEach(p => {
+    if (!p) return;
+    let sl = slugify(p.slug || p.title) || "story"; const base = sl; let n = 2;
+    while (used.has(sl)) sl = base + "-" + n++;
+    used.add(sl); p.slug = sl;
+  });
+  if (draft.journal.some(p => p && !String(p.title || "").trim())) errs.push(["journal", "Every story needs a title."]);
   return errs;
 }
 function sheet(state, title, text, pct, actions) {
@@ -894,7 +957,12 @@ function show(id) {
   try { history.replaceState(null, "", "#" + current); } catch (e) { /* ignore */ }
   renderPanel();
   $("#panel").scrollTop = 0;
-  if (s.anchor) previewTo(s.anchor);
+  if (pv.started && s.page && s.page !== pv.page) {
+    pv.page = s.page; pv.anchor = s.anchor || "#top"; pv.keepY = null; pv.loaded = false;
+    $("#pv-loading").hidden = false;
+    window.__salavessaDraft = previewContent();
+    pv.frame.src = previewUrl(s.page);
+  } else if (s.anchor) previewTo(s.anchor);
 }
 function header(s, idx) {
   return `<header class="ph">
@@ -904,15 +972,17 @@ function header(s, idx) {
     ${s.anchor ? `<button class="btn btn--sm ph__peek" type="button" data-action="open-preview">See it in the preview →</button>` : ""}
   </header>`;
 }
-function renderPanel() {
+function renderPanel(keep) {
+  const panel = $("#panel"), y = panel.scrollTop;
   const s = SECTIONS.find(x => x.id === current);
   const idx = SECTIONS.filter(x => !x.sep).indexOf(s) + 1;
   let body;
   if (s.custom === "portfolio") body = portfolioHTML();
   else if (s.custom === "connection") body = connectionHTML();
   else body = `<div class="card">${s.fields.map(fieldHTML).join("")}</div>`;
-  $("#panel").innerHTML = `<div class="panel__inner">${header(s, idx)}${body}</div>`;
+  panel.innerHTML = `<div class="panel__inner">${header(s, idx)}${body}</div>`;
   $$("#panel textarea").forEach(autosize);
+  if (keep) panel.scrollTop = y;
 }
 
 function fieldHTML(f) {
@@ -920,13 +990,14 @@ function fieldHTML(f) {
   if (f.row) return `<div class="fld"><div class="g2">${f.row.map(fieldHTML).join("")}</div>${f.hint ? `<p class="hint">${esc(f.hint)}</p>` : ""}</div>`;
   const id = "f-" + f.k.replace(/[^a-z0-9]+/gi, "-");
   const v = getv(f.k);
-  const hint = f.rich ? ((f.hint ? f.hint + " " : "") + "Tip: put *asterisks* around a word to make it italic. Press Enter for a new line.") : f.hint;
+  const hint = f.rich ? (f.hint ? f.hint + " Press Enter for a new line." : "Tip: put *asterisks* around a word to make it italic. Press Enter for a new line.") : f.hint;
   const hintHTML = hint ? `<p class="hint" id="${id}-h">${esc(hint)}</p>` : "";
   const desc = hint ? ` aria-describedby="${id}-h"` : "";
   let input;
   switch (f.type) {
     case "para":
-      input = `<textarea class="in" id="${id}" data-path="${f.k}" rows="3"${desc}>${esc(v)}</textarea>`; break;
+      input = `<textarea class="in" id="${id}" data-path="${f.k}" rows="${f.rows || 3}"${f.rows ? ` style="min-height:${f.rows * 1.5}em"` : ""}${desc}>${esc(v)}</textarea>`; break;
+    case "list": return listHTML(f);
     case "number":
       input = `<input class="in in--num" id="${id}" type="number" inputmode="numeric" min="${f.min}" max="${f.max}" data-path="${f.k}" data-type="number" value="${esc(v)}"${desc}>`; break;
     case "words":
@@ -942,20 +1013,21 @@ function fieldHTML(f) {
     default:
       input = f.rich
         ? `<textarea class="in in--line" id="${id}" data-path="${f.k}" rows="1"${desc}>${esc(v)}</textarea>`
-        : `<input class="in" id="${id}" type="${f.input || "text"}" data-path="${f.k}" value="${esc(v)}"${f.placeholder ? ` placeholder="${esc(f.placeholder)}"` : ""}${f.inputmode ? ` inputmode="${f.inputmode}"` : ""}${desc}>`;
+        : `<input class="in" id="${id}" type="${f.input || "text"}" data-path="${f.k}" value="${esc(v)}"${f.head ? " data-head" : ""}${f.placeholder ? ` placeholder="${esc(f.placeholder)}"` : ""}${f.inputmode ? ` inputmode="${f.inputmode}"` : ""}${desc}>`;
   }
   return `<div class="fld"><label for="${id}">${esc(f.label)}</label>${input}${hintHTML}</div>`;
 }
 function imageFieldHTML(f, v, hintHTML) {
   return `<div class="fld"><span class="lbl">${esc(f.label)}</span>
     <div class="imgf">
-      <div class="imgf__thumb">${v ? `<img src="${esc(srcFor(v))}" alt="">` : "No photo"}</div>
+      <div class="imgf__thumb">${v ? `<img src="${esc(srcFor(v))}" alt="" onerror="this.replaceWith(document.createTextNode('Photo not uploaded yet'))">` : "No photo"}</div>
       <div class="imgf__ctl">
         <label class="btn btn--sm">Upload a photo<input type="file" accept="image/*" hidden data-upload="${f.k}"></label>
-        <select class="in in--sm" data-path="${f.k}" data-type="image" aria-label="${esc(f.label)}: choose one of your tattoo photos">
-          <option value="">Or use a portfolio photo…</option>
-          ${draft.portfolio.map(p => `<option value="${esc(p.image)}"${p.image === v ? " selected" : ""}>${esc(p.title)}</option>`).join("")}
+        <select class="in in--sm" data-path="${f.k}" data-type="image" aria-label="${esc(f.label)}: choose a photo already on the site">
+          <option value="">Or use a photo already on the site…</option>
+          ${allImages().map(o => `<option value="${esc(o.path)}"${o.path === v ? " selected" : ""}>${esc(o.label)}</option>`).join("")}
         </select>
+        ${v ? `<button class="btn btn--sm btn--ghost" type="button" data-action="img-clear" data-path="${f.k}">Remove photo</button>` : ""}
       </div>
     </div>${hintHTML}</div>`;
 }
@@ -991,6 +1063,39 @@ function colorFieldHTML(f, v, hintHTML) {
     <div class="loud-demo" id="loud-demo" style="--c:${esc(v)};--ci:${inkFor(v)}"><span class="loud-demo__btn">Start your piece →</span><span class="loud-demo__quiet">Everything else stays quiet.</span></div>
   </div>`;
 }
+/* ---------- Generic lists (stories, destinations, initiatives…) ---------- */
+const openItems = new Set();
+function listHTML(f) {
+  const arr = getv(f.k) || [];
+  const tp = f.titleProp || f.fields[0].p;
+  const imgF = f.fields.find(x => x.type === "image");
+  const addBtn = `<div><button class="btn btn--sm${f.top ? " btn--primary" : ""}" type="button" data-action="list-add" data-list="${f.k}">${esc(f.add || "+ Add")}</button></div>`;
+  return `<div class="fld">${f.label ? `<span class="lbl">${esc(f.label)}</span>` : ""}
+    ${f.top ? addBtn : ""}
+    <div class="pcs">${arr.map((it, i) => {
+      const open = openItems.has(f.k + "#" + i), last = arr.length - 1;
+      const thumb = imgF ? (it[imgF.p] ? `<img class="pc__thumb" src="${esc(srcFor(it[imgF.p]))}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span class="pc__thumb pc__thumb--empty" aria-hidden="true"></span>`) : "";
+      return `<article class="pc${open ? " is-open" : ""}">
+        <button class="pc__head" type="button" data-action="list-toggle" data-list="${f.k}" data-i="${i}" aria-expanded="${open}">
+          <span class="pc__no">${i + 1}</span>${thumb}
+          <span class="pc__sum"><strong class="pc__title">${esc(it[tp] || "Untitled")}</strong><small class="pc__meta">${esc(f.meta ? f.meta(it) : "")}</small></span>
+          ${pendingIn(it) ? '<span class="badge badge--new">New photo</span>' : ""}<span class="pc__chev" aria-hidden="true"></span>
+        </button>
+        <div class="pc__body pc__body--single"${open ? "" : " hidden"}>
+          ${f.fields.map(sf => fieldHTML(Object.assign({}, sf, { k: f.k + "." + i + "." + sf.p }))).join("")}
+          <div class="pc__actions">
+            <button class="btn btn--sm" type="button" data-action="list-move" data-list="${f.k}" data-i="${i}" data-d="-1"${i === 0 ? " disabled" : ""}>↑ Move up</button>
+            <button class="btn btn--sm" type="button" data-action="list-move" data-list="${f.k}" data-i="${i}" data-d="1"${i === last ? " disabled" : ""}>↓ Move down</button>
+            <button class="btn btn--sm btn--danger" type="button" data-action="list-del" data-list="${f.k}" data-i="${i}">Delete</button>
+          </div>
+        </div>
+      </article>`;
+    }).join("")}</div>
+    ${f.top ? "" : addBtn}</div>`;
+}
+function pendingIn(item) { let n = false; walkStrings(item, v => { if (pending.has(v)) n = true; }); return n; }
+function listDef(k) { for (const s of SECTIONS) for (const f of (s.fields || [])) if (f.k === k && f.type === "list") return f; return null; }
+function slugify(s) { return String(s || "").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60); }
 function pairsHTML(f) {
   const arr = getv(f.k) || [];
   return `<div class="fld"><div class="rows">${arr.map((r, i) => `
@@ -1023,21 +1128,19 @@ function portfolioHTML() {
   const P = draft.portfolio;
   const feat = P.filter(p => p.featured).length;
   const cats = Array.from(new Set(P.map(p => (p.category || "").trim()).filter(Boolean))).sort();
-  const ring = +draft.media.ringCount || 8;
   return `
     <div class="card">
       <div class="pf-top">
         <label class="btn btn--primary">+ Add photos<input type="file" accept="image/*" multiple hidden data-add-pieces></label>
-        <p class="pf-stats" id="pf-stats">${P.length} pieces · ${feat} in “The plates”${feat > MAX_FEATURED ? ` <span class="warn">— only the first ${MAX_FEATURED} are shown</span>` : ""}</p>
+        <p class="pf-stats" id="pf-stats">${P.length} pieces · ${feat} featured</p>
       </div>
-      <p class="hint">New photos go to the top. The first ${ring} pieces spin in the 3D carousel; tap a piece to edit its details.</p>
+      <p class="hint">New photos go to the top. Featured pieces appear first on the home page (it shows four). Tap a piece to edit its details.</p>
     </div>
     <datalist id="cats">${cats.map(c => `<option value="${esc(c)}">`).join("")}</datalist>
     <div class="pcs" id="pieces">${P.map(pieceHTML).join("")}</div>`;
 }
 function pieceHTML(p, i) {
   const open = openPieces.has(pid(p));
-  const front = +draft.media.heroPiece === i;
   const crop = cropOf(p);
   const id = "pc" + pid(p);
   const last = draft.portfolio.length - 1;
@@ -1046,7 +1149,7 @@ function pieceHTML(p, i) {
       <span class="pc__no">${i + 1}</span>
       <img class="pc__thumb" src="${esc(srcFor(p.image))}" alt="" loading="lazy">
       <span class="pc__sum"><strong class="pc__title">${esc(p.title || "Untitled")}</strong><small class="pc__meta">${esc([p.category, p.placement].filter(Boolean).join(" · ") || "Add a category")}</small></span>
-      <span class="pc__badges">${pending.has(p.image) ? '<span class="badge badge--new">New</span>' : ""}${front ? '<span class="badge badge--dark">Front</span>' : ""}${p.featured ? '<span class="badge">Featured</span>' : ""}</span>
+      <span class="pc__badges">${pending.has(p.image) ? '<span class="badge badge--new">New</span>' : ""}${p.featured ? '<span class="badge">Featured</span>' : ""}</span>
       <span class="pc__chev" aria-hidden="true"></span>
     </button>
     <div class="pc__body" id="${id}"${open ? "" : " hidden"}>
@@ -1065,9 +1168,8 @@ function pieceHTML(p, i) {
         <div class="fld"><span class="lbl">Crop focus in the grid</span>
           <div class="seg" role="group" aria-label="Crop focus">${CROPS.map(([l, v]) => `<button type="button" data-action="crop" data-i="${i}" data-v="${v}" aria-pressed="${crop === v}">${l}</button>`).join("")}</div>
         </div>
-        <label class="sw"><input type="checkbox" data-piece="${i}" data-prop="featured"${p.featured ? " checked" : ""}><span class="sw__t" aria-hidden="true"></span>Show large in “The plates”</label>
+        <label class="sw"><input type="checkbox" data-piece="${i}" data-prop="featured"${p.featured ? " checked" : ""}><span class="sw__t" aria-hidden="true"></span>Feature on the home page</label>
         <div class="pc__actions">
-          <button class="btn btn--sm" type="button" data-action="front" data-i="${i}"${front ? " disabled" : ""}>${front ? "Faces front in the carousel" : "Face front in the carousel"}</button>
           <button class="btn btn--sm" type="button" data-action="move" data-i="${i}" data-d="-1"${i === 0 ? " disabled" : ""}>↑ Move up</button>
           <button class="btn btn--sm" type="button" data-action="move" data-i="${i}" data-d="1"${i === last ? " disabled" : ""}>↓ Move down</button>
           <button class="btn btn--sm btn--danger" type="button" data-action="delete-piece" data-i="${i}">Delete</button>
@@ -1082,10 +1184,10 @@ function rerenderPieces(focusIndex) {
   $$("textarea", box).forEach(autosize);
   const feat = draft.portfolio.filter(p => p.featured).length;
   const st = $("#pf-stats");
-  if (st) st.innerHTML = `${draft.portfolio.length} pieces · ${feat} in “The plates”${feat > MAX_FEATURED ? ` <span class="warn">— only the first ${MAX_FEATURED} are shown</span>` : ""}`;
+  if (st) st.innerHTML = `${draft.portfolio.length} pieces · ${feat} featured`;
   if (focusIndex != null) { const h = $(`.pc[data-index="${focusIndex}"] .pc__head`); if (h) { h.focus({ preventScroll: false }); h.scrollIntoView({ block: "nearest", behavior: "smooth" }); } }
 }
-function adjustFront(fn) { draft.media.heroPiece = fn(+draft.media.heroPiece || 0); }
+function adjustFront() { /* the 3D carousel is gone — nothing to keep in sync */ }
 
 /* ---------- Connection ---------- */
 function connectionHTML() {
@@ -1158,6 +1260,7 @@ function initEvents() {
       if (el.dataset.type === "words") v = v.split("\n").map(s => s.trim()).filter(Boolean);
       else if (el.dataset.type === "number") { if (v === "") return; v = Math.round(+v); }
       setv(el.dataset.path, v);
+      if (el.hasAttribute("data-head")) { const card = el.closest(".pc"); if (card) $(".pc__title", card).textContent = el.value || "Untitled"; }
       if (el.dataset.type === "color") {
         const demo = $("#loud-demo"); if (demo) { demo.style.setProperty("--c", v); demo.style.setProperty("--ci", inkFor(v)); }
         const code = $("#f-color-code"); if (code) code.textContent = String(v).toUpperCase();
@@ -1185,7 +1288,7 @@ function initEvents() {
   panel.addEventListener("change", async e => {
     const el = e.target;
     if (el.tagName === "SELECT" && el.dataset.path) {
-      if (el.dataset.type === "image") { if (!el.value) return; setv(el.dataset.path, el.value); prunePending(); changed(); renderPanel(); return; }
+      if (el.dataset.type === "image") { if (!el.value) return; setv(el.dataset.path, el.value); prunePending(); changed(); renderPanel(true); return; }
       setv(el.dataset.path, el.dataset.type === "number" ? +el.value : el.value); changed(); return;
     }
     if (el.type === "number" && el.dataset.path) {
@@ -1221,7 +1324,7 @@ function initEvents() {
         } else if (el.dataset.upload) {
           const { path } = await addImage(files[0]);
           setv(el.dataset.upload, path);
-          prunePending(); changed(); renderPanel();
+          prunePending(); changed(); renderPanel(true);
           toast("Photo updated.");
         }
       } catch (err) { toast(err.message || "That photo couldn't be added.", true); }
@@ -1253,9 +1356,41 @@ function initEvents() {
         break;
       }
       case "swatch": setv(b.dataset.path, b.dataset.v); changed(); renderPanel(); break;
+      case "img-clear": setv(b.dataset.path, ""); prunePending(); changed(); renderPanel(true); break;
+      case "list-toggle": {
+        const key = b.dataset.list + "#" + i, card = b.closest(".pc"), open = !openItems.has(key);
+        open ? openItems.add(key) : openItems.delete(key);
+        card.classList.toggle("is-open", open); b.setAttribute("aria-expanded", String(open));
+        $(".pc__body", card).hidden = !open;
+        if (open) { $$("textarea", card).forEach(autosize); if (narrow.matches) setTimeout(() => card.scrollIntoView({ block: "start", behavior: "smooth" }), 50); }
+        break;
+      }
+      case "list-add": {
+        const def = listDef(b.dataset.list); const arr = getv(b.dataset.list) || []; setv(b.dataset.list, arr);
+        const blank = {}; (def ? def.fields : []).forEach(sf => { blank[sf.p] = ""; });
+        let at = arr.length;
+        if (def && def.top) { arr.unshift(blank); at = 0; } else arr.push(blank);
+        [...openItems].filter(k => k.startsWith(b.dataset.list + "#")).forEach(k => openItems.delete(k));
+        openItems.add(b.dataset.list + "#" + at);
+        changed(); renderPanel(true);
+        const first = $(`[data-path="${b.dataset.list}.${at}.${def ? (def.titleProp || def.fields[0].p) : "title"}"]`); if (first) { first.focus(); first.scrollIntoView({ block: "center" }); }
+        break;
+      }
+      case "list-move": {
+        const arr = getv(b.dataset.list) || []; const j = i + (+b.dataset.d); if (j < 0 || j >= arr.length) break;
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+        [...openItems].filter(k => k.startsWith(b.dataset.list + "#")).forEach(k => openItems.delete(k)); openItems.add(b.dataset.list + "#" + j);
+        changed(); renderPanel(true); break;
+      }
+      case "list-del": {
+        if (!arm(b, "Tap again to delete")) break;
+        const arr = getv(b.dataset.list) || []; const [gone] = arr.splice(i, 1);
+        [...openItems].filter(k => k.startsWith(b.dataset.list + "#")).forEach(k => openItems.delete(k));
+        prunePending(); changed(); renderPanel(true);
+        toast(`“${(gone && (gone.title || gone.name)) || "Item"}” removed.`); break;
+      }
       case "theme": setv("settings.theme", b.dataset.v); setv("settings.accentColor", b.dataset.loud); changed(); renderPanel(); toast(b.dataset.v === "amber" ? "Black & amber look — yellow marks the booking buttons." : "Ivory look — ink red marks the booking buttons."); break;
       case "crop": { const p = P[i]; if (!p) break; p.position = b.dataset.v; changed(); rerenderPieces(); break; }
-      case "front": draft.media.heroPiece = i; changed(); rerenderPieces(i); toast("This piece now faces front in the 3D carousel."); break;
       case "move": {
         const j = i + (+b.dataset.d); if (j < 0 || j >= P.length) break;
         [P[i], P[j]] = [P[j], P[i]];
@@ -1271,12 +1406,12 @@ function initEvents() {
       case "row-add": {
         const arr = getv(b.dataset.list) || []; setv(b.dataset.list, arr);
         arr.push(b.dataset.shape === "loc" ? { name: "", note: "", dates: "" } : { label: "", value: "" });
-        changed(); renderPanel();
+        changed(); renderPanel(true);
         const ins = $$(`[data-list="${b.dataset.list}"][data-i="${arr.length - 1}"]`); if (ins[0]) ins[0].focus();
         break;
       }
-      case "row-del": { const arr = getv(b.dataset.list) || []; arr.splice(i, 1); changed(); renderPanel(); break; }
-      case "row-up": { const arr = getv(b.dataset.list) || []; if (i > 0) { [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]; changed(); renderPanel(); } break; }
+      case "row-del": { const arr = getv(b.dataset.list) || []; arr.splice(i, 1); changed(); renderPanel(true); break; }
+      case "row-up": { const arr = getv(b.dataset.list) || []; if (i > 0) { [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]]; changed(); renderPanel(true); } break; }
       case "toggle-token": { const t = $("#cn-token"); const s = t.type === "password"; t.type = s ? "text" : "password"; b.textContent = s ? "Hide" : "Show"; break; }
       case "forget": {
         if (!arm(b, "Tap again to forget")) break;
@@ -1295,19 +1430,21 @@ function initEvents() {
 /* ==========================================================================
    11. LIVE PREVIEW — the real website in a frame, fed the unpublished draft
    ========================================================================== */
-const pv = { frame: null, loaded: false, started: false, device: "phone", timer: 0, keepY: null, anchor: "#work" };
+const pv = { frame: null, loaded: false, started: false, device: "phone", timer: 0, keepY: null, anchor: "#top", page: "index.html" };
+const previewUrl = page => (page || "index.html") + ((page || "").includes("?") ? "&" : "?") + "preview=1";
 const wide = matchMedia("(min-width: 1181px)"), narrow = matchMedia("(max-width: 760px)");
 function previewContent() {
   const d = clone(draft);
-  d.portfolio.forEach(p => { if (p && p.image) p.image = srcFor(p.image); });
-  ["heroBackground", "artistPortrait", "artistDetailImage"].forEach(k => { if (d.media[k]) d.media[k] = srcFor(d.media[k]); });
+  walkStrings(d, (v, set) => { if (pending.has(v) || uploaded.has(v)) set(srcFor(v)); });
   return d;
 }
 function startPreview() {
   if (pv.started) return;
   pv.started = true;
+  const s = SECTIONS.find(x => x.id === current);
+  if (s && s.page) { pv.page = s.page; pv.anchor = s.anchor || "#top"; }
   window.__salavessaDraft = previewContent();
-  pv.frame.src = "index.html?preview=1";
+  pv.frame.src = previewUrl(pv.page);
 }
 function schedulePreview(now) {
   if (!pv.started) return;
@@ -1315,7 +1452,7 @@ function schedulePreview(now) {
   pv.timer = setTimeout(() => {
     window.__salavessaDraft = previewContent();
     try { pv.keepY = pv.frame.contentWindow.scrollY; pv.frame.contentWindow.location.reload(); }
-    catch (e) { pv.frame.src = "index.html?preview=1"; }
+    catch (e) { pv.frame.src = previewUrl(pv.page); }
   }, now ? 0 : 750);
 }
 function previewTo(anchor) {
